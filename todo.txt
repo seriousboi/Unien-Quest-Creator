@@ -1,0 +1,4 @@
+
+définir la structure en graphe
+faire convertisseur de map vers graphe
+save (<- avoir un champ d'écriture) et load des maps
