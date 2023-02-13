@@ -28,7 +28,7 @@ def mainProcess(variables):
 
 
 def mainDisplay(window,variables):
-    global mapLength,mapWidth,itemNames,rooms
+    global mapLength,mapWidth,itemNames
     squareSize = variables["squareSize"]
     shift = variables["shift"]
 
@@ -42,11 +42,16 @@ def mainDisplay(window,variables):
         displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,itemName,25,(50,50,50))
 
     #graph test
+    global rooms,hallways
     for room in rooms:
         center = getRoomCenter(room,shift,squareSize)
         pygame.draw.circle(window,(80,80,200),center,squareSize//2 - 4, 0)
         pygame.draw.circle(window,(215,215,50),center,squareSize//2 - 8, 0)
 
+    for hallway in hallways:
+        center = (hallway[0]*squareSize+shift[0],hallway[1]*squareSize+shift[1])
+        pygame.draw.circle(window,(80,80,200),center,squareSize//2 - 4, 0)
+        pygame.draw.circle(window,(215,215,50),center,squareSize//2 - 8, 0)
     return variables
 
 

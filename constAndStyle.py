@@ -11,7 +11,9 @@ butPresOutCol = (170,115,90) #out color of pressed buttons
 mapLength = 26
 mapWidth = 19
 itemNames = ["Door","Rock"] #known items
+
 nbRooms = 22
+nbHallways = 54
 
 rooms = [
 #big room
@@ -42,4 +44,31 @@ rooms = [
 {"coordinates":(21,14,4,4),"color":(124,184,105),"center":(None,None)},
 {"coordinates":(14,13,4,5) ,"color":(172,126,118),"center":(None,None)},
 #must be last to be drawn properly
+]
+
+hallways = [
+#north horizontal hallway
+(3,0.5),(5.5,0.5),(8,0.5),(10.5,0.5),(13,0.5),(15.5,0.5),(18,0.5),(20.5,0.5),(23,0.5),
+#south horizontal hallway
+(3,18.5),(5.5,18.5),(8,18.5),(10.5,18.5),(13,18.5),(16,18.5),(18.5 ,18.5),(20.5,18.5),(23,18.5),
+#east vertical hallway
+(25.5,3),(25.5,5.5),(25.5,7.5),(25.5,9.5),(25.5,11.5),(25.5,13.5),(25.5,16),
+#west vertical hallway
+(0.5,2.5),(0.5,5.5),(0.5,7.5),(0.5,9.5),(0.5,11.5),(0.5,13.5),(0.5,16),
+#north vertical hallway
+(13,2.5),(13,4.5),
+#south vertical hallway
+(13,14.5),(13,16.5),
+#west horizontal hallway
+(3,9.5),(5.5,9.5),(7.5,9.5),
+#east horizontal hallway
+(18.5,9.5),(20.5,9.5),(23,9.5),
+#north central hallway
+(10.5,6.5),(13,6.5),(15.5,6.5),
+#south central hallway
+(10.5,12.5),(13,12.5),(15.5,12.5),
+#east central hallway
+(16.5,7.5),(16.5,9.5),(16.5,11.5),
+#west central hallway
+(9.5,7.5),(9.5,9.5),(9.5,11.5),
 ]

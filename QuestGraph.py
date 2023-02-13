@@ -21,7 +21,7 @@ class Edge():
 
 
 class Area(Vertex):
-    def __init__(self,id,edges,degree,type,square):
+    def __init__(self,id,edges,degree,type,center):
         super().__init__(id,edges,degree)
         self.type = type
 
