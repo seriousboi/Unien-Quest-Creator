@@ -28,8 +28,9 @@ def mainProcess(variables):
 
 
 def mainDisplay(window,variables):
-    global mapLength,mapWidth,itemNames
+    global mapLength,mapWidth,itemNames,rooms
     squareSize = variables["squareSize"]
+    shift = variables["shift"]
 
     variables["map"].display(window,variables["shift"],squareSize)
 
@@ -39,6 +40,12 @@ def mainDisplay(window,variables):
     for itemName in itemNames:
         button = variables["buttons"][itemName]
         displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,itemName,25,(50,50,50))
+
+    #graph test
+    for room in rooms:
+        center = getRoomCenter(room,shift,squareSize)
+        pygame.draw.circle(window,(80,80,200),center,squareSize//2 - 4, 0)
+        pygame.draw.circle(window,(215,215,50),center,squareSize//2 - 8, 0)
 
     return variables
 
@@ -118,7 +125,6 @@ mainInterface = Interface()
 mainInterface.initialize = initialize
 mainInterface.mainDisplay = mainDisplay
 mainInterface.mainProcess = mainProcess
-
 
 
 

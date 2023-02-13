@@ -3,6 +3,13 @@ import pygame
 
 
 
+def getRoomCenter(room,shift,squareSize):
+    x = (room["coordinates"][0]+room["coordinates"][2]/2)*squareSize + shift[0]
+    y = (room["coordinates"][1]+room["coordinates"][3]/2)*squareSize + shift[1]
+    return (x,y)
+
+
+
 def displayRock(window,shift,squareSize,square):
     X,Y = shift
     xPos = square.x*squareSize
@@ -134,31 +141,13 @@ def text(surface,message,size,color,anchor,x,y):
 
 
 def getRooms():
-    rooms = [(10,7,6,5,(168,148,135)), #big room
-
-    (1,1,4,3,(174,120,87)), #topleft rooms
-    (5,1,4,3,(166,82,74)),
-    (1,4,4,5,(118,118,123)),
-    (5,4,4,5,(162,189,83)),
-    (9,1,3,5,(149,188,192)),
-
-    (1,10,4,4,(225,210,127)), #bottomleft rooms
-    (1,14,4,4,(160,159,191)),
-    (5,10,2,3,(192,222,232)),
-    (7,10,2,3,(124,158,150)),
-    (5,13,4,5,(188,116,103)),
-    (9,13,3,5,(180,158,102)),
-
-    (14,1,3,5,(166,61,40)), #topright rooms
-    (17,1,4,4,(179,185,203)),
-    (21,1,4,4,(210,172,107)),
-    (17,5,4,4,(194,143,64)),
-    (21,5,4,4,(205,210,109)),
-
-    (17,10,4,4,(168,172,209)), #bottomright rooms
-    (21,10,4,4,(210,189,100)),
-    (18,14,3,4,(185,141,96)),
-    (21,14,4,4,(124,184,105)),
-    (14,13,4,5,(172,126,118)) #must be last to be drawn properly
-    ]
-    return rooms
+    global rooms
+    weirdListOfTupleWithCoordsAndColor = [] #unadapted code because of structures changes
+    for room in rooms:
+        x = room["coordinates"][0]
+        y = room["coordinates"][1]
+        width =  room["coordinates"][2]
+        height = room["coordinates"][3]
+        weirdTuple = (x,y,width,height,room["color"])
+        weirdListOfTupleWithCoordsAndColor += [weirdTuple]
+    return weirdListOfTupleWithCoordsAndColor
