@@ -1,4 +1,5 @@
 from constAndStyle import *
+from structures import *
 from display import displayGraph
 
 
@@ -69,12 +70,30 @@ class QuestGraph():
         for doorConnector in doorConnectors:
             startId = doorConnector[0][0]
             endId = doorConnector[0][1]
-            self.connectors += [Connector(connectorIndex,startId,endId,"Door",doorConnector[1])]
+            squares = []
+            for coords in doorConnector[1]:
+                squares += [Square(coords[0],coords[1])]
+            connector = Connector(connectorIndex,startId,endId,"Door",squares)
+            self.connectors += [connector]
+            self.areas[startId].edges += [connector]
+            self.areas[endId].edges += [connector]
+            self.areas[startId].degree += 1
+            self.areas[endId].degree += 1
+
             connectorIndex += 1
         for rockConnector in  rockConnectors:
             startId = rockConnector[0][0]
             endId = rockConnector[0][1]
-            self.connectors += [Connector(connectorIndex,startId,endId,"Type",rockConnector[1])]
+            squares = []
+            for coords in rockConnector[1]:
+                squares += [Square(coords[0],coords[1])]
+            connector = Connector(connectorIndex,startId,endId,"Rock",squares)
+            self.connectors += [connector]
+            self.areas[startId].edges += [connector]
+            self.areas[endId].edges += [connector]
+            self.areas[startId].degree += 1
+            self.areas[endId].degree += 1
+
             connectorIndex += 1
 
     def display(self,surface,shift,squareSize):
