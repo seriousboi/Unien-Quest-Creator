@@ -1,3 +1,5 @@
+from constAndStyle import *
+from display import displayGraph
 
 
 
@@ -15,15 +17,13 @@ class Edge():
         self.start = start
         self.end = end
 
-    def print(self):
-        print("Edge "+str(self.id)+", from V"+str(self.start.id)+" to V"+str(self.end.id))
-
 
 
 class Area(Vertex):
     def __init__(self,id,edges,degree,type,center):
         super().__init__(id,edges,degree)
         self.type = type
+        self.center = center
 
 
 
@@ -34,7 +34,7 @@ class Connector(Edge):
 
         if type == "Rock":
             self.open = True
-            self.square = squares[0]
+            self.squares = squares
         elif type == "Door":
             self.open = False
             self.frontSquare = squares[0]
@@ -45,14 +45,37 @@ class Connector(Edge):
 
 
 
-class Graph():
-    def __init__(self,vertices,edges,nbVertices,nbEdges):
-        self.vertices = vertices
-        self.edges = edges
-        self.nbVertices = nbVertices
-        self.nbEdges = nbEdges
+class QuestGraph():
+    def __init__(self):
+        global nbRooms,nbHallways
+        global rooms,hallways,rockConnectors,doorConnectors
 
-    def print(self):
-        print(self.nbVertices,"Vertices",self.nbEdges,"Edges")
-        for edge in self.edges:
-            edge.print()
+        self.nbAreas = nbRooms + nbHallways
+        self.nbConnectors = len(doorConnectors) + len(rockConnectors)
+
+        areaIndex = 0
+        self.areas = []
+        for room in rooms:
+            x = room["coordinates"][0]+room["coordinates"][2]/2
+            y = room["coordinates"][1]+room["coordinates"][3]/2
+            self.areas += [Area(areaIndex,[],0,"Room",(x,y))]
+            areaIndex += 1
+        for hallway in hallways:
+            self.areas += [Area(areaIndex,[],0,"Hallway",hallway)]
+            areaIndex += 1
+
+        connectorIndex = 0
+        self.connectors = []
+        for doorConnector in doorConnectors:
+            startId = doorConnector[0][0]
+            endId = doorConnector[0][1]
+            self.connectors += [Connector(connectorIndex,startId,endId,"Door",doorConnector[1])]
+            connectorIndex += 1
+        for rockConnector in  rockConnectors:
+            startId = rockConnector[0][0]
+            endId = rockConnector[0][1]
+            self.connectors += [Connector(connectorIndex,startId,endId,"Type",rockConnector[1])]
+            connectorIndex += 1
+
+    def display(self,surface,shift,squareSize):
+        displayGraph(surface,shift,squareSize,self.nbAreas,self.nbConnectors,self.areas,self.connectors)

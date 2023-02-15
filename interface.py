@@ -1,6 +1,7 @@
 from constAndStyle import *
 from PGinterfaces import *
 from structures import *
+from QuestGraph import *
 from display import *
 from pygame import *
 
@@ -42,16 +43,9 @@ def mainDisplay(window,variables):
         displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,itemName,25,(50,50,50))
 
     #graph test
-    global rooms,hallways
-    for room in rooms:
-        center = getRoomCenter(room,shift,squareSize)
-        pygame.draw.circle(window,(80,80,200),center,squareSize//2 - 4, 0)
-        pygame.draw.circle(window,(215,215,50),center,squareSize//2 - 8, 0)
+    testqg = QuestGraph()
+    testqg.display(window,shift,squareSize)
 
-    for hallway in hallways:
-        center = (hallway[0]*squareSize+shift[0],hallway[1]*squareSize+shift[1])
-        pygame.draw.circle(window,(80,80,200),center,squareSize//2 - 4, 0)
-        pygame.draw.circle(window,(215,215,50),center,squareSize//2 - 8, 0)
     return variables
 
 
@@ -85,6 +79,11 @@ def placeItem(variables,event):
     if event.type == pygame.MOUSEBUTTONDOWN:
         x = event.pos[0] - variables["shift"][0]
         y = event.pos[1] - variables["shift"][1]
+
+        #printsquare help
+        if (x >= 0 and x <= mapLength*sqsz and
+            y >= 0 and y <= mapWidth*sqsz):
+            print((int(x/sqsz),int(y/sqsz)))
 
         if variables["currentItem"] == "Door":
             if (x > (1/4)*sqsz and x < (mapLength-1/4)*sqsz and

@@ -6,7 +6,7 @@ from pygame import *
 
 def main():
     global mapLength,mapWidth
-    squareSize = 30
+    squareSize = 50
     shift = [0,0]
 
     vars = {

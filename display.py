@@ -3,10 +3,21 @@ import pygame
 
 
 
-def getRoomCenter(room,shift,squareSize):
-    x = (room["coordinates"][0]+room["coordinates"][2]/2)*squareSize + shift[0]
-    y = (room["coordinates"][1]+room["coordinates"][3]/2)*squareSize + shift[1]
-    return (x,y)
+def displayGraph(surface,shift,squareSize,nbAreas,nbConnectors,areas,connectors):
+    index = 0
+
+    for connector in connectors:
+        start = areas[connector.start]
+        end = areas[connector.end]
+        startCenter = (start.center[0]*squareSize+shift[0],start.center[1]*squareSize+shift[1])
+        endCenter = (end.center[0]*squareSize+shift[0],end.center[1]*squareSize+shift[1])
+        pygame.draw.line(surface,(80,80,200),startCenter,endCenter,2)
+
+    for area in areas:
+        center = (area.center[0]*squareSize+shift[0],area.center[1]*squareSize+shift[1])
+        pygame.draw.circle(surface,(80,80,200),center,squareSize//2 - 4, 0)
+        pygame.draw.circle(surface,(215,215,50),center,squareSize//2 - 8, 0)
+        text(surface,str(area.id),(squareSize*3)//5,(0,0,0),"center",center[0],center[1])
 
 
 
