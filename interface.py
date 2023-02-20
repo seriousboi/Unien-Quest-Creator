@@ -44,7 +44,7 @@ def mainDisplay(window,variables):
 
     #graph test
     testqg = QuestGraph()
-    testqg.display(window,shift,squareSize)
+    testqg.display(window,shift,squareSize,False)
 
     return variables
 
@@ -79,11 +79,6 @@ def placeItem(variables,event):
     if event.type == pygame.MOUSEBUTTONDOWN:
         x = event.pos[0] - variables["shift"][0]
         y = event.pos[1] - variables["shift"][1]
-
-        #printsquare help
-        if (x >= 0 and x <= mapLength*sqsz and
-            y >= 0 and y <= mapWidth*sqsz):
-            print((int(x/sqsz),int(y/sqsz)))
 
         if variables["currentItem"] == "Door":
             if (x > (1/4)*sqsz and x < (mapLength-1/4)*sqsz and

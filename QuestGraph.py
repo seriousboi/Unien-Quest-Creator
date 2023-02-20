@@ -48,11 +48,11 @@ class Connector(Edge):
 
 class QuestGraph():
     def __init__(self):
-        global nbRooms,nbHallways
+        global nbRooms,nbHallways,nbRockConnectors,nbDoorConnectors
         global rooms,hallways,rockConnectors,doorConnectors
 
         self.nbAreas = nbRooms + nbHallways
-        self.nbConnectors = len(doorConnectors) + len(rockConnectors)
+        self.nbConnectors = nbRockConnectors + nbDoorConnectors
 
         areaIndex = 0
         self.areas = []
@@ -96,5 +96,5 @@ class QuestGraph():
 
             connectorIndex += 1
 
-    def display(self,surface,shift,squareSize):
-        displayGraph(surface,shift,squareSize,self.nbAreas,self.nbConnectors,self.areas,self.connectors)
+    def display(self,surface,shift,squareSize,squareHelp = False):
+        displayGraph(surface,shift,squareSize,squareHelp,self.nbAreas,self.nbConnectors,self.areas,self.connectors)

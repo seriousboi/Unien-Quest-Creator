@@ -3,38 +3,41 @@ import pygame
 from random import randrange,seed
 
 
-def displayGraph(surface,shift,squareSize,nbAreas,nbConnectors,areas,connectors):
+
+def displayGraph(surface,shift,squareSize,squareHelp,nbAreas,nbConnectors,areas,connectors):
     index = 0
-
     for connector in connectors:
-        #randomcolor help
-        rr = randrange(256)
-        rg = randrange(256)
-        rb = randrange(256)
-        totlum = rr + rg + rb + 1
-        rr = (rr*256)//totlum
-        rg = (rg*256)//totlum
-        rb = (rb*256)//totlum
+        if squareHelp:
+            rr = randrange(256)
+            rg = randrange(256)
+            rb = randrange(256)
+            totlum = rr + rg + rb + 1
+            rr = (rr*256)//totlum
+            rg = (rg*256)//totlum
+            rb = (rb*256)//totlum
+            color = (rr,rg,rb)
+        else:
+            color = (80,80,200)
 
-
-        #square help
         if connector.type == "Rock":
             start = areas[connector.start]
             end = areas[connector.end]
             startCenter = (start.center[0]*squareSize+shift[0],start.center[1]*squareSize+shift[1])
             endCenter = (end.center[0]*squareSize+shift[0],end.center[1]*squareSize+shift[1])
-            pygame.draw.line(surface,(rr,rg,rb),startCenter,endCenter,2)
-            for square in connector.squares:
-                pygame.draw.circle(surface,(rr,rg,rb),((square.x+1/2)*squareSize + shift[0],(square.y+1/2)*squareSize + shift[1]),squareSize//5,0)
+            pygame.draw.line(surface,color,startCenter,endCenter,2)
+            if squareHelp:
+                for square in connector.squares:
+                    pygame.draw.circle(surface,color,((square.x+1/2)*squareSize + shift[0],(square.y+1/2)*squareSize + shift[1]),squareSize//5,0)
         elif connector.type == "Door":
             start = areas[connector.start]
             end = areas[connector.end]
             startCenter = (start.center[0]*squareSize+shift[0],start.center[1]*squareSize+shift[1])
             endCenter = (end.center[0]*squareSize+shift[0],end.center[1]*squareSize+shift[1])
-            pygame.draw.line(surface,(rr,rg,rb),startCenter,endCenter,2)
+            pygame.draw.line(surface,color,startCenter,endCenter,2)
             x = (connector.frontSquare.x+connector.backSquare.x)/2
             y = (connector.frontSquare.y+connector.backSquare.y)/2
-            pygame.draw.circle(surface,(rr,rg,rb),((x+1/2)*squareSize + shift[0],(y+1/2)*squareSize + shift[1]),squareSize//5, 3)
+            if squareHelp:
+                pygame.draw.circle(surface,color,((x+1/2)*squareSize + shift[0],(y+1/2)*squareSize + shift[1]),squareSize//5, 3)
 
     for area in areas:
         center = (area.center[0]*squareSize+shift[0],area.center[1]*squareSize+shift[1])

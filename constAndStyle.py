@@ -14,6 +14,8 @@ itemNames = ["Door","Rock"] #known items
 
 nbRooms = 22
 nbHallways = 54
+nbRockConnectors = 58
+nbDoorConnectors = 94
 
 rooms = [
 #big room
