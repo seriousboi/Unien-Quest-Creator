@@ -42,9 +42,9 @@ def mainDisplay(window,variables):
         button = variables["buttons"][itemName]
         displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,itemName,25,(50,50,50))
 
-    #graph test
-    testqg = QuestGraph()
-    testqg.display(window,shift,squareSize,False)
+    #test
+    variables["testqg"].display(window,shift,squareSize,False)
+    #test
 
     return variables
 

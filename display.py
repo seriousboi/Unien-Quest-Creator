@@ -5,8 +5,8 @@ from random import randrange,seed
 
 
 def displayGraph(surface,shift,squareSize,squareHelp,nbAreas,nbConnectors,areas,connectors):
-    index = 0
     for connector in connectors:
+
         if squareHelp:
             rr = randrange(256)
             rg = randrange(256)
@@ -19,18 +19,19 @@ def displayGraph(surface,shift,squareSize,squareHelp,nbAreas,nbConnectors,areas,
         else:
             color = (80,80,200)
 
-        if connector.type == "Rock":
-            start = areas[connector.start]
-            end = areas[connector.end]
+        if connector.type == "Rock" and connector.open == True:
+            start = connector.start
+            end = connector.end
             startCenter = (start.center[0]*squareSize+shift[0],start.center[1]*squareSize+shift[1])
             endCenter = (end.center[0]*squareSize+shift[0],end.center[1]*squareSize+shift[1])
             pygame.draw.line(surface,color,startCenter,endCenter,2)
             if squareHelp:
                 for square in connector.squares:
                     pygame.draw.circle(surface,color,((square.x+1/2)*squareSize + shift[0],(square.y+1/2)*squareSize + shift[1]),squareSize//5,0)
-        elif connector.type == "Door":
-            start = areas[connector.start]
-            end = areas[connector.end]
+
+        elif connector.type == "Door" and connector.open == True:
+            start = connector.start
+            end = connector.end
             startCenter = (start.center[0]*squareSize+shift[0],start.center[1]*squareSize+shift[1])
             endCenter = (end.center[0]*squareSize+shift[0],end.center[1]*squareSize+shift[1])
             pygame.draw.line(surface,color,startCenter,endCenter,2)

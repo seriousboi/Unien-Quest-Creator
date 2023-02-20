@@ -12,6 +12,8 @@ mapLength = 26
 mapWidth = 19
 itemNames = ["Door","Rock"] #known items
 
+nbMaxDoors = 21
+
 nbRooms = 22
 nbHallways = 54
 nbRockConnectors = 58

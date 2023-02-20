@@ -1,5 +1,7 @@
 from constAndStyle import *
+from QuestGraph import *
 from interface import *
+from generators import *
 from pygame import *
 
 
@@ -9,9 +11,17 @@ def main():
     squareSize = 50
     shift = [0,0]
 
+    #test
+    testqg = QuestGraph()
+    config = genHtCC(testqg)
+    testqg.applyConfiguration(config)
+    #test
+
     vars = {
     "squareSize":squareSize,"shift":shift,
-    "running":True}
+    "running":True,
+    "testqg":testqg
+    }
 
     pygame.init()
     window = pygame.display.set_mode((squareSize*(mapLength+8),squareSize*(mapWidth)))

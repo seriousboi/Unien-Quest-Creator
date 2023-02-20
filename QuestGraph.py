@@ -18,7 +18,13 @@ class Edge():
         self.start = start
         self.end = end
 
-
+    def getOppositeVertex(self,vertex):
+        if vertex.id == self.start.id:
+            return self.end
+        if vertex.id == self.end.id:
+            return self.start
+        else:
+            print("vertex",vertex.id,"not on edge",self.id)
 
 class Area(Vertex):
     def __init__(self,id,edges,degree,type,center):
@@ -47,6 +53,14 @@ class Connector(Edge):
 
 
 class QuestGraph():
+
+    def applyConfiguration(self,config):
+        for index,connector in enumerate(self.connectors):
+            connector.open = config[index]
+
+    def display(self,surface,shift,squareSize,squareHelp = False):
+        displayGraph(surface,shift,squareSize,squareHelp,self.nbAreas,self.nbConnectors,self.areas,self.connectors)
+
     def __init__(self):
         global nbRooms,nbHallways,nbRockConnectors,nbDoorConnectors
         global rooms,hallways,rockConnectors,doorConnectors
@@ -69,11 +83,13 @@ class QuestGraph():
         self.connectors = []
         for doorConnector in doorConnectors:
             startId = doorConnector[0][0]
+            start = self.areas[startId]
             endId = doorConnector[0][1]
+            end = self.areas[endId]
             squares = []
             for coords in doorConnector[1]:
                 squares += [Square(coords[0],coords[1])]
-            connector = Connector(connectorIndex,startId,endId,"Door",squares)
+            connector = Connector(connectorIndex,start,end,"Door",squares)
             self.connectors += [connector]
             self.areas[startId].edges += [connector]
             self.areas[endId].edges += [connector]
@@ -83,11 +99,13 @@ class QuestGraph():
             connectorIndex += 1
         for rockConnector in  rockConnectors:
             startId = rockConnector[0][0]
+            start = self.areas[startId]
             endId = rockConnector[0][1]
+            end = self.areas[endId]
             squares = []
             for coords in rockConnector[1]:
                 squares += [Square(coords[0],coords[1])]
-            connector = Connector(connectorIndex,startId,endId,"Rock",squares)
+            connector = Connector(connectorIndex,start,end,"Rock",squares)
             self.connectors += [connector]
             self.areas[startId].edges += [connector]
             self.areas[endId].edges += [connector]
@@ -95,6 +113,3 @@ class QuestGraph():
             self.areas[endId].degree += 1
 
             connectorIndex += 1
-
-    def display(self,surface,shift,squareSize,squareHelp = False):
-        displayGraph(surface,shift,squareSize,squareHelp,self.nbAreas,self.nbConnectors,self.areas,self.connectors)
