@@ -4,7 +4,7 @@ from structures import *
 from QuestGraph import *
 from display import *
 from pygame import *
-
+from generators import *
 
 
 def initialize(variables):
