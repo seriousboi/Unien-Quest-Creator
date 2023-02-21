@@ -13,8 +13,8 @@ def main():
 
     #test
     testqg = QuestGraph()
-    config = genHtCC(testqg)
-    testqg.applyConfiguration(config)
+    config,visited = genHtCC(testqg)
+    testqg.applyConfiguration(config,visited)
     #test
 
     vars = {

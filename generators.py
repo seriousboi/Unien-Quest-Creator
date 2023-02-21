@@ -28,7 +28,7 @@ def genHtCC(questGraph):
         if currentArea not in visited:
             visited += [currentArea]
 
-    return config
+    return config,visited
 
 
 

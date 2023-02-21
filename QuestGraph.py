@@ -31,6 +31,7 @@ class Area(Vertex):
         super().__init__(id,edges,degree)
         self.type = type
         self.center = center
+        self.connected = True
 
 
 
@@ -54,9 +55,14 @@ class Connector(Edge):
 
 class QuestGraph():
 
-    def applyConfiguration(self,config):
+    def applyConfiguration(self,config,visited):
         for index,connector in enumerate(self.connectors):
             connector.open = config[index]
+        for area in self.areas:
+            area.connected = False
+        for visitedArea in visited:
+            self.areas[visitedArea.id].connected = True
+
 
     def display(self,surface,shift,squareSize,squareHelp = False):
         displayGraph(surface,shift,squareSize,squareHelp,self.nbAreas,self.nbConnectors,self.areas,self.connectors)
