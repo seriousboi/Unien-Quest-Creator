@@ -1,5 +1,5 @@
 from constAndStyle import *
-from structures import *
+from QuestMap import *
 from display import displayGraph
 
 

@@ -41,10 +41,19 @@ def displayGraph(surface,shift,squareSize,squareHelp,nbAreas,nbConnectors,areas,
                 pygame.draw.circle(surface,color,((x+1/2)*squareSize + shift[0],(y+1/2)*squareSize + shift[1]),squareSize//5, 3)
 
     for area in areas:
-        center = (area.center[0]*squareSize+shift[0],area.center[1]*squareSize+shift[1])
-        pygame.draw.circle(surface,(80,80,200),center,squareSize//2 - 4, 0)
-        pygame.draw.circle(surface,(215,215,50),center,squareSize//2 - 8, 0)
-        text(surface,str(area.id),(squareSize*3)//5,(0,0,0),"center",center[0],center[1])
+        if isAreaConnected(area):
+            center = (area.center[0]*squareSize+shift[0],area.center[1]*squareSize+shift[1])
+            pygame.draw.circle(surface,(80,80,200),center,squareSize//2 - 4, 0)
+            pygame.draw.circle(surface,(215,215,50),center,squareSize//2 - 8, 0)
+            text(surface,str(area.id),(squareSize*3)//5,(0,0,0),"center",center[0],center[1])
+
+
+
+def isAreaConnected(area):
+    for connector in area.edges:
+        if connector.open:
+            return True
+    return False
 
 
 

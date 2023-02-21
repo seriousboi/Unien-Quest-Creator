@@ -39,6 +39,16 @@ class QuestMap:
         self.doors = doors
         self.rocks = rocks
 
+    def loadGraph(self,questGraph):
+        self.doors = []
+        self.rocks = []
+        for connector in questGraph.connectors:
+            if connector.type == "Rock" and connector.open == False:
+                for square in connector.squares:
+                    self.rocks += [Rock(square)]
+            if connector.type == "Door" and connector.open == True:
+                self.doors += [Door(connector.frontSquare,connector.backSquare)]
+
     def display(self,surface,shift,squareSize):
         displayBoard(surface,shift,squareSize)
         for rock in self.rocks:

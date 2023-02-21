@@ -16,7 +16,6 @@ def genHtCC(questGraph):
     nbPlacedDoors = 0
     while nbPlacedDoors < nbMaxDoors:
 
-
         weights = getWeightsHtCC(questGraph,currentArea,config,visited)
         choiceIndex = choiceFromWeights(weights)
         connector = currentArea.edges[choiceIndex]
@@ -30,16 +29,6 @@ def genHtCC(questGraph):
             visited += [currentArea]
 
     return config
-
-
-
-def choiceFromWeights(weights):
-    rand = random()
-    slice = 0
-    for choiceIndex,weight in enumerate(weights):
-        slice += weight
-        if rand < slice:
-            return choiceIndex
 
 
 
@@ -73,6 +62,16 @@ def getWeightsHtCC(questGraph,area,config,visited):
 
     normalize(weights)
     return weights
+
+
+
+def choiceFromWeights(weights):
+    rand = random()
+    slice = 0
+    for choiceIndex,weight in enumerate(weights):
+        slice += weight
+        if rand < slice:
+            return choiceIndex
 
 
 

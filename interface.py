@@ -1,6 +1,6 @@
 from constAndStyle import *
 from PGinterfaces import *
-from structures import *
+from QuestMap import *
 from QuestGraph import *
 from display import *
 from pygame import *
@@ -9,8 +9,7 @@ from generators import *
 
 def initialize(variables):
     testMap = QuestMap()
-    testMap.doors += [Door(Square(10,13),Square(11,13))]
-    testMap.rocks += [Rock(Square(12,14)),Rock(Square(20,4))]
+    testMap.loadGraph(variables["testqg"])
     variables["map"] = testMap
 
     variables["currentItem"] = None
