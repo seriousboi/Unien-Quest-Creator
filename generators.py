@@ -29,6 +29,8 @@ def genHtCC(questGraph):
             visited += [currentArea]
 
     #post processing
+    nbDoorsRemoved = removeHallwayDeadEnds(config,visited)
+    print(nbDoorsRemoved)
     removeUselessRocks(questGraph,config,visited)
 
     return config,visited
@@ -67,6 +69,36 @@ def getWeightsHtCC(questGraph,area,config,visited):
     return weights
 
 
+
+def removeHallwayDeadEnds(config,visited):
+    nbDoorsRemoved = 0
+
+    finished = False
+    while not finished:
+        finished = True
+
+        for visitedArea in visited:
+            if visitedArea.type == "Hallway":
+
+                nbNeighbors = 0
+                lastConnector = None
+                for connector in visitedArea.edges:
+                    if config[connector.id] == True:
+                        nbNeighbors += 1
+                        lastConnector = connector
+
+                if nbNeighbors == 1:
+                    config[lastConnector.id] = False
+                    visited.remove(visitedArea)
+                    finished = False
+
+                    if lastConnector.type == "Door":
+                        nbDoorsRemoved += 1
+
+    return nbDoorsRemoved
+
+
+
 def removeUselessRocks(questGraph,config,visited):
     for index,connector in enumerate(questGraph.connectors):
         if connector.type == "Rock" and config[index] == False:
@@ -74,6 +106,7 @@ def removeUselessRocks(questGraph,config,visited):
             connector.end
             if (connector.start not in visited) and (connector.end not in visited):
                 config[index] = True
+
 
 
 def choiceFromWeights(weights):
