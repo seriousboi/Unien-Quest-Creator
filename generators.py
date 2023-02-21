@@ -28,6 +28,9 @@ def genHtCC(questGraph):
         if currentArea not in visited:
             visited += [currentArea]
 
+    #post processing
+    removeUselessRocks(questGraph,config,visited)
+
     return config,visited
 
 
@@ -63,6 +66,14 @@ def getWeightsHtCC(questGraph,area,config,visited):
     normalize(weights)
     return weights
 
+
+def removeUselessRocks(questGraph,config,visited):
+    for index,connector in enumerate(questGraph.connectors):
+        if connector.type == "Rock" and config[index] == False:
+            connector.start
+            connector.end
+            if (connector.start not in visited) and (connector.end not in visited):
+                config[index] = True
 
 
 def choiceFromWeights(weights):
