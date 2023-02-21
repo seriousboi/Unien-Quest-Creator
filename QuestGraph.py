@@ -63,7 +63,6 @@ class QuestGraph():
         for visitedArea in visited:
             self.areas[visitedArea.id].connected = True
 
-
     def display(self,surface,shift,squareSize,squareHelp = False):
         displayGraph(surface,shift,squareSize,squareHelp,self.nbAreas,self.nbConnectors,self.areas,self.connectors)
 

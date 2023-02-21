@@ -6,39 +6,40 @@ from random import randrange,seed
 
 def displayGraph(surface,shift,squareSize,squareHelp,nbAreas,nbConnectors,areas,connectors):
     for connector in connectors:
+        if connector.open == True and (connector.start.connected or connector.end.connected):
 
-        if squareHelp:
-            rr = randrange(256)
-            rg = randrange(256)
-            rb = randrange(256)
-            totlum = rr + rg + rb + 1
-            rr = (rr*256)//totlum
-            rg = (rg*256)//totlum
-            rb = (rb*256)//totlum
-            color = (rr,rg,rb)
-        else:
-            color = (80,80,200)
-
-        if connector.type == "Rock" and connector.open == True:
-            start = connector.start
-            end = connector.end
-            startCenter = (start.center[0]*squareSize+shift[0],start.center[1]*squareSize+shift[1])
-            endCenter = (end.center[0]*squareSize+shift[0],end.center[1]*squareSize+shift[1])
-            pygame.draw.line(surface,color,startCenter,endCenter,2)
             if squareHelp:
-                for square in connector.squares:
-                    pygame.draw.circle(surface,color,((square.x+1/2)*squareSize + shift[0],(square.y+1/2)*squareSize + shift[1]),squareSize//5,0)
+                rr = randrange(256)
+                rg = randrange(256)
+                rb = randrange(256)
+                totlum = rr + rg + rb + 1
+                rr = (rr*256)//totlum
+                rg = (rg*256)//totlum
+                rb = (rb*256)//totlum
+                color = (rr,rg,rb)
+            else:
+                color = (80,80,200)
 
-        elif connector.type == "Door" and connector.open == True:
-            start = connector.start
-            end = connector.end
-            startCenter = (start.center[0]*squareSize+shift[0],start.center[1]*squareSize+shift[1])
-            endCenter = (end.center[0]*squareSize+shift[0],end.center[1]*squareSize+shift[1])
-            pygame.draw.line(surface,color,startCenter,endCenter,2)
-            x = (connector.frontSquare.x+connector.backSquare.x)/2
-            y = (connector.frontSquare.y+connector.backSquare.y)/2
-            if squareHelp:
-                pygame.draw.circle(surface,color,((x+1/2)*squareSize + shift[0],(y+1/2)*squareSize + shift[1]),squareSize//5, 3)
+            if connector.type == "Rock":
+                start = connector.start
+                end = connector.end
+                startCenter = (start.center[0]*squareSize+shift[0],start.center[1]*squareSize+shift[1])
+                endCenter = (end.center[0]*squareSize+shift[0],end.center[1]*squareSize+shift[1])
+                pygame.draw.line(surface,color,startCenter,endCenter,2)
+                if squareHelp:
+                    for square in connector.squares:
+                        pygame.draw.circle(surface,color,((square.x+1/2)*squareSize + shift[0],(square.y+1/2)*squareSize + shift[1]),squareSize//5,0)
+
+            elif connector.type == "Door":
+                start = connector.start
+                end = connector.end
+                startCenter = (start.center[0]*squareSize+shift[0],start.center[1]*squareSize+shift[1])
+                endCenter = (end.center[0]*squareSize+shift[0],end.center[1]*squareSize+shift[1])
+                pygame.draw.line(surface,color,startCenter,endCenter,2)
+                x = (connector.frontSquare.x+connector.backSquare.x)/2
+                y = (connector.frontSquare.y+connector.backSquare.y)/2
+                if squareHelp:
+                    pygame.draw.circle(surface,color,((x+1/2)*squareSize + shift[0],(y+1/2)*squareSize + shift[1]),squareSize//5, 3)
 
     for area in areas:
         if area.connected:
