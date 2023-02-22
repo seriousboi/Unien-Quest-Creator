@@ -1,6 +1,6 @@
 from constAndStyle import *
 from QuestGraph import *
-from interface import *
+from mapEditor import *
 from generators import *
 from pygame import *
 

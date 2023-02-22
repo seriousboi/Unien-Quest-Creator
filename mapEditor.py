@@ -7,6 +7,7 @@ from pygame import *
 from generators import *
 
 
+
 def initialize(variables):
     testMap = QuestMap()
     testMap.loadGraph(variables["testqg"])
