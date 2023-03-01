@@ -13,35 +13,33 @@ class Button:
 
 
 class Interface:
-    def __init__(self,buttons = []):
+    def __init__(self):
         self.initialize = None
         self.mainProcess = None
         self.mainDisplay = None
-        self.buttons = buttons
+        self.buttons = []
 
-    def run(self,surface,variables):
+    def run(self,surface,variables,state):
         # we give the functions access to the buttons -> if a button is added later you must add it to the variables
+        initialState = state
+        variables["state"] = state
         variables["buttons"] = {}
         for button in self.buttons:
             variables["buttons"][button.name] = button
 
-        variables = self.initialize(variables)
+        self.initialize(variables)
         #must set the allowed event types before running the interface
-        running = variables["running"]
-        while running:
-            variables = self.mainProcess(variables)
+        while variables["state"] == initialState:
+            self.mainProcess(variables)
             self.mainDisplay(surface,variables)
             pygame.display.update()
 
             event = pygame.event.wait()
 
             if event.type == pygame.QUIT:
-                pygame.display.quit()
-                return variables
+                return "quitting"
 
             for button in self.buttons:
-                variables = button.function(variables,event)
+                button.function(variables,event)
 
-            running = variables["running"]
-
-        return variables
+        return variables["state"]

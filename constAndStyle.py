@@ -6,6 +6,9 @@ butOutCol = (170,115,90) #outside color of buttons
 butPresInCol = (190,144,109) #inside color of pressed buttons
 butPresOutCol = (170,115,90) #out color of pressed buttons
 
+generatorInCol = [200,200,200]
+generatorOutCol = [150,150,150]
+
 
 #game constants
 mapLength = 26

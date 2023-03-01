@@ -9,13 +9,14 @@ from generators import *
 
 
 def initialize(variables):
-    testMap = QuestMap()
-    testMap.loadGraph(variables["testqg"])
-    variables["map"] = testMap
-
+    variables["map"] = QuestMap()
     variables["currentItem"] = None
 
-    return variables
+    #we reset the button colors because the button objects are the same between two calls of runInterface
+    for itemName in itemNames:
+        button = variables["buttons"][itemName]
+        button.inColor = butInCol
+        button.outColor = butOutCol
 
 
 
@@ -24,8 +25,8 @@ def mainProcess(variables):
     squareSize = variables["squareSize"]
     variables["buttons"]["Door"].rectangle = pygame.Rect((mapLength+2/3)*squareSize,(1/3)*squareSize,5*squareSize,squareSize)
     variables["buttons"]["Rock"].rectangle = pygame.Rect((mapLength+2/3)*squareSize,(1.25+1/3)*squareSize,5*squareSize,squareSize)
-    return variables
 
+    variables["buttons"]["goToGenerator"].rectangle = pygame.Rect((mapLength+2/3)*squareSize,17*squareSize,5*squareSize,squareSize)
 
 
 def mainDisplay(window,variables):
@@ -42,16 +43,14 @@ def mainDisplay(window,variables):
         button = variables["buttons"][itemName]
         displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,itemName,25,(50,50,50))
 
-    #test
-    variables["testqg"].display(window,shift,squareSize,False)
-    #test
-
-    return variables
+    button = variables["buttons"]["goToGenerator"]
+    displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,"Generator",25,(50,50,50))
 
 
 
 def selectItem(variables,event):
     global itemNames,butInCol,butOutCol,butPresInCol,butPresOutCol
+
     if event.type == pygame.MOUSEBUTTONDOWN:
 
         for itemName in itemNames:
@@ -67,8 +66,6 @@ def selectItem(variables,event):
                 variables["currentItem"] = itemName
                 button.inColor = butPresInCol
                 button.outColor = butPresOutCol
-
-    return variables
 
 
 
@@ -116,22 +113,24 @@ def placeItem(variables,event):
                 else:
                     variables["map"].rocks.remove(variables["map"].itemAt(square))
 
-    return variables
+
+
+def goToGenerator(variables,event):
+    if event.type == pygame.MOUSEBUTTONDOWN:
+        button = variables["buttons"]["goToGenerator"]
+        if button.rectangle.collidepoint(event.pos):
+            variables["state"] = "inGenerator"
 
 
 
 mainInterface = Interface()
+
 mainInterface.initialize = initialize
 mainInterface.mainDisplay = mainDisplay
 mainInterface.mainProcess = mainProcess
 
-
-
 for buttonName in itemNames:
     mainInterface.buttons += [Button(buttonName,butInCol,butOutCol,selectItem)] # we use the same function for all item buttons so it is called several times when it could (and should) be called only one time, we should split it in several functions
 
-
-
-placeButtons = Button("place")
-placeButtons.function = placeItem
-mainInterface.buttons += [placeButtons]
+mainInterface.buttons += [Button("place",None,None,placeItem)]
+mainInterface.buttons += [Button("goToGenerator",generatorInCol,generatorOutCol,goToGenerator)]
