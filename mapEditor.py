@@ -122,7 +122,7 @@ def placeItem(variables,event):
                     variables["currentMap"].rocks.remove(variables["currentMap"].itemAt(square))
     if mapChanged:
         variables["currentGraph"] = None
-        print("change")
+        
 
 
 def goToGenerator(variables,event):
