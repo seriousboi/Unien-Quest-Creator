@@ -41,13 +41,48 @@ def genHtCC(questGraph,verbose = False):
 def getWeightsHtCC(questGraph,area,config,visited):
     weights = [1]*area.degree
 
-    visitedPenalty = 0.2
-    #reducing the probability of coming back to an area already visited
+    visitedPenalty = 0.001
+    applyConnectivityWeights(area,visited,weights,visitedPenalty)
+
+    applyNoGoofyRoomsWeights(questGraph,area,config,weights)
+
+    applyNo3Cycle(area,config,weights)
+
+    normalize(weights)
+    return weights
+
+
+
+#preventing cycles of length 3
+def applyNo3Cycle(area,config,weights):
+    closeConnectedAreas = []
+
+    for choiceIndex,connector in enumerate(area.edges):
+        if config[connector.id] == True:
+            closeConnectedAreas += [connector.getOppositeVertex(area)]
+
+    for choiceIndex,connector in enumerate(area.edges):
+        if config[connector.id] == False:
+
+            neighborArea = connector.getOppositeVertex(area)
+            for suspectConnector in neighborArea.edges:
+                thirdArea = suspectConnector.getOppositeVertex(neighborArea)
+                if config[suspectConnector.id] == True and thirdArea in closeConnectedAreas:
+                    weights[choiceIndex] = 0
+
+
+
+
+#reducing the probability of coming back to an area already visited
+def applyConnectivityWeights(area,visited,weights,visitedPenalty):
     for choiceIndex,connector in enumerate(area.edges):
         if connector.start in visited and connector.end in visited:
             weights[choiceIndex] = weights[choiceIndex]*visitedPenalty
 
-    #preventing rooms from having more than one door leading to a hallway
+
+
+#preventing rooms from having more than one door leading to a hallway
+def applyNoGoofyRoomsWeights(questGraph,area,config,weights):
     for choiceIndex,connector in enumerate(area.edges):
 
         #checking if using this connector would create a door between a room and a hallway
@@ -65,9 +100,6 @@ def getWeightsHtCC(questGraph,area,config,visited):
                 weights[choiceIndex] = 0
             elif nbDoorsToHallways >= 2 and room.id == 0:
                 weights[choiceIndex] = 0
-
-    normalize(weights)
-    return weights
 
 
 
