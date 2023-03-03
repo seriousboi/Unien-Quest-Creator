@@ -9,8 +9,7 @@ from generators import *
 
 
 def GIinitialize(variables):
-    variables["currentGraph"] = None
-    variables["currentMap"] = None
+    pass
 
 
 
@@ -40,12 +39,6 @@ def GImainDisplay(window,variables):
 
     button = variables["buttons"]["generate"]
     displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,"Generate",25,button.outColor)
-
-    #test
-    #variables["map"].display(window,variables["shift"],squareSize)
-    #variables["testqg"].display(window,shift,squareSize,False)
-    #test
-    pass
 
 
 

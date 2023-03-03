@@ -18,14 +18,26 @@ def main():
     pygame.event.set_blocked(None)
     pygame.event.set_allowed([pygame.MOUSEBUTTONDOWN,pygame.QUIT])
 
+    currentGraph = None
+    currentMap = QuestMap()
+
     state = "inEditor"
     while state != "quitting":
-        variables = {"squareSize":squareSize,"shift":shift}
+        variables = {
+        "squareSize":squareSize,"shift":shift,
+        "currentGraph":currentGraph,"currentMap":currentMap}
 
         if state == "inEditor":
-            state = mainInterface.run(window,variables,state)
+            mainInterface.run(window,variables,state)
+            state = variables["state"]
+            currentGraph = variables["currentGraph"]
+            currentMap = variables["currentMap"]
         elif state == "inGenerator":
-            state = generatorInterface.run(window,variables,state)
+            generatorInterface.run(window,variables,state)
+            state = variables["state"]
+            currentGraph = variables["currentGraph"]
+            currentMap = variables["currentMap"]
+
 
     pygame.display.quit()
 

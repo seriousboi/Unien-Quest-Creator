@@ -9,7 +9,6 @@ from generators import *
 
 
 def initialize(variables):
-    variables["map"] = QuestMap()
     variables["currentItem"] = None
 
     #we reset the button colors because the button objects are the same between two calls of runInterface
@@ -34,7 +33,8 @@ def mainDisplay(window,variables):
     squareSize = variables["squareSize"]
     shift = variables["shift"]
 
-    variables["map"].display(window,variables["shift"],squareSize)
+    if variables["currentMap"] != None:
+        variables["currentMap"].display(window,variables["shift"],squareSize)
 
     pygame.draw.rect(window,(250,230,180),(mapLength*squareSize,0,8*squareSize,mapWidth*squareSize),0)
     pygame.draw.line(window,(200,184,144),(mapLength*squareSize,0),(mapLength*squareSize,mapWidth*squareSize),6)
@@ -73,6 +73,8 @@ def placeItem(variables,event):
     global mapLength,mapWidth
     sqsz = variables["squareSize"]
 
+    mapChanged = False
+
     if event.type == pygame.MOUSEBUTTONDOWN:
         x = event.pos[0] - variables["shift"][0]
         y = event.pos[1] - variables["shift"][1]
@@ -82,37 +84,45 @@ def placeItem(variables,event):
                 y > (1/4)*sqsz and y < (mapWidth-1/4)*sqsz):
 
                 if y%sqsz <= (3/10)*(sqsz-1) or y%sqsz >= (7/10)*(sqsz-1):
+                    mapChanged = True
+
                     xSquare = int(x/sqsz)
                     ySquare = round(y/sqsz)
                     frontSquare = Square(xSquare,ySquare-1)
                     backSquare = Square(xSquare,ySquare)
-                    if variables["map"].doorAt(frontSquare,backSquare) == None:
-                        variables["map"].doors += [Door(frontSquare,backSquare)]
+                    if variables["currentMap"].doorAt(frontSquare,backSquare) == None:
+                        variables["currentMap"].doors += [Door(frontSquare,backSquare)]
                     else:
-                        variables["map"].doors.remove(variables["map"].doorAt(frontSquare,backSquare))
+                        variables["currentMap"].doors.remove(variables["currentMap"].doorAt(frontSquare,backSquare))
 
                 elif x%sqsz <= (3/10)*(sqsz-1) or x%sqsz >= (7/10)*(sqsz-1):
+                    mapChanged = True
+
                     xSquare = round(x/sqsz)
                     ySquare = int(y/sqsz)
                     frontSquare = Square(xSquare-1,ySquare)
                     backSquare = Square(xSquare,ySquare)
-                    if variables["map"].doorAt(frontSquare,backSquare) == None:
-                        variables["map"].doors += [Door(frontSquare,backSquare)]
+                    if variables["currentMap"].doorAt(frontSquare,backSquare) == None:
+                        variables["currentMap"].doors += [Door(frontSquare,backSquare)]
                     else:
-                        variables["map"].doors.remove(variables["map"].doorAt(frontSquare,backSquare))
+                        variables["currentMap"].doors.remove(variables["currentMap"].doorAt(frontSquare,backSquare))
 
         if variables["currentItem"] == "Rock":
             if (x >= 0 and x <= mapLength*sqsz and
                 y >= 0 and y <= mapWidth*sqsz):
 
+                mapChanged = True
+
                 xSquare = int(x/sqsz)
                 ySquare = int(y/sqsz)
                 square = Square(xSquare,ySquare)
-                if variables["map"].itemAt(square) == None:
-                    variables["map"].rocks += [Rock(square)]
+                if variables["currentMap"].itemAt(square) == None:
+                    variables["currentMap"].rocks += [Rock(square)]
                 else:
-                    variables["map"].rocks.remove(variables["map"].itemAt(square))
-
+                    variables["currentMap"].rocks.remove(variables["currentMap"].itemAt(square))
+    if mapChanged:
+        variables["currentGraph"] = None
+        print("change")
 
 
 def goToGenerator(variables,event):

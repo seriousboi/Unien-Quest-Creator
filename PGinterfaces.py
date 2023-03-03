@@ -37,9 +37,10 @@ class Interface:
             event = pygame.event.wait()
 
             if event.type == pygame.QUIT:
-                return "quitting"
+                variables["state"] = "quitting"
+                return
 
             for button in self.buttons:
                 button.function(variables,event)
 
-        return variables["state"]
+        return
