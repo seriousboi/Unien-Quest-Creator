@@ -5,7 +5,7 @@ from random import seed,randrange, random
 
 
 #heterogeneous connective constructive generator
-def genHtCC(questGraph):
+def genHtCC(questGraph,verbose = False):
     global nbMaxDoors,nbRooms,nbHallways,nbRockConnectors,nbDoorConnectors
     config  = [False]*questGraph.nbConnectors
 
@@ -30,7 +30,8 @@ def genHtCC(questGraph):
 
     #post processing
     nbDoorsRemoved = removeHallwayDeadEnds(config,visited)
-    print(nbDoorsRemoved)
+    if verbose:
+        print(nbDoorsRemoved,"lefttover door(s)")
     removeUselessRocks(questGraph,config,visited)
 
     return config,visited
