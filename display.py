@@ -146,18 +146,22 @@ def drawGrid(window,shift,squareSize):
 
 
 
-def displayButton(surface,buttonRectangle,borderWidth,borderCurve,inColor,outColor,message,size,textColor):
+def displayButton(surface,buttonRectangle,borderWidth,borderCurve,inColor,outColor,message,size,textColor,fontName = "default"):
     pygame.draw.rect(surface,inColor,buttonRectangle,0,borderCurve)
     pygame.draw.rect(surface,outColor,buttonRectangle,borderWidth,borderCurve)
     x = buttonRectangle[0]+buttonRectangle[2]/2
     y = buttonRectangle[1]+buttonRectangle[3]/2
-    text(surface,message,size,textColor,"center",x,y)
+    text(surface,message,size,textColor,"center",x,y,fontName)
 
 
 
-def text(surface,message,size,color,anchor,x,y):
+def text(surface,message,size,color,anchor,x,y,fontName = "default"):
 
-    font = pygame.font.Font("data/blackchancery/BLKCHCRY.TTF", size)
+    if fontName == "default":
+        font = pygame.font.Font("data/blackchancery/BLKCHCRY.TTF", size)
+    else:
+        font = pygame.font.Font(fontName, size)
+
     text = font.render(message,True,color)
     area = text.get_rect()
     width = area.width

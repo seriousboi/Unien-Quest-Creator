@@ -48,9 +48,9 @@ def GImainDisplay(window,variables):
     displayConnectivity(window,variables,25)
 
     button = variables["buttons"]["increaseConnectivity"]
-    displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,"+",25,button.outColor)
+    displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,"+",25,(50,50,50),None)
     button = variables["buttons"]["decreaseConnectivity"]
-    displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,"-",25,button.outColor)
+    displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,"-",25,(50,50,50),None)
 
 
 
