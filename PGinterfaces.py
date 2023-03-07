@@ -3,12 +3,13 @@ import pygame
 
 
 class Button:
-    def __init__(self,name="unamed",inColor=[200,200,200],outColor=[100,100,100],function = None):
+    def __init__(self,name="unamed",inColor=[200,200,200],outColor=[100,100,100],function = None,regularTrigger = True):
         self.function = function
         self.name = name
         self.rectangle = [0,0,0,0]
         self.inColor = inColor
         self.outColor = outColor
+        self.regularTrigger = regularTrigger
 
 
 
@@ -41,6 +42,10 @@ class Interface:
                 return
 
             for button in self.buttons:
-                button.function(variables,event)
+                if button.regularTrigger == True:
+                    if event.type == pygame.MOUSEBUTTONDOWN and button.rectangle.collidepoint(event.pos):
+                        button.function(variables,event)
+                else:
+                    button.function(variables,event)
 
         return

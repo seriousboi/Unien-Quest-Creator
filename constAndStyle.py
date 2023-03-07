@@ -9,6 +9,9 @@ butPresOutCol = (170,115,90) #out color of pressed buttons
 generatorInCol = [200,200,200]
 generatorOutCol = [150,150,150]
 
+generatorOptInCol = [170,170,210]
+generatorOptOutCol = [120,120,160]
+
 
 #game constants
 mapLength = 26

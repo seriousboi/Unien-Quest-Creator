@@ -28,6 +28,7 @@ def mainProcess(variables):
     variables["buttons"]["goToGenerator"].rectangle = pygame.Rect((mapLength+2/3)*squareSize,17*squareSize,5*squareSize,squareSize)
 
 
+
 def mainDisplay(window,variables):
     global mapLength,mapWidth,itemNames
     squareSize = variables["squareSize"]
@@ -45,27 +46,6 @@ def mainDisplay(window,variables):
 
     button = variables["buttons"]["goToGenerator"]
     displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,"Generator",25,(50,50,50))
-
-
-
-def selectItem(variables,event):
-    global itemNames,butInCol,butOutCol,butPresInCol,butPresOutCol
-
-    if event.type == pygame.MOUSEBUTTONDOWN:
-
-        for itemName in itemNames:
-            button = variables["buttons"][itemName]
-
-            if button.rectangle.collidepoint(event.pos):
-
-                if variables["currentItem"] != None: # we reset the color of the last button pressed
-                    previousButtonPressed = variables["buttons"][variables["currentItem"]]
-                    previousButtonPressed.inColor = butInCol
-                    previousButtonPressed.outColor = butOutCol
-
-                variables["currentItem"] = itemName
-                button.inColor = butPresInCol
-                button.outColor = butPresOutCol
 
 
 
@@ -122,14 +102,11 @@ def placeItem(variables,event):
                     variables["currentMap"].rocks.remove(variables["currentMap"].itemAt(square))
     if mapChanged:
         variables["currentGraph"] = None
-        
+
 
 
 def goToGenerator(variables,event):
-    if event.type == pygame.MOUSEBUTTONDOWN:
-        button = variables["buttons"]["goToGenerator"]
-        if button.rectangle.collidepoint(event.pos):
-            variables["state"] = "inGenerator"
+    variables["state"] = "inGenerator"
 
 
 
@@ -139,8 +116,19 @@ mainInterface.initialize = initialize
 mainInterface.mainDisplay = mainDisplay
 mainInterface.mainProcess = mainProcess
 
-for buttonName in itemNames:
-    mainInterface.buttons += [Button(buttonName,butInCol,butOutCol,selectItem)] # we use the same function for all item buttons so it is called several times when it could (and should) be called only one time, we should split it in several functions
-
-mainInterface.buttons += [Button("place",None,None,placeItem)]
+mainInterface.buttons += [Button("place",None,None,placeItem,False)]
 mainInterface.buttons += [Button("goToGenerator",generatorInCol,generatorOutCol,goToGenerator)]
+
+for buttonName in itemNames:
+
+    def selectItem(variables,event,itemName = buttonName):
+        if variables["currentItem"] != None: # we reset the color of the last button pressed
+            previousButtonPressed = variables["buttons"][variables["currentItem"]]
+            previousButtonPressed.inColor = butInCol
+            previousButtonPressed.outColor = butOutCol
+        button = variables["buttons"][itemName]
+        variables["currentItem"] = itemName
+        button.inColor = butPresInCol
+        button.outColor = butPresOutCol
+
+    mainInterface.buttons += [Button(buttonName,butInCol,butOutCol,selectItem)]

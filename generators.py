@@ -5,7 +5,7 @@ from random import seed,randrange, random
 
 
 #heterogeneous connective constructive generator
-def genHtCC(questGraph,verbose = False):
+def genHtCC(questGraph,visitedPenalty,verbose = False):
     global nbMaxDoors,nbRooms,nbHallways,nbRockConnectors,nbDoorConnectors
     config  = [False]*questGraph.nbConnectors
 
@@ -16,7 +16,7 @@ def genHtCC(questGraph,verbose = False):
     nbPlacedDoors = 0
     while nbPlacedDoors < nbMaxDoors:
 
-        weights = getWeightsHtCC(questGraph,currentArea,config,visited)
+        weights = getWeightsHtCC(questGraph,currentArea,config,visited,visitedPenalty)
         choiceIndex = choiceFromWeights(weights)
         connector = currentArea.edges[choiceIndex]
 
@@ -38,10 +38,9 @@ def genHtCC(questGraph,verbose = False):
 
 
 
-def getWeightsHtCC(questGraph,area,config,visited):
+def getWeightsHtCC(questGraph,area,config,visited,visitedPenalty):
     weights = [1]*area.degree
 
-    visitedPenalty = 0.001
     applyConnectivityWeights(area,visited,weights,visitedPenalty)
 
     applyNoGoofyRoomsWeights(questGraph,area,config,weights)
