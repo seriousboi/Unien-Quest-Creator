@@ -85,7 +85,7 @@ def decreaseConnectivity(variables,event):
 
 
 def generate(variables,event):
-    visitedPenalty = {"minimum":0.001,"low":0.05,"medium":0.2,"high":0.8,"maximum":1000}[variables["connectivity"]]
+    visitedPenalty = {"minimum":0.001,"low":0.05,"medium":0.2,"high":0.8,"maximum":10}[variables["connectivity"]]
 
     graph = QuestGraph()
     config,visited = genHtCC(graph,visitedPenalty)
