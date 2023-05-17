@@ -22,11 +22,15 @@ def initialize(variables):
 def mainProcess(variables):
     global mapLength,mapWidth
     squareSize = variables["squareSize"]
-    variables["buttons"]["Door"].rectangle = pygame.Rect((mapLength+2/3)*squareSize,(1/3)*squareSize,5*squareSize,squareSize)
-    variables["buttons"]["Rock"].rectangle = pygame.Rect((mapLength+2/3)*squareSize,(1.25+1/3)*squareSize,5*squareSize,squareSize)
+    xMargin = (mapLength+2/3)*squareSize
+    medButWidth = 5*squareSize
+    medButHeight = squareSize
 
-    variables["buttons"]["goToGenerator"].rectangle = pygame.Rect((mapLength+2/3)*squareSize,17*squareSize,5*squareSize,squareSize)
+    variables["buttons"]["Door"].rectangle = pygame.Rect(xMargin,(1/3),medButWidth,medButHeight)
+    variables["buttons"]["Rock"].rectangle = pygame.Rect(xMargin,(1.25+1/3)*squareSize,medButWidth,medButHeight)
 
+    variables["buttons"]["goToGenerator"].rectangle = pygame.Rect(xMargin,17*squareSize,medButWidth,medButHeight)
+    variables["buttons"]["saveImage"].rectangle = pygame.Rect(xMargin,15.5*squareSize,medButWidth,medButHeight)
 
 
 def mainDisplay(window,variables):
@@ -46,6 +50,8 @@ def mainDisplay(window,variables):
 
     button = variables["buttons"]["goToGenerator"]
     displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,"Generator",25,(50,50,50))
+    button = variables["buttons"]["saveImage"]
+    displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,"Save to image",25,(50,50,50))
 
 
 
@@ -110,6 +116,17 @@ def goToGenerator(variables,event):
 
 
 
+def saveImage(variables,event):
+    global mapLength,mapWidth
+    squareSize = variables["squareSize"]
+    window = variables["window"]
+    imageOutput = Surface((squareSize*mapLength,squareSize*mapWidth))
+    imageOutput.blit(window,(0,0))
+    pygame.image.save(imageOutput,"map.png")
+    print("Map saved to map.png")
+
+
+
 mainInterface = Interface()
 
 mainInterface.initialize = initialize
@@ -118,6 +135,7 @@ mainInterface.mainProcess = mainProcess
 
 mainInterface.buttons += [Button("place",None,None,placeItem,False)]
 mainInterface.buttons += [Button("goToGenerator",generatorInCol,generatorOutCol,goToGenerator)]
+mainInterface.buttons += [Button("saveImage",generatorInCol,generatorOutCol,saveImage)]
 
 for buttonName in itemNames:
 

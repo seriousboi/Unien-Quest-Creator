@@ -9,7 +9,7 @@ from pygame import *
 
 def main():
     global mapLength,mapWidth
-    squareSize = 50
+    squareSize = 40
     shift = [0,0]
 
     pygame.init()
@@ -25,7 +25,8 @@ def main():
     while state != "quitting":
         variables = {
         "squareSize":squareSize,"shift":shift,
-        "currentGraph":currentGraph,"currentMap":currentMap}
+        "currentGraph":currentGraph,"currentMap":currentMap,
+        "window":window}
 
         if state == "inEditor":
             mainInterface.run(window,variables,state)
