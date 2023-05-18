@@ -26,11 +26,12 @@ def mainProcess(variables):
     medButWidth = 5*squareSize
     medButHeight = squareSize
 
-    variables["buttons"]["Door"].rectangle = pygame.Rect(xMargin,(1/3),medButWidth,medButHeight)
+    variables["buttons"]["Door"].rectangle = pygame.Rect(xMargin,(1/3)*squareSize,medButWidth,medButHeight)
     variables["buttons"]["Rock"].rectangle = pygame.Rect(xMargin,(1.25+1/3)*squareSize,medButWidth,medButHeight)
 
+    variables["buttons"]["saveImage"].rectangle = pygame.Rect(xMargin,15.75*squareSize,medButWidth,medButHeight)
     variables["buttons"]["goToGenerator"].rectangle = pygame.Rect(xMargin,17*squareSize,medButWidth,medButHeight)
-    variables["buttons"]["saveImage"].rectangle = pygame.Rect(xMargin,15.5*squareSize,medButWidth,medButHeight)
+
 
 
 def mainDisplay(window,variables):
