@@ -136,7 +136,7 @@ mainInterface.mainProcess = mainProcess
 
 mainInterface.buttons += [Button("place",None,None,placeItem,False)]
 mainInterface.buttons += [Button("goToGenerator",generatorInCol,generatorOutCol,goToGenerator)]
-mainInterface.buttons += [Button("saveImage",generatorInCol,generatorOutCol,saveImage)]
+mainInterface.buttons += [Button("saveImage",otherInCol,otherOutCol,saveImage)]
 
 for buttonName in itemNames:
 
