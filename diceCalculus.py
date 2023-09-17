@@ -121,4 +121,4 @@ def getExchangeAvg(warriorA=Warrior(),warriorB=Warrior(),nbDices=3):
 
 
 
-print(getExchangeAvg())
+#print(getExchangeAvg())
