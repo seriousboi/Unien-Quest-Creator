@@ -5,6 +5,8 @@ from QuestGraph import *
 from display import *
 from pygame import *
 from generators import *
+from mapSelect import *
+from copy import copy
 
 
 
@@ -29,6 +31,8 @@ def mainProcess(variables):
     variables["buttons"]["Door"].rectangle = pygame.Rect(xMargin,(1/3)*squareSize,medButWidth,medButHeight)
     variables["buttons"]["Rock"].rectangle = pygame.Rect(xMargin,(1.25+1/3)*squareSize,medButWidth,medButHeight)
 
+    variables["buttons"]["loadMap"].rectangle = pygame.Rect(xMargin,13.25*squareSize,medButWidth,medButHeight)
+    variables["buttons"]["saveMap"].rectangle = pygame.Rect(xMargin,14.5*squareSize,medButWidth,medButHeight)
     variables["buttons"]["saveImage"].rectangle = pygame.Rect(xMargin,15.75*squareSize,medButWidth,medButHeight)
     variables["buttons"]["goToGenerator"].rectangle = pygame.Rect(xMargin,17*squareSize,medButWidth,medButHeight)
 
@@ -49,10 +53,14 @@ def mainDisplay(window,variables):
         button = variables["buttons"][itemName]
         displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,itemName,25,(50,50,50))
 
-    button = variables["buttons"]["goToGenerator"]
-    displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,"Generator",25,(50,50,50))
+    button = variables["buttons"]["loadMap"]
+    displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,"Load a map",25,(50,50,50))
+    button = variables["buttons"]["saveMap"]
+    displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,"Save to file",25,(50,50,50))
     button = variables["buttons"]["saveImage"]
     displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,"Save to image",25,(50,50,50))
+    button = variables["buttons"]["goToGenerator"]
+    displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,"Generator",25,(50,50,50))
 
 
 
@@ -128,6 +136,26 @@ def saveImage(variables,event):
 
 
 
+def saveMap(variables,event):
+    try:
+        variables["currentMap"].saveToFile()
+    except FileNotFoundError:
+        print("FileNotFoundError: bruh")
+
+
+
+def loadMap(variables,event):
+    MSvariables = copy(variables)
+    MSvariables["mainVars"] = variables
+
+    window = variables["window"]
+    mapSelectInterface.run(window,MSvariables,"selecting")
+    
+    if MSvariables["state"] == "quitting":
+        variables["state"] = "quitting"
+
+
+
 mainInterface = Interface()
 
 mainInterface.initialize = initialize
@@ -137,6 +165,9 @@ mainInterface.mainProcess = mainProcess
 mainInterface.buttons += [Button("place",None,None,placeItem,False)]
 mainInterface.buttons += [Button("goToGenerator",generatorInCol,generatorOutCol,goToGenerator)]
 mainInterface.buttons += [Button("saveImage",otherInCol,otherOutCol,saveImage)]
+mainInterface.buttons += [Button("saveMap",otherInCol,otherOutCol,saveMap)]
+mainInterface.buttons += [Button("loadMap",otherInCol,otherOutCol,loadMap)]
+
 
 for buttonName in itemNames:
 

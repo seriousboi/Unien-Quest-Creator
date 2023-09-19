@@ -41,7 +41,7 @@ class Interface:
                 variables["state"] = "quitting"
                 return
 
-            for button in self.buttons:
+            for button in variables["buttons"].values():
                 if button.regularTrigger == True:
                     if event.type == pygame.MOUSEBUTTONDOWN and button.rectangle.collidepoint(event.pos):
                         button.function(variables,event)

@@ -24,6 +24,7 @@ def main():
     state = "inEditor"
     while state != "quitting":
         variables = {
+        "window":window,
         "squareSize":squareSize,"shift":shift,
         "currentGraph":currentGraph,"currentMap":currentMap,
         "window":window}

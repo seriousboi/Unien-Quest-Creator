@@ -61,6 +61,16 @@ class QuestMap:
         self.rocks = rocks
 
     @classmethod
+    def loadFile(cls,fileName=None):
+        if fileName == None:
+            fileName = "current"
+        file = open("data/maps/"+fileName+".json","r")
+        jsonstr = file.read()
+        file.close()
+
+        return cls.fromDict(json.loads(jsonstr))
+
+    @classmethod
     def fromDict(cls,dict):
         doors = []
         for door in dict["doors"]:
@@ -79,6 +89,12 @@ class QuestMap:
             rocks += [rock.toJSON()]
         return {"doors":doors,"rocks":rocks}
 
+    def saveToFile(self,fileName = None):
+        if fileName == None:
+            fileName = "current"
+        file = open("data/maps/"+fileName+".json","w")
+        file.writelines([json.dumps(self.toJSON(),indent=2)])
+        file.close()
 
     def loadGraph(self,questGraph):
         self.doors = []
