@@ -6,7 +6,7 @@ class Button:
     def __init__(self,name="unamed",inColor=[200,200,200],outColor=[100,100,100],function = None,regularTrigger = True):
         self.function = function
         self.name = name
-        self.rectangle = [0,0,0,0]
+        self.rectangle = None
         self.inColor = inColor
         self.outColor = outColor
         self.regularTrigger = regularTrigger

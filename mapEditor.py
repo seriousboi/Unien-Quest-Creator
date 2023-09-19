@@ -2,6 +2,7 @@ from constAndStyle import *
 from PGinterfaces import *
 from QuestMap import *
 from QuestGraph import *
+from Entity import *
 from display import *
 from pygame import *
 from generators import *
@@ -30,6 +31,7 @@ def mainProcess(variables):
 
     variables["buttons"]["Door"].rectangle = pygame.Rect(xMargin,(1/3)*squareSize,medButWidth,medButHeight)
     variables["buttons"]["Rock"].rectangle = pygame.Rect(xMargin,(1.25+1/3)*squareSize,medButWidth,medButHeight)
+    variables["buttons"]["Monster"].rectangle = pygame.Rect(xMargin,(2.5+1/3)*squareSize,medButWidth,medButHeight)
 
     variables["buttons"]["loadMap"].rectangle = pygame.Rect(xMargin,13.25*squareSize,medButWidth,medButHeight)
     variables["buttons"]["saveMap"].rectangle = pygame.Rect(xMargin,14.5*squareSize,medButWidth,medButHeight)
@@ -75,49 +77,98 @@ def placeItem(variables,event):
         y = event.pos[1] - variables["shift"][1]
 
         if variables["currentItem"] == "Door":
-            if (x > (1/4)*sqsz and x < (mapLength-1/4)*sqsz and
-                y > (1/4)*sqsz and y < (mapWidth-1/4)*sqsz):
-
-                if y%sqsz <= (3/10)*(sqsz-1) or y%sqsz >= (7/10)*(sqsz-1):
-                    mapChanged = True
-
-                    xSquare = int(x/sqsz)
-                    ySquare = round(y/sqsz)
-                    frontSquare = Square(xSquare,ySquare-1)
-                    backSquare = Square(xSquare,ySquare)
-                    if variables["currentMap"].doorAt(frontSquare,backSquare) == None:
-                        variables["currentMap"].doors += [Door(frontSquare,backSquare)]
-                    else:
-                        variables["currentMap"].doors.remove(variables["currentMap"].doorAt(frontSquare,backSquare))
-
-                elif x%sqsz <= (3/10)*(sqsz-1) or x%sqsz >= (7/10)*(sqsz-1):
-                    mapChanged = True
-
-                    xSquare = round(x/sqsz)
-                    ySquare = int(y/sqsz)
-                    frontSquare = Square(xSquare-1,ySquare)
-                    backSquare = Square(xSquare,ySquare)
-                    if variables["currentMap"].doorAt(frontSquare,backSquare) == None:
-                        variables["currentMap"].doors += [Door(frontSquare,backSquare)]
-                    else:
-                        variables["currentMap"].doors.remove(variables["currentMap"].doorAt(frontSquare,backSquare))
-
+            mapChanged = placeDoor(variables,x,y)
         if variables["currentItem"] == "Rock":
-            if (x >= 0 and x <= mapLength*sqsz and
-                y >= 0 and y <= mapWidth*sqsz):
+            mapChanged = placeRock(variables,x,y)
+        if variables["currentItem"] == "Monster":
+            mapChanged = placeMonster(variables,x,y)
 
-                mapChanged = True
-
-                xSquare = int(x/sqsz)
-                ySquare = int(y/sqsz)
-                square = Square(xSquare,ySquare)
-                if variables["currentMap"].itemAt(square) == None:
-                    variables["currentMap"].rocks += [Rock(square)]
-                else:
-                    variables["currentMap"].rocks.remove(variables["currentMap"].itemAt(square))
     if mapChanged:
         variables["currentGraph"] = None
 
+
+
+def placeMonster(variables,x,y):
+    global mapLength,mapWidth
+    sqsz = variables["squareSize"]
+
+    mapChanged = False
+
+    if (x >= 0 and x <= mapLength*sqsz and
+        y >= 0 and y <= mapWidth*sqsz):
+
+        mapChanged = True
+
+        xSquare = int(x/sqsz)
+        ySquare = int(y/sqsz)
+        square = Square(xSquare,ySquare)
+        item = variables["currentMap"].itemAt(square)
+        if item == None:
+            variables["currentMap"].entities += [Entity(square.x,square.y)]
+        else:
+            variables["currentMap"].removeItemAT(item,square)
+
+    return mapChanged
+
+
+
+def placeDoor(variables,x,y):
+    global mapLength,mapWidth
+    sqsz = variables["squareSize"]
+
+    mapChanged = False
+
+    if (x > (1/4)*sqsz and x < (mapLength-1/4)*sqsz and
+        y > (1/4)*sqsz and y < (mapWidth-1/4)*sqsz):
+
+        if y%sqsz <= (3/10)*(sqsz-1) or y%sqsz >= (7/10)*(sqsz-1):
+            mapChanged = True
+
+            xSquare = int(x/sqsz)
+            ySquare = round(y/sqsz)
+            frontSquare = Square(xSquare,ySquare-1)
+            backSquare = Square(xSquare,ySquare)
+            if variables["currentMap"].doorAt(frontSquare,backSquare) == None:
+                variables["currentMap"].doors += [Door(frontSquare,backSquare)]
+            else:
+                variables["currentMap"].doors.remove(variables["currentMap"].doorAt(frontSquare,backSquare))
+
+        elif x%sqsz <= (3/10)*(sqsz-1) or x%sqsz >= (7/10)*(sqsz-1):
+            mapChanged = True
+
+            xSquare = round(x/sqsz)
+            ySquare = int(y/sqsz)
+            frontSquare = Square(xSquare-1,ySquare)
+            backSquare = Square(xSquare,ySquare)
+            if variables["currentMap"].doorAt(frontSquare,backSquare) == None:
+                variables["currentMap"].doors += [Door(frontSquare,backSquare)]
+            else:
+                variables["currentMap"].doors.remove(variables["currentMap"].doorAt(frontSquare,backSquare))
+    return mapChanged
+
+
+
+def placeRock(variables,x,y):
+    global mapLength,mapWidth
+    sqsz = variables["squareSize"]
+
+    mapChanged = False
+
+    if (x >= 0 and x <= mapLength*sqsz and
+        y >= 0 and y <= mapWidth*sqsz):
+
+        mapChanged = True
+
+        xSquare = int(x/sqsz)
+        ySquare = int(y/sqsz)
+        square = Square(xSquare,ySquare)
+        item = variables["currentMap"].itemAt(square)
+        if item == None:
+            variables["currentMap"].rocks += [Rock(square)]
+        else:
+            variables["currentMap"].removeItemAT(item,square)
+
+    return mapChanged
 
 
 def goToGenerator(variables,event):
@@ -150,7 +201,7 @@ def loadMap(variables,event):
 
     window = variables["window"]
     mapSelectInterface.run(window,MSvariables,"selecting")
-    
+
     if MSvariables["state"] == "quitting":
         variables["state"] = "quitting"
 

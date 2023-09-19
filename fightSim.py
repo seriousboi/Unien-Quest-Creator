@@ -1,30 +1,7 @@
 from diceCalculus import *
+from Entity import *
 from random import choice
 
-
-
-class Entity():
-    def __init__(self,x,y,name="Anonymous",control="AI",strength=6,dexterity=6,constitution=6,weaponDamage=15,maxHealth=100,index=None):
-        self.index = index
-        self.x = x
-        self.y = y
-        self.name = name
-        self.control = control
-        self.strength = strength
-        self.dexterity = dexterity
-        self.constitution = constitution
-        self.weaponDamage = weaponDamage
-        self.health = maxHealth
-        self.maxHealth = maxHealth
-        self.index = index
-
-    def receiveDamage(self,damage,verbose=True):
-        if damage < 0:
-            damage = 0
-            if verbose:
-                print("negative damage changed to 0")
-
-        self.health = max(self.health-damage,0)
 
 
 class fightMove():
@@ -53,8 +30,6 @@ class Simulation():
         self.script = []
 
     def run(self):
-        for index,entity in enumerate(self.entities):
-            entity.index = index
         self.drawUnicode()
 
         while self.state != "quit":
@@ -235,8 +210,11 @@ def applayClearShot(maker,target,move,targetMove,verbose):
 
 
 sim = Simulation(5,4)
-E = Entity(2,0,"Enemy","script")
-A = Entity(2,3,"Athos","script")
+E = Entity(2,0,"Madoc","enemy",control="script")
+A = Entity(2,3,"Athos","ally",control="script")
+j = A.toJSON()
+Aprime = Entity.fromDict(j)
+print(Aprime.toJSON())
 sim.entities += [E,A]
 sim.script = [fightMove("dodge",E,2,3),fightMove("strong",A,2,0)]*10
 sim.run()

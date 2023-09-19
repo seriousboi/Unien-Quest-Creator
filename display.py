@@ -49,6 +49,16 @@ def displayGraph(surface,shift,squareSize,squareHelp,nbAreas,nbConnectors,areas,
             text(surface,str(area.id),(squareSize*3)//5,(0,0,0),"center",center[0],center[1])
 
 
+def displayMonster(window,shift,squareSize,square):
+    X,Y = shift
+    xPos = square.x*squareSize
+    Ypos = square.y*squareSize
+
+    border = 2
+    monsterIcon = pygame.image.load("data/images/monster.png")
+    monsterIcon= pygame.transform.scale(monsterIcon,(squareSize-2*border,squareSize-2*border))
+    window.blit(monsterIcon,(X+xPos+border,Y+Ypos+border))
+
 
 def displayRock(window,shift,squareSize,square):
     X,Y = shift
