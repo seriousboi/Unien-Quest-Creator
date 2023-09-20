@@ -83,8 +83,6 @@ def placeItem(variables,event):
         if variables["currentItem"] == "Monster":
             mapChanged = placeMonster(variables,x,y)
 
-    if mapChanged:
-        variables["currentGraph"] = None
 
 
 
@@ -173,6 +171,7 @@ def placeRock(variables,x,y):
 
 def goToGenerator(variables,event):
     variables["state"] = "inGenerator"
+    variables["currentGraph"] = None
 
 
 

@@ -68,14 +68,14 @@ class QuestGraph():
 
     def __init__(self):
         global nbRooms,nbHallways,nbRockConnectors,nbDoorConnectors
-        global rooms,hallways,rockConnectors,doorConnectors
+        global originalRooms,hallways,rockConnectors,doorConnectors
 
         self.nbAreas = nbRooms + nbHallways
         self.nbConnectors = nbRockConnectors + nbDoorConnectors
 
         areaIndex = 0
         self.areas = []
-        for room in rooms:
+        for room in originalRooms:
             x = room["coordinates"][0]+room["coordinates"][2]/2
             y = room["coordinates"][1]+room["coordinates"][3]/2
             self.areas += [Area(areaIndex,[],0,"Room",(x,y))]

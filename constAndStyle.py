@@ -27,7 +27,7 @@ nbHallways = 54
 nbRockConnectors = 58
 nbDoorConnectors = 94
 
-rooms = [
+originalRooms = [
 #big room
 {"coordinates":(10,7,6,5),"color":(168,148,135)},
 #topleft rooms
@@ -57,6 +57,7 @@ rooms = [
 {"coordinates":(14,13,4,5) ,"color":(172,126,118)},
 #must be last to be drawn properly
 ]
+
 
 hallways = [
 #north central hallway

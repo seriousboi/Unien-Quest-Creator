@@ -7,10 +7,13 @@ import json
 
 
 class QuestMap:
-    def __init__(self,doors=[],rocks=[],entities=[]):
+    def __init__(self,doors=[],rocks=[],entities=[],aggregatedRooms=[[3,4]]):
         self.doors = doors
         self.rocks = rocks
         self.entities = entities
+        self.aggregatedRooms = aggregatedRooms
+        self.rooms = getRoomsAfterAggregation(aggregatedRooms)
+
 
     @classmethod
     def loadFile(cls,fileName=None):
@@ -65,8 +68,11 @@ class QuestMap:
             if connector.type == "Door" and connector.open == True:
                 self.doors += [Door(connector.frontSquare,connector.backSquare)]
 
+        self.aggregatedRooms = []
+        self.rooms = getRoomsAfterAggregation(self.aggregatedRooms)
+
     def display(self,surface,shift,squareSize):
-        displayBoard(surface,shift,squareSize)
+        displayBoard(surface,shift,squareSize,self.rooms)
         for rock in self.rocks:
             rock.display(surface,shift,squareSize)
         for door in self.doors:
@@ -98,3 +104,22 @@ class QuestMap:
                 (door.frontSquare.equal(backSquare) and door.backSquare.equal(frontSquare))):
                 return door
         return None
+
+
+
+def getRoomsAfterAggregation(aggregatedRooms):
+    rooms = getRooms()
+    newRooms = rooms
+    for aggregatedRoom in aggregatedRooms:
+        roomIndex1 = aggregatedRoom[0]
+        roomIndex2 = aggregatedRoom[1]
+        room1Tuple = rooms[roomIndex1]
+        room2Tuple = rooms[roomIndex2]
+        room1Dic = tupleToRoomDic(room1Tuple)
+        room2Dic = tupleToRoomDic(room2Tuple)
+        newRoom = roomDicToTuple(aggregateRooms(room1Dic,room2Dic))
+
+        newRooms += [newRoom]
+        newRooms.remove(room1Tuple)
+        newRooms.remove(room2Tuple)
+    return newRooms

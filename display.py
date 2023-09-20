@@ -104,14 +104,26 @@ def displayDoor(window,shift,squareSize,frontSquare,backSquare):
 
 
 
-def displayBoard(window,shift,squareSize):
+def displayBoard(window,shift,squareSize,rooms,aggregatedRooms=[]):
     global mapLength,mapWidth
     X,Y = shift
 
-    pygame.draw.rect(window,(230,214,212),(X,Y,mapLength*squareSize,mapWidth*squareSize),0)
+    newRooms = rooms
+    for aggregatedRoom in aggregatedRooms:
+        roomIndex1 = aggregatedRoom[0]
+        roomIndex2 = aggregatedRoom[1]
+        room1Tuple = rooms[roomIndex1]
+        room2Tuple = rooms[roomIndex2]
+        room1Dic = tupleToRoomDic(room1Tuple)
+        room2Dic = tupleToRoomDic(room2Tuple)
+        newRoom = roomDicToTuple(aggregateRooms(room1Dic,room2Dic))
 
-    #list of rooms (x,y,width,length,color)
-    rooms = getRooms()
+        newRooms += [newRoom]
+        newRooms.remove(room1Tuple)
+        newRooms.remove(room2Tuple)
+
+
+    pygame.draw.rect(window,(230,214,212),(X,Y,mapLength*squareSize,mapWidth*squareSize),0)
 
     for room in rooms:
         rectangle = getRectangleFromSquares(shift,room[0],room[1],room[2],room[3],squareSize)
@@ -121,20 +133,24 @@ def displayBoard(window,shift,squareSize):
 
     for room in rooms:
         if room[0] == 17 and room[1] == 10:
-             continue #we skip the odd cropped room
+            #drawing the odd cropped room
+            pygame.draw.line(window,(50,50,50),(X+17*squareSize,Y+10*squareSize),(X+21*squareSize,Y+10*squareSize),2)
+            pygame.draw.line(window,(50,50,50),(X+17*squareSize,Y+10*squareSize),(X+17*squareSize,Y+13*squareSize),2)
 
-        left = room[0]*squareSize + X
-        right = left + room[2]*squareSize
-        top = room[1]*squareSize + Y
-        bottom = top + room[3]*squareSize
+        else:
+            left = room[0]*squareSize + X
+            right = left + room[2]*squareSize
+            top = room[1]*squareSize + Y
+            bottom = top + room[3]*squareSize
 
-        pygame.draw.line(window,(50,50,50),(left,top),(right,top),2)
-        pygame.draw.line(window,(50,50,50),(right,top),(right,bottom),2)
-        pygame.draw.line(window,(50,50,50),(right,bottom),(left,bottom),2)
-        pygame.draw.line(window,(50,50,50),(left,bottom),(left,top),2)
+            pygame.draw.line(window,(50,50,50),(left,top),(right,top),2)
+            pygame.draw.line(window,(50,50,50),(right,top),(right,bottom),2)
+            pygame.draw.line(window,(50,50,50),(right,bottom),(left,bottom),2)
+            pygame.draw.line(window,(50,50,50),(left,bottom),(left,top),2)
 
-    pygame.draw.line(window,(50,50,50),(X+17*squareSize,Y+10*squareSize),(X+21*squareSize,Y+10*squareSize),2) #drawing the two missing lines from the weird room
-    pygame.draw.line(window,(50,50,50),(X+17*squareSize,Y+10*squareSize),(X+17*squareSize,Y+13*squareSize),2)
+
+
+
 
 
 
@@ -193,15 +209,40 @@ def text(surface,message,size,color,anchor,x,y,fontName = "default"):
     return surface.blit(text,(x,y))
 
 
-
 def getRooms():
-    global rooms
+    global originalRooms
     weirdListOfTupleWithCoordsAndColor = [] #unadapted code because of structures changes
-    for room in rooms:
-        x = room["coordinates"][0]
-        y = room["coordinates"][1]
-        width =  room["coordinates"][2]
-        height = room["coordinates"][3]
-        weirdTuple = (x,y,width,height,room["color"])
+    for room in originalRooms:
+        weirdTuple = roomDicToTuple(room)
         weirdListOfTupleWithCoordsAndColor += [weirdTuple]
     return weirdListOfTupleWithCoordsAndColor
+
+
+
+def aggregateRooms(room1,room2):
+    x1,y1,w1,h1 = room1["coordinates"]
+    x2,y2,w2,h2 = room2["coordinates"]
+    x3 = min(x1,x2)
+    y3 = min(y1,y2)
+    w3 = max(x1+w1,x2+w2)-x3
+    h3 = max(y1+h1,y2+h2)-y3
+
+    cR1,cG1,cB1 = room1["color"]
+    cR2,cG2,cB2 = room2["color"]
+    c3 = ((cR1+cR2)//2,(cG1+cG2)//2,(cB1+cB2)//2)
+
+    room3 = {"coordinates":(x3,y3,w3,h3),"color":room1["color"]}
+    return room3
+
+
+def tupleToRoomDic(tuple):
+    return {"coordinates":(tuple[0],tuple[1],tuple[2],tuple[3]),"color":(tuple[4][0],tuple[4][1],tuple[4][2])}
+
+
+def roomDicToTuple(room):
+    x = room["coordinates"][0]
+    y = room["coordinates"][1]
+    width =  room["coordinates"][2]
+    height = room["coordinates"][3]
+    weirdTuple = (x,y,width,height,room["color"])
+    return weirdTuple
