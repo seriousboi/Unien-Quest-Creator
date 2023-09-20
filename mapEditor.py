@@ -39,6 +39,7 @@ def mainProcess(variables):
     variables["buttons"]["Rock"].rectangle = pygame.Rect(xMargin,(1.25+1/3)*squareSize,medButWidth,medButHeight)
     variables["buttons"]["Monster"].rectangle = pygame.Rect(xMargin,(2.5+1/3)*squareSize,medButWidth,medButHeight)
     variables["buttons"]["fuseRooms"].rectangle = pygame.Rect(xMargin,(3.75+1/3)*squareSize,medButWidth,medButHeight)
+    variables["buttons"]["resetMap"].rectangle = pygame.Rect(xMargin,(5+1/3)*squareSize,medButWidth,medButHeight)
 
     variables["buttons"]["loadMap"].rectangle = pygame.Rect(xMargin,13.25*squareSize,medButWidth,medButHeight)
     variables["buttons"]["saveMap"].rectangle = pygame.Rect(xMargin,14.5*squareSize,medButWidth,medButHeight)
@@ -51,6 +52,7 @@ def mainDisplay(window,variables):
     global mapLength,mapWidth,itemNames
     squareSize = variables["squareSize"]
     shift = variables["shift"]
+    xMargin = (mapLength+2/3)*squareSize
 
     if variables["currentMap"] != None:
         variables["currentMap"].display(window,variables["shift"],squareSize)
@@ -64,6 +66,8 @@ def mainDisplay(window,variables):
 
     button = variables["buttons"]["fuseRooms"]
     displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,"Fuse rooms",25,(50,50,50))
+    button = variables["buttons"]["resetMap"]
+    displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,"Reset map",25,(50,50,50))
 
 
     button = variables["buttons"]["loadMap"]
@@ -73,7 +77,14 @@ def mainDisplay(window,variables):
     button = variables["buttons"]["saveImage"]
     displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,"Save to image",25,(50,50,50))
     button = variables["buttons"]["goToGenerator"]
-    displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,"Generator",25,(50,50,50))
+    displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,"Generator",25,(100,100,200))
+
+    doorsAmount = len(variables["currentMap"].doors)
+    if doorsAmount > nbMaxDoors:
+        msgColor = (250,25,25)
+    else:
+        msgColor = (50,50,50)
+    text(window,str(doorsAmount)+"/"+str(nbMaxDoors),int(squareSize*(1/2)),msgColor,"midleft",xMargin+5.5*squareSize,(0.5+1/3)*squareSize)
 
 
 
@@ -228,6 +239,9 @@ def fusionSelect(variables,event):
         variables["state"] = "quitting"
 
 
+def resetMap(variables,event):
+    variables["currentMap"] = QuestMap()
+
 
 mainInterface = Interface()
 
@@ -237,11 +251,12 @@ mainInterface.mainProcess = mainProcess
 
 mainInterface.buttons += [Button("place",None,None,placeItem,False)]
 mainInterface.buttons += [Button("fuseRooms",but2InCol,but2OutCol,fusionSelect)]
+mainInterface.buttons += [Button("resetMap",but2InCol,but2OutCol,resetMap)]
 
 mainInterface.buttons += [Button("loadMap",otherInCol,otherOutCol,loadMap)]
 mainInterface.buttons += [Button("saveMap",otherInCol,otherOutCol,saveMap)]
 mainInterface.buttons += [Button("saveImage",otherInCol,otherOutCol,saveImage)]
-mainInterface.buttons += [Button("goToGenerator",generatorInCol,generatorOutCol,goToGenerator)]
+mainInterface.buttons += [Button("goToGenerator",(250,250,50),(100,100,200),goToGenerator)]
 
 
 for buttonName in itemNames:
