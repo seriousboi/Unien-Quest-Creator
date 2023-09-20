@@ -7,6 +7,7 @@ from display import *
 from pygame import *
 from generators import *
 from mapSelect import *
+from  fusionSelect import *
 from copy import copy
 
 
@@ -20,6 +21,11 @@ def initialize(variables):
         button.inColor = butInCol
         button.outColor = butOutCol
 
+    for buttonName in ["fuseRooms"]:
+        button = variables["buttons"][buttonName]
+        button.inColor = but2InCol
+        button.outColor = but2OutCol
+
 
 
 def mainProcess(variables):
@@ -32,6 +38,7 @@ def mainProcess(variables):
     variables["buttons"]["Door"].rectangle = pygame.Rect(xMargin,(1/3)*squareSize,medButWidth,medButHeight)
     variables["buttons"]["Rock"].rectangle = pygame.Rect(xMargin,(1.25+1/3)*squareSize,medButWidth,medButHeight)
     variables["buttons"]["Monster"].rectangle = pygame.Rect(xMargin,(2.5+1/3)*squareSize,medButWidth,medButHeight)
+    variables["buttons"]["fuseRooms"].rectangle = pygame.Rect(xMargin,(3.75+1/3)*squareSize,medButWidth,medButHeight)
 
     variables["buttons"]["loadMap"].rectangle = pygame.Rect(xMargin,13.25*squareSize,medButWidth,medButHeight)
     variables["buttons"]["saveMap"].rectangle = pygame.Rect(xMargin,14.5*squareSize,medButWidth,medButHeight)
@@ -54,6 +61,10 @@ def mainDisplay(window,variables):
     for itemName in itemNames:
         button = variables["buttons"][itemName]
         displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,itemName,25,(50,50,50))
+
+    button = variables["buttons"]["fuseRooms"]
+    displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,"Fuse rooms",25,(50,50,50))
+
 
     button = variables["buttons"]["loadMap"]
     displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,"Load a map",25,(50,50,50))
@@ -206,6 +217,18 @@ def loadMap(variables,event):
 
 
 
+def fusionSelect(variables,event):
+    FSvariables = copy(variables)
+    FSvariables["mainVars"] = variables
+
+    window = variables["window"]
+    fusionSelectInterface.run(window,FSvariables,"selecting")
+
+    if FSvariables["state"] == "quitting":
+        variables["state"] = "quitting"
+
+
+
 mainInterface = Interface()
 
 mainInterface.initialize = initialize
@@ -213,10 +236,12 @@ mainInterface.mainDisplay = mainDisplay
 mainInterface.mainProcess = mainProcess
 
 mainInterface.buttons += [Button("place",None,None,placeItem,False)]
-mainInterface.buttons += [Button("goToGenerator",generatorInCol,generatorOutCol,goToGenerator)]
-mainInterface.buttons += [Button("saveImage",otherInCol,otherOutCol,saveImage)]
-mainInterface.buttons += [Button("saveMap",otherInCol,otherOutCol,saveMap)]
+mainInterface.buttons += [Button("fuseRooms",but2InCol,but2OutCol,fusionSelect)]
+
 mainInterface.buttons += [Button("loadMap",otherInCol,otherOutCol,loadMap)]
+mainInterface.buttons += [Button("saveMap",otherInCol,otherOutCol,saveMap)]
+mainInterface.buttons += [Button("saveImage",otherInCol,otherOutCol,saveImage)]
+mainInterface.buttons += [Button("goToGenerator",generatorInCol,generatorOutCol,goToGenerator)]
 
 
 for buttonName in itemNames:

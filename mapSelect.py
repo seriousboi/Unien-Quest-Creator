@@ -39,7 +39,7 @@ def MSmainDisplay(window,variables):
     pygame.draw.line(window,(200,184,144),(mapLength*squareSize,0),(mapLength*squareSize,mapWidth*squareSize),6)
 
     button = variables["buttons"]["back"]
-    displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,"back",25,(50,50,50))
+    displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,"Back",25,(50,50,50))
 
     for index in range(variables["mapsAmount"]):
         button = variables["buttons"][index]

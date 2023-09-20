@@ -2,192 +2,32 @@
   "doors": [
     {
       "frontSquare": {
-        "x": 7,
-        "y": 12
-      },
-      "backSquare": {
-        "x": 7,
-        "y": 13
-      }
-    },
-    {
-      "frontSquare": {
-        "x": 5,
-        "y": 11
-      },
-      "backSquare": {
-        "x": 4,
-        "y": 11
-      }
-    },
-    {
-      "frontSquare": {
-        "x": 8,
-        "y": 11
-      },
-      "backSquare": {
-        "x": 9,
-        "y": 11
-      }
-    },
-    {
-      "frontSquare": {
-        "x": 10,
-        "y": 13
-      },
-      "backSquare": {
-        "x": 10,
-        "y": 12
-      }
-    },
-    {
-      "frontSquare": {
-        "x": 7,
-        "y": 18
-      },
-      "backSquare": {
-        "x": 7,
-        "y": 17
-      }
-    },
-    {
-      "frontSquare": {
-        "x": 0,
-        "y": 16
-      },
-      "backSquare": {
-        "x": 1,
-        "y": 16
-      }
-    },
-    {
-      "frontSquare": {
-        "x": 2,
-        "y": 10
-      },
-      "backSquare": {
-        "x": 2,
-        "y": 9
-      }
-    },
-    {
-      "frontSquare": {
-        "x": 5,
-        "y": 10
-      },
-      "backSquare": {
-        "x": 5,
-        "y": 9
-      }
-    },
-    {
-      "frontSquare": {
-        "x": 17,
-        "y": 13
-      },
-      "backSquare": {
-        "x": 17,
-        "y": 12
-      }
-    },
-    {
-      "frontSquare": {
-        "x": 14,
-        "y": 16
-      },
-      "backSquare": {
-        "x": 13,
-        "y": 16
-      }
-    },
-    {
-      "frontSquare": {
-        "x": 18,
-        "y": 10
-      },
-      "backSquare": {
-        "x": 18,
-        "y": 9
-      }
-    },
-    {
-      "frontSquare": {
-        "x": 4,
-        "y": 2
-      },
-      "backSquare": {
-        "x": 5,
-        "y": 2
-      }
-    },
-    {
-      "frontSquare": {
-        "x": 8,
-        "y": 4
-      },
-      "backSquare": {
-        "x": 9,
-        "y": 4
-      }
-    },
-    {
-      "frontSquare": {
-        "x": 4,
-        "y": 6
-      },
-      "backSquare": {
-        "x": 5,
-        "y": 6
-      }
-    },
-    {
-      "frontSquare": {
-        "x": 6,
-        "y": 3
-      },
-      "backSquare": {
-        "x": 6,
-        "y": 4
-      }
-    },
-    {
-      "frontSquare": {
-        "x": 10,
-        "y": 5
-      },
-      "backSquare": {
-        "x": 10,
-        "y": 6
-      }
-    },
-    {
-      "frontSquare": {
-        "x": 5,
+        "x": 20,
         "y": 8
       },
       "backSquare": {
-        "x": 5,
+        "x": 20,
         "y": 9
       }
     },
     {
       "frontSquare": {
-        "x": 0,
-        "y": 5
+        "x": 15,
+        "y": 12
       },
       "backSquare": {
-        "x": 1,
-        "y": 5
+        "x": 15,
+        "y": 13
       }
     },
     {
       "frontSquare": {
-        "x": 2,
-        "y": 1
+        "x": 12,
+        "y": 11
       },
       "backSquare": {
-        "x": 2,
-        "y": 0
+        "x": 12,
+        "y": 12
       }
     },
     {
@@ -198,102 +38,20 @@
       "backSquare": {
         "x": 15,
         "y": 12
-      }
-    },
-    {
-      "frontSquare": {
-        "x": 9,
-        "y": 9
-      },
-      "backSquare": {
-        "x": 10,
-        "y": 9
       }
     }
   ],
   "rocks": [
     {
       "square": {
-        "x": 11,
-        "y": 6
+        "x": 14,
+        "y": 8
       }
     },
     {
       "square": {
         "x": 14,
         "y": 12
-      }
-    },
-    {
-      "square": {
-        "x": 16,
-        "y": 8
-      }
-    },
-    {
-      "square": {
-        "x": 9,
-        "y": 10
-      }
-    },
-    {
-      "square": {
-        "x": 12,
-        "y": 17
-      }
-    },
-    {
-      "square": {
-        "x": 13,
-        "y": 17
-      }
-    },
-    {
-      "square": {
-        "x": 4,
-        "y": 9
-      }
-    },
-    {
-      "square": {
-        "x": 6,
-        "y": 9
-      }
-    },
-    {
-      "square": {
-        "x": 8,
-        "y": 9
-      }
-    },
-    {
-      "square": {
-        "x": 19,
-        "y": 9
-      }
-    },
-    {
-      "square": {
-        "x": 4,
-        "y": 0
-      }
-    },
-    {
-      "square": {
-        "x": 9,
-        "y": 18
-      }
-    },
-    {
-      "square": {
-        "x": 0,
-        "y": 10
-      }
-    },
-    {
-      "square": {
-        "x": 0,
-        "y": 14
       }
     }
   ],
@@ -308,8 +66,8 @@
       "constitution": 6,
       "weaponDamage": 15,
       "square": {
-        "x": 9,
-        "y": 15
+        "x": 19,
+        "y": 6
       },
       "infos": ""
     },
@@ -323,10 +81,114 @@
       "constitution": 6,
       "weaponDamage": 15,
       "square": {
-        "x": 11,
-        "y": 14
+        "x": 20,
+        "y": 6
+      },
+      "infos": ""
+    },
+    {
+      "name": "Anonymous",
+      "side": "enemy",
+      "health": 100,
+      "criticalHealth": 50,
+      "strength": 6,
+      "dexterity": 6,
+      "constitution": 6,
+      "weaponDamage": 15,
+      "square": {
+        "x": 24,
+        "y": 7
+      },
+      "infos": ""
+    },
+    {
+      "name": "Anonymous",
+      "side": "enemy",
+      "health": 100,
+      "criticalHealth": 50,
+      "strength": 6,
+      "dexterity": 6,
+      "constitution": 6,
+      "weaponDamage": 15,
+      "square": {
+        "x": 23,
+        "y": 8
       },
       "infos": ""
     }
+  ],
+  "aggregatedRooms": [
+    [
+      [
+        17,
+        5,
+        4,
+        4,
+        [
+          194,
+          143,
+          64
+        ]
+      ],
+      [
+        21,
+        5,
+        4,
+        4,
+        [
+          205,
+          210,
+          109
+        ]
+      ]
+    ],
+    [
+      [
+        5,
+        10,
+        2,
+        3,
+        [
+          192,
+          222,
+          232
+        ]
+      ],
+      [
+        7,
+        10,
+        2,
+        3,
+        [
+          124,
+          158,
+          150
+        ]
+      ]
+    ],
+    [
+      [
+        21,
+        14,
+        4,
+        4,
+        [
+          124,
+          184,
+          105
+        ]
+      ],
+      [
+        21,
+        10,
+        4,
+        4,
+        [
+          210,
+          189,
+          100
+        ]
+      ]
+    ]
   ]
 }

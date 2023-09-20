@@ -6,6 +6,12 @@ butOutCol = (170,115,90) #outside color of buttons
 butPresInCol = (190,144,109) #inside color of pressed buttons
 butPresOutCol = (170,115,90) #out color of pressed buttons
 
+#same with another palette
+but2InCol = (194,214,66)
+but2OutCol = (151,163,73)
+but2PresInCol = (160,180,70)
+but2PresOutCol = (151,163,73)
+
 generatorInCol = [200,200,200]
 generatorOutCol = [150,150,150]
 otherInCol = generatorInCol
@@ -58,6 +64,16 @@ originalRooms = [
 #must be last to be drawn properly
 ]
 
+def roomDicToTuple(room):
+    x = room["coordinates"][0]
+    y = room["coordinates"][1]
+    width =  room["coordinates"][2]
+    height = room["coordinates"][3]
+    weirdTuple = (x,y,width,height,room["color"])
+    return weirdTuple
+
+def tupleToRoomDic(tuple):
+    return {"coordinates":(tuple[0],tuple[1],tuple[2],tuple[3]),"color":(tuple[4][0],tuple[4][1],tuple[4][2])}
 
 hallways = [
 #north central hallway

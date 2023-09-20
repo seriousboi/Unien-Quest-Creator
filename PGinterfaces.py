@@ -42,10 +42,12 @@ class Interface:
                 return
 
             for button in variables["buttons"].values():
-                if button.regularTrigger == True:
+                if button.regularTrigger == True and button.rectangle != None:
                     if event.type == pygame.MOUSEBUTTONDOWN and button.rectangle.collidepoint(event.pos):
                         button.function(variables,event)
                 else:
                     button.function(variables,event)
+
+
 
         return

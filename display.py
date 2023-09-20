@@ -216,33 +216,3 @@ def getRooms():
         weirdTuple = roomDicToTuple(room)
         weirdListOfTupleWithCoordsAndColor += [weirdTuple]
     return weirdListOfTupleWithCoordsAndColor
-
-
-
-def aggregateRooms(room1,room2):
-    x1,y1,w1,h1 = room1["coordinates"]
-    x2,y2,w2,h2 = room2["coordinates"]
-    x3 = min(x1,x2)
-    y3 = min(y1,y2)
-    w3 = max(x1+w1,x2+w2)-x3
-    h3 = max(y1+h1,y2+h2)-y3
-
-    cR1,cG1,cB1 = room1["color"]
-    cR2,cG2,cB2 = room2["color"]
-    c3 = ((cR1+cR2)//2,(cG1+cG2)//2,(cB1+cB2)//2)
-
-    room3 = {"coordinates":(x3,y3,w3,h3),"color":room1["color"]}
-    return room3
-
-
-def tupleToRoomDic(tuple):
-    return {"coordinates":(tuple[0],tuple[1],tuple[2],tuple[3]),"color":(tuple[4][0],tuple[4][1],tuple[4][2])}
-
-
-def roomDicToTuple(room):
-    x = room["coordinates"][0]
-    y = room["coordinates"][1]
-    width =  room["coordinates"][2]
-    height = room["coordinates"][3]
-    weirdTuple = (x,y,width,height,room["color"])
-    return weirdTuple

@@ -7,7 +7,7 @@ import json
 
 
 class QuestMap:
-    def __init__(self,doors=[],rocks=[],entities=[],aggregatedRooms=[[3,4]]):
+    def __init__(self,doors=[],rocks=[],entities=[],aggregatedRooms=[]):
         self.doors = doors
         self.rocks = rocks
         self.entities = entities
@@ -36,7 +36,10 @@ class QuestMap:
         entities = []
         for entity in dict["entities"]:
             entities += [Entity.fromDict(entity)]
-        return cls(doors,rocks,entities)
+        aggregatedRooms = []
+        for aggregatedRoom in dict["aggregatedRooms"]:
+            aggregatedRooms += [listToTupleRec(aggregatedRoom)]
+        return cls(doors,rocks,entities,aggregatedRooms)
 
     def toJSON(self):
         doors = []
@@ -48,7 +51,7 @@ class QuestMap:
         entities = []
         for entity in self.entities:
             entities += [entity.toJSON()]
-        return {"doors":doors,"rocks":rocks,"entities":entities}
+        return {"doors":doors,"rocks":rocks,"entities":entities,"aggregatedRooms":self.aggregatedRooms}
 
     def saveToFile(self,fileName = None):
         if fileName == None:
@@ -70,6 +73,17 @@ class QuestMap:
 
         self.aggregatedRooms = []
         self.rooms = getRoomsAfterAggregation(self.aggregatedRooms)
+
+    def fuseRooms(self,room1,room2):
+        newRoom = roomDicToTuple(aggregateRooms(tupleToRoomDic(room1),tupleToRoomDic(room2)))
+        self.rooms += [newRoom]
+        self.rooms.remove(room1)
+        self.rooms.remove(room2)
+        self.aggregatedRooms += [[room1,room2]]
+
+    def clearAggregatedRooms(self):
+        self.aggregatedRooms = []
+        self.rooms = getRooms()
 
     def display(self,surface,shift,squareSize):
         displayBoard(surface,shift,squareSize,self.rooms)
@@ -107,14 +121,12 @@ class QuestMap:
 
 
 
-def getRoomsAfterAggregation(aggregatedRooms):
+def getRoomsAfterAggregation(aggregatedRooms=[]):
     rooms = getRooms()
     newRooms = rooms
     for aggregatedRoom in aggregatedRooms:
-        roomIndex1 = aggregatedRoom[0]
-        roomIndex2 = aggregatedRoom[1]
-        room1Tuple = rooms[roomIndex1]
-        room2Tuple = rooms[roomIndex2]
+        room1Tuple = aggregatedRoom[0]
+        room2Tuple = aggregatedRoom[1]
         room1Dic = tupleToRoomDic(room1Tuple)
         room2Dic = tupleToRoomDic(room2Tuple)
         newRoom = roomDicToTuple(aggregateRooms(room1Dic,room2Dic))
@@ -123,3 +135,25 @@ def getRoomsAfterAggregation(aggregatedRooms):
         newRooms.remove(room1Tuple)
         newRooms.remove(room2Tuple)
     return newRooms
+
+
+
+def aggregateRooms(room1,room2):
+    x1,y1,w1,h1 = room1["coordinates"]
+    x2,y2,w2,h2 = room2["coordinates"]
+    x3 = min(x1,x2)
+    y3 = min(y1,y2)
+    w3 = max(x1+w1,x2+w2)-x3
+    h3 = max(y1+h1,y2+h2)-y3
+
+    cR1,cG1,cB1 = room1["color"]
+    cR2,cG2,cB2 = room2["color"]
+    #c3 = ((cR1+cR2)//2,(cG1+cG2)//2,(cB1+cB2)//2)
+
+    room3 = {"coordinates":(x3,y3,w3,h3),"color":room1["color"]}
+    return room3
+
+
+
+def listToTupleRec(l):
+    return tuple(listToTupleRec(x) for x in l) if type(l) is list else l
