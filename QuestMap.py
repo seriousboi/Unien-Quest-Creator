@@ -7,10 +7,11 @@ import json
 
 
 class QuestMap:
-    def __init__(self,doors=[],rocks=[],entities=[],aggregatedRooms=[]):
+    def __init__(self,doors=[],rocks=[],entities=[],aggregatedRooms=[],informations=[]):
         self.doors = doors
         self.rocks = rocks
         self.entities = entities
+        self.informations = informations
         self.aggregatedRooms = aggregatedRooms
         self.rooms = getRoomsAfterAggregation(aggregatedRooms)
 
@@ -39,7 +40,10 @@ class QuestMap:
         aggregatedRooms = []
         for aggregatedRoom in dict["aggregatedRooms"]:
             aggregatedRooms += [listToTupleRec(aggregatedRoom)]
-        return cls(doors,rocks,entities,aggregatedRooms)
+        informations = []
+        for infos in dict["informations"]:
+            informations += [Informations.fromDict(infos)]
+        return cls(doors,rocks,entities,aggregatedRooms,informations)
 
     def toJSON(self):
         doors = []
@@ -51,7 +55,10 @@ class QuestMap:
         entities = []
         for entity in self.entities:
             entities += [entity.toJSON()]
-        return {"doors":doors,"rocks":rocks,"entities":entities,"aggregatedRooms":self.aggregatedRooms}
+        informations = []
+        for infos in self.informations:
+            informations += [infos.toJSON()]
+        return {"doors":doors,"rocks":rocks,"entities":entities,"aggregatedRooms":self.aggregatedRooms,"informations":informations}
 
     def saveToFile(self,fileName = None):
         if fileName == None:
@@ -64,6 +71,7 @@ class QuestMap:
         self.doors = []
         self.rocks = []
         self.entities = []
+        self.informations = []
         for connector in questGraph.connectors:
             if connector.type == "Rock" and connector.open == False:
                 for square in connector.squares:
@@ -93,23 +101,22 @@ class QuestMap:
             door.display(surface,shift,squareSize)
         for entity in self.entities:
             entity.display(surface,shift,squareSize)
+        for infos in self.informations:
+            infos.display(surface,shift,squareSize)
 
     def itemAt(self,square):
-        for rock in self.rocks:
-            if rock.square.equal(square):
-                return rock
-        for entity in self.entities:
-            if entity.square.equal(square):
-                return entity
+        for item in self.rocks+self.entities+self.informations:
+            if item.square.equal(square):
+                return item
         return None
 
     def removeItemAT(self,item,square):
-        if item in self.rocks:
-            self.rocks.remove(item)
-        elif item in self.entities:
-            self.entities.remove(item)
-        else:
-            print("could not find item to remove, bruh")
+
+        for itemsList in [self.rocks,self.entities,self.informations]:
+            if item in itemsList:
+                itemsList.remove(item)
+                return
+        print("could not find item to remove, bruh")
 
 
     def doorAt(self,frontSquare,backSquare): #retourne la porte entre frontSquare et backSquare, None si il n'y en a pas

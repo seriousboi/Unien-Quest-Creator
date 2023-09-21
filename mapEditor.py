@@ -35,16 +35,13 @@ def mainProcess(variables):
     medButWidth = 5*squareSize
     medButHeight = squareSize
 
-    variables["buttons"]["Door"].rectangle = pygame.Rect(xMargin,(1/3)*squareSize,medButWidth,medButHeight)
-    variables["buttons"]["Rock"].rectangle = pygame.Rect(xMargin,(1.25+1/3)*squareSize,medButWidth,medButHeight)
-    variables["buttons"]["Monster"].rectangle = pygame.Rect(xMargin,(2.5+1/3)*squareSize,medButWidth,medButHeight)
-    variables["buttons"]["fuseRooms"].rectangle = pygame.Rect(xMargin,(3.75+1/3)*squareSize,medButWidth,medButHeight)
-    variables["buttons"]["resetMap"].rectangle = pygame.Rect(xMargin,(5+1/3)*squareSize,medButWidth,medButHeight)
+    #upper buttons
+    for index,buttonName in enumerate(["Door","Rock","Monster","Informations","fuseRooms","resetMap"]):
+        variables["buttons"][buttonName].rectangle = pygame.Rect(xMargin,(index*1.25+1/3)*squareSize,medButWidth,medButHeight)
 
-    variables["buttons"]["loadMap"].rectangle = pygame.Rect(xMargin,13.25*squareSize,medButWidth,medButHeight)
-    variables["buttons"]["saveMap"].rectangle = pygame.Rect(xMargin,14.5*squareSize,medButWidth,medButHeight)
-    variables["buttons"]["saveImage"].rectangle = pygame.Rect(xMargin,15.75*squareSize,medButWidth,medButHeight)
-    variables["buttons"]["goToGenerator"].rectangle = pygame.Rect(xMargin,17*squareSize,medButWidth,medButHeight)
+    #lower buttons
+    for index,buttonName in enumerate(["goToGenerator","saveImage","saveMap","loadMap"]):
+        variables["buttons"][buttonName].rectangle = pygame.Rect(xMargin,(17-1.25*index)*squareSize,medButWidth,medButHeight)
 
 
 
@@ -61,7 +58,6 @@ def mainDisplay(window,variables):
     pygame.draw.line(window,(200,184,144),(mapLength*squareSize,0),(mapLength*squareSize,mapWidth*squareSize),6)
 
 
-
     for itemName in itemNames:
         button = variables["buttons"][itemName]
         displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,itemName,25,(50,50,50))
@@ -70,7 +66,6 @@ def mainDisplay(window,variables):
     displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,"Fuse rooms",25,(50,50,50))
     button = variables["buttons"]["resetMap"]
     displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,"Reset map",25,(50,50,50))
-
 
     button = variables["buttons"]["loadMap"]
     displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,"Load a map",25,(50,50,50))
@@ -94,20 +89,35 @@ def placeItem(variables,event):
     global mapLength,mapWidth
     sqsz = variables["squareSize"]
 
-    mapChanged = False
-
     if event.type == pygame.MOUSEBUTTONDOWN:
         x = event.pos[0] - variables["shift"][0]
         y = event.pos[1] - variables["shift"][1]
 
-        if variables["currentItem"] == "Door":
-            mapChanged = placeDoor(variables,x,y)
-        if variables["currentItem"] == "Rock":
-            mapChanged = placeRock(variables,x,y)
-        if variables["currentItem"] == "Monster":
-            mapChanged = placeMonster(variables,x,y)
+        currentItem = variables["currentItem"]
+        if currentItem == "Door":
+            placeDoor(variables,x,y)
+
+        elif currentItem in ["Rock","Monster","Informations"]:
+            if (x >= 0 and x <= mapLength*sqsz and
+                y >= 0 and y <= mapWidth*sqsz):
+                xSquare = int(x/sqsz)
+                ySquare = int(y/sqsz)
+                square = Square(xSquare,ySquare)
+                item = variables["currentMap"].itemAt(square)
+                if item == None:
+                    if currentItem == "Rock":
+                        variables["currentMap"].rocks += [Rock(square)]
+                    elif currentItem == "Monster":
+                        variables["currentMap"].entities += [Entity(square.x,square.y)]
+                    elif currentItem == "Informations":
+                        variables["currentMap"].informations += [Informations(square)]
+
+                else:
+                    variables["currentMap"].removeItemAT(item,square)
 
 
+def placeInfos(variables,x,y):
+    pass
 
 
 def placeMonster(variables,x,y):
@@ -116,22 +126,9 @@ def placeMonster(variables,x,y):
 
     mapChanged = False
 
-    if (x >= 0 and x <= mapLength*sqsz and
-        y >= 0 and y <= mapWidth*sqsz):
 
-        mapChanged = True
-
-        xSquare = int(x/sqsz)
-        ySquare = int(y/sqsz)
-        square = Square(xSquare,ySquare)
-        item = variables["currentMap"].itemAt(square)
-        if item == None:
-            variables["currentMap"].entities += [Entity(square.x,square.y)]
-        else:
-            variables["currentMap"].removeItemAT(item,square)
 
     return mapChanged
-
 
 
 def placeDoor(variables,x,y):
@@ -169,7 +166,6 @@ def placeDoor(variables,x,y):
     return mapChanged
 
 
-
 def placeRock(variables,x,y):
     global mapLength,mapWidth
     sqsz = variables["squareSize"]
@@ -196,7 +192,6 @@ def placeRock(variables,x,y):
 def goToGenerator(variables,event):
     variables["state"] = "inGenerator"
     variables["currentGraph"] = None
-
 
 
 def saveImage(variables,event):

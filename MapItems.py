@@ -33,3 +33,20 @@ class Door:
 
     def toJSON(self):
         return {"frontSquare":self.frontSquare.toJSON(),"backSquare":self.backSquare.toJSON()}
+
+
+
+class Informations:
+    def __init__(self,square,infos = ""):
+        self.square = square
+        self.infos = infos
+
+    @classmethod
+    def fromDict(cls,dict):
+        return cls(Square.fromDict(dict["square"]),dict["infos"])
+
+    def display(self,surface,shift,squareSize):
+        displayInfos(surface,shift,squareSize,self.square)
+
+    def toJSON(self):
+        return {"square":self.square.toJSON(),"infos":self.infos}
