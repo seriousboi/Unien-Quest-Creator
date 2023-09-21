@@ -1,9 +1,12 @@
+import pygame
+pygame.init()
+
 from constAndStyle import *
 from QuestGraph import *
 from mapEditor import *
 from generatorInterface import *
 from generators import *
-from pygame import *
+
 
 
 
@@ -12,11 +15,10 @@ def main():
     squareSize = 50
     shift = [0,0]
 
-    pygame.init()
     window = pygame.display.set_mode((squareSize*(mapLength+8),squareSize*(mapWidth)))
     pygame.display.set_caption("Union Quest Creator")
     pygame.event.set_blocked(None)
-    pygame.event.set_allowed([pygame.MOUSEBUTTONDOWN,pygame.QUIT])
+    pygame.event.set_allowed([pygame.MOUSEBUTTONDOWN,pygame.KEYDOWN,pygame.QUIT])
 
     currentGraph = None
     currentMap = QuestMap()
@@ -46,3 +48,4 @@ def main():
 
 
 main()
+pygame.quit()

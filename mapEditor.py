@@ -60,6 +60,8 @@ def mainDisplay(window,variables):
     pygame.draw.rect(window,(250,230,180),(mapLength*squareSize,0,8*squareSize,mapWidth*squareSize),0)
     pygame.draw.line(window,(200,184,144),(mapLength*squareSize,0),(mapLength*squareSize,mapWidth*squareSize),6)
 
+
+
     for itemName in itemNames:
         button = variables["buttons"][itemName]
         displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,itemName,25,(50,50,50))
@@ -257,6 +259,7 @@ mainInterface.buttons += [Button("loadMap",otherInCol,otherOutCol,loadMap)]
 mainInterface.buttons += [Button("saveMap",otherInCol,otherOutCol,saveMap)]
 mainInterface.buttons += [Button("saveImage",otherInCol,otherOutCol,saveImage)]
 mainInterface.buttons += [Button("goToGenerator",(250,250,50),(100,100,200),goToGenerator)]
+
 
 
 for buttonName in itemNames:
