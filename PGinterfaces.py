@@ -3,13 +3,35 @@ import pygame
 
 
 class Button:
-    def __init__(self,name="unamedButton",inColor=[200,200,200],outColor=[100,100,100],function = None,regularTrigger = True):
+    def __init__(self,name="unamedButton",inColor=[200,200,200],outColor=[100,100,100],function = None,regularTrigger = True,activeInColor=None,activeOutColor=None):
         self.function = function
         self.name = name
         self.rectangle = None
         self.inColor = inColor
         self.outColor = outColor
         self.regularTrigger = regularTrigger
+
+        #doing weird stuff because the class was changed after many object instanciations in the code
+        if activeInColor == None:
+            self.activeInColor = inColor
+        else:
+            self.activeInColor = activeInColor
+        if activeOutColor == None:
+            self.activeOutColor = outColor
+        else:
+            self.activeOutColor = activeOutColor
+
+        self.inactiveInColor = inColor
+        self.inactiveOutColor = outColor
+        self.active = False
+
+    def updateColor(self):
+        if self.active:
+            self.inColor = self.activeInColor
+            self.outColor = self.activeOutColor
+        else:
+            self.inColor = self.inactiveInColor
+            self.outColor = self.inactiveOutColor
 
 
 
@@ -57,7 +79,7 @@ class TextBox(Button):
 
         regularTrigger = False
         function = self.handleEvent
-        super().__init__(name,inactiveInColor,inactiveOutColor,function,regularTrigger)
+        super().__init__(name,inactiveInColor,inactiveOutColor,function,regularTrigger,activeInColor,activeOutColor)
 
         self.inactiveInColor = inactiveInColor
         self.inactiveOutColor = inactiveOutColor
@@ -65,7 +87,6 @@ class TextBox(Button):
         self.activeOutColor = activeOutColor
         self.textColor = textColor
         self.textSize = textSize
-        self.active = False
         self.text = ""
         self.hasBackGround = hasBackGround
         self.hasBorder = hasBorder
@@ -85,12 +106,7 @@ class TextBox(Button):
         self.update()
 
     def update(self):
-        if self.active:
-            self.inColor = self.activeInColor
-            self.outColor = self.activeOutColor
-        else:
-            self.inColor = self.inactiveInColor
-            self.outColor = self.inactiveOutColor
+        self.updateColor()
 
         self.textSurface = self.font.render(self.text,True,self.textColor)
         if self.x != None and self.y != None:

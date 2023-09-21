@@ -9,7 +9,7 @@ butPresOutCol = (170,115,90) #out color of pressed buttons
 #same with another palette
 but2InCol = (194,214,66)
 but2OutCol = (151,163,73)
-but2PresInCol = (160,180,70)
+but2PresInCol = (170,200,80)
 but2PresOutCol = (151,163,73)
 
 generatorInCol = [200,200,200]

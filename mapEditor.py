@@ -14,18 +14,7 @@ from copy import copy
 
 def initialize(variables):
     variables["currentItem"] = None
-
-    #we reset the button colors because the button objects are the same between two calls of runInterface
-    for itemName in itemNames:
-        button = variables["buttons"][itemName]
-        button.inColor = butInCol
-        button.outColor = butOutCol
-
-    for buttonName in ["fuseRooms"]:
-        button = variables["buttons"][buttonName]
-        button.inColor = but2InCol
-        button.outColor = but2OutCol
-
+    variables["editing"] = False
 
 
 def mainProcess(variables):
@@ -35,14 +24,22 @@ def mainProcess(variables):
     medButWidth = 5*squareSize
     medButHeight = squareSize
 
+    #hiboxes definition
     #upper buttons
-    for index,buttonName in enumerate(["Door","Rock","Monster","Informations","fuseRooms","resetMap"]):
+    for index,buttonName in enumerate(["Door","Rock","Monster","Informations","edit","fuseRooms","resetMap"]):
         variables["buttons"][buttonName].rectangle = pygame.Rect(xMargin,(index*1.25+1/3)*squareSize,medButWidth,medButHeight)
 
     #lower buttons
     for index,buttonName in enumerate(["goToGenerator","saveImage","saveMap","loadMap"]):
         variables["buttons"][buttonName].rectangle = pygame.Rect(xMargin,(17-1.25*index)*squareSize,medButWidth,medButHeight)
 
+    variables["buttons"]["test"].x = xMargin #test
+    variables["buttons"]["test"].y = 9*squareSize #test
+    variables["buttons"]["test"].update() #test
+
+    #button color update
+    for button in variables["buttons"].values():
+        button.updateColor()
 
 
 def mainDisplay(window,variables):
@@ -57,22 +54,17 @@ def mainDisplay(window,variables):
     pygame.draw.rect(window,(250,230,180),(mapLength*squareSize,0,8*squareSize,mapWidth*squareSize),0)
     pygame.draw.line(window,(200,184,144),(mapLength*squareSize,0),(mapLength*squareSize,mapWidth*squareSize),6)
 
-
     for itemName in itemNames:
         button = variables["buttons"][itemName]
         displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,itemName,25,(50,50,50))
 
-    button = variables["buttons"]["fuseRooms"]
-    displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,"Fuse rooms",25,(50,50,50))
-    button = variables["buttons"]["resetMap"]
-    displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,"Reset map",25,(50,50,50))
+    for buttonName,buttonText in [["fuseRooms","Fuse rooms"],["resetMap","Reset map"],
+                                    ["loadMap","Load a map"],["saveMap","Save to file"],
+                                    ["saveImage","Save to image"],["edit","Edit items"]]:
 
-    button = variables["buttons"]["loadMap"]
-    displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,"Load a map",25,(50,50,50))
-    button = variables["buttons"]["saveMap"]
-    displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,"Save to file",25,(50,50,50))
-    button = variables["buttons"]["saveImage"]
-    displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,"Save to image",25,(50,50,50))
+        button = variables["buttons"][buttonName]
+        displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,buttonText,25,(50,50,50))
+
     button = variables["buttons"]["goToGenerator"]
     displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,"Generator",25,(100,100,200))
 
@@ -83,6 +75,7 @@ def mainDisplay(window,variables):
         msgColor = (50,50,50)
     text(window,str(doorsAmount)+"/"+str(nbMaxDoors),int(squareSize*(1/2)),msgColor,"midleft",xMargin+5.5*squareSize,(0.5+1/3)*squareSize)
 
+    variables["buttons"]["test"].display(window)#test
 
 
 def placeItem(variables,event):
@@ -117,7 +110,8 @@ def placeItem(variables,event):
 
 
 def placeInfos(variables,x,y):
-    pass
+    variables["currentItem"] = None
+    variables["editing"] = True
 
 
 def placeMonster(variables,x,y):
@@ -240,6 +234,14 @@ def resetMap(variables,event):
     variables["currentMap"] = QuestMap([],[],[],[])
 
 
+def editItem(variables,event):
+    if variables["currentItem"] != None: # we reset the color of the last button pressed
+        previousButtonPressed = variables["buttons"][variables["currentItem"]]
+        previousButtonPressed.active = False
+        variables["currentItem"] = None
+    variables["buttons"]["edit"].active = True
+    variables["editing"] = True
+
 mainInterface = Interface()
 
 mainInterface.initialize = initialize
@@ -247,6 +249,7 @@ mainInterface.mainDisplay = mainDisplay
 mainInterface.mainProcess = mainProcess
 
 mainInterface.buttons += [Button("place",None,None,placeItem,False)]
+mainInterface.buttons += [Button("edit",but2InCol,but2OutCol,editItem,activeInColor=but2PresInCol,activeOutColor=but2PresOutCol)]
 mainInterface.buttons += [Button("fuseRooms",but2InCol,but2OutCol,fusionSelect)]
 mainInterface.buttons += [Button("resetMap",but2InCol,but2OutCol,resetMap)]
 
@@ -255,6 +258,8 @@ mainInterface.buttons += [Button("saveMap",otherInCol,otherOutCol,saveMap)]
 mainInterface.buttons += [Button("saveImage",otherInCol,otherOutCol,saveImage)]
 mainInterface.buttons += [Button("goToGenerator",(250,250,50),(100,100,200),goToGenerator)]
 
+mainInterface.buttons += [TextBox("test")] #test
+
 
 
 for buttonName in itemNames:
@@ -262,11 +267,14 @@ for buttonName in itemNames:
     def selectItem(variables,event,itemName = buttonName):
         if variables["currentItem"] != None: # we reset the color of the last button pressed
             previousButtonPressed = variables["buttons"][variables["currentItem"]]
-            previousButtonPressed.inColor = butInCol
-            previousButtonPressed.outColor = butOutCol
+            previousButtonPressed.active = False
+            variables["currentItem"] = None
+
+        if variables["editing"]:
+            variables["buttons"]["edit"].active = False
+
         button = variables["buttons"][itemName]
         variables["currentItem"] = itemName
-        button.inColor = butPresInCol
-        button.outColor = butPresOutCol
+        button.active = True
 
-    mainInterface.buttons += [Button(buttonName,butInCol,butOutCol,selectItem)]
+    mainInterface.buttons += [Button(buttonName,butInCol,butOutCol,selectItem,activeInColor=butPresInCol,activeOutColor=butPresOutCol)]
