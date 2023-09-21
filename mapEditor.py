@@ -114,28 +114,14 @@ def placeInfos(variables,x,y):
     variables["editing"] = True
 
 
-def placeMonster(variables,x,y):
-    global mapLength,mapWidth
-    sqsz = variables["squareSize"]
-
-    mapChanged = False
-
-
-
-    return mapChanged
-
-
 def placeDoor(variables,x,y):
     global mapLength,mapWidth
     sqsz = variables["squareSize"]
-
-    mapChanged = False
 
     if (x > (1/4)*sqsz and x < (mapLength-1/4)*sqsz and
         y > (1/4)*sqsz and y < (mapWidth-1/4)*sqsz):
 
         if y%sqsz <= (3/10)*(sqsz-1) or y%sqsz >= (7/10)*(sqsz-1):
-            mapChanged = True
 
             xSquare = int(x/sqsz)
             ySquare = round(y/sqsz)
@@ -147,7 +133,6 @@ def placeDoor(variables,x,y):
                 variables["currentMap"].doors.remove(variables["currentMap"].doorAt(frontSquare,backSquare))
 
         elif x%sqsz <= (3/10)*(sqsz-1) or x%sqsz >= (7/10)*(sqsz-1):
-            mapChanged = True
 
             xSquare = round(x/sqsz)
             ySquare = int(y/sqsz)
@@ -157,30 +142,6 @@ def placeDoor(variables,x,y):
                 variables["currentMap"].doors += [Door(frontSquare,backSquare)]
             else:
                 variables["currentMap"].doors.remove(variables["currentMap"].doorAt(frontSquare,backSquare))
-    return mapChanged
-
-
-def placeRock(variables,x,y):
-    global mapLength,mapWidth
-    sqsz = variables["squareSize"]
-
-    mapChanged = False
-
-    if (x >= 0 and x <= mapLength*sqsz and
-        y >= 0 and y <= mapWidth*sqsz):
-
-        mapChanged = True
-
-        xSquare = int(x/sqsz)
-        ySquare = int(y/sqsz)
-        square = Square(xSquare,ySquare)
-        item = variables["currentMap"].itemAt(square)
-        if item == None:
-            variables["currentMap"].rocks += [Rock(square)]
-        else:
-            variables["currentMap"].removeItemAT(item,square)
-
-    return mapChanged
 
 
 def goToGenerator(variables,event):
