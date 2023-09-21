@@ -8,6 +8,7 @@ from pygame import *
 from generators import *
 from mapSelect import *
 from  fusionSelect import *
+from entityEditor import *
 from copy import copy
 
 
@@ -32,10 +33,6 @@ def mainProcess(variables):
     #lower buttons
     for index,buttonName in enumerate(["goToGenerator","saveImage","saveMap","loadMap"]):
         variables["buttons"][buttonName].rectangle = pygame.Rect(xMargin,(17-1.25*index)*squareSize,medButWidth,medButHeight)
-
-    variables["buttons"]["test"].x = xMargin #test
-    variables["buttons"]["test"].y = 9*squareSize #test
-    variables["buttons"]["test"].update() #test
 
     #button color update
     for button in variables["buttons"].values():
@@ -75,10 +72,8 @@ def mainDisplay(window,variables):
         msgColor = (50,50,50)
     text(window,str(doorsAmount)+"/"+str(nbMaxDoors),int(squareSize*(1/2)),msgColor,"midleft",xMargin+5.5*squareSize,(0.5+1/3)*squareSize)
 
-    variables["buttons"]["test"].display(window)#test
 
-
-def placeItem(variables,event):
+def placeOrEditItem(variables,event):
     global mapLength,mapWidth
     sqsz = variables["squareSize"]
 
@@ -90,14 +85,18 @@ def placeItem(variables,event):
         if currentItem == "Door":
             placeDoor(variables,x,y)
 
-        elif currentItem in ["Rock","Monster","Informations"]:
+        elif (currentItem in ["Rock","Monster","Informations"]) or variables["editing"]:
             if (x >= 0 and x <= mapLength*sqsz and
                 y >= 0 and y <= mapWidth*sqsz):
                 xSquare = int(x/sqsz)
                 ySquare = int(y/sqsz)
                 square = Square(xSquare,ySquare)
                 item = variables["currentMap"].itemAt(square)
-                if item == None:
+
+                if variables["editing"]:
+                    editItem(variables,item)
+
+                elif item == None:
                     if currentItem == "Rock":
                         variables["currentMap"].rocks += [Rock(square)]
                     elif currentItem == "Monster":
@@ -107,6 +106,21 @@ def placeItem(variables,event):
 
                 else:
                     variables["currentMap"].removeItemAT(item,square)
+
+
+
+def editItem(variables,item):
+    if type(item) == Entity:
+        EEvariables = copy(variables)
+        EEvariables["mainVars"] = variables
+        EEvariables["entity"] = item
+        window = variables["window"]
+        entityEditor.run(window,EEvariables,"editing entity")
+        if EEvariables["state"] == "quitting":
+            variables["state"] = "quitting"
+    elif type(item) == Informations:
+        print("infos")
+
 
 
 def placeInfos(variables,x,y):
@@ -195,7 +209,7 @@ def resetMap(variables,event):
     variables["currentMap"] = QuestMap([],[],[],[])
 
 
-def editItem(variables,event):
+def edit(variables,event):
     if variables["currentItem"] != None: # we reset the color of the last button pressed
         previousButtonPressed = variables["buttons"][variables["currentItem"]]
         previousButtonPressed.active = False
@@ -209,8 +223,8 @@ mainInterface.initialize = initialize
 mainInterface.mainDisplay = mainDisplay
 mainInterface.mainProcess = mainProcess
 
-mainInterface.buttons += [Button("place",None,None,placeItem,False)]
-mainInterface.buttons += [Button("edit",but2InCol,but2OutCol,editItem,activeInColor=but2PresInCol,activeOutColor=but2PresOutCol)]
+mainInterface.buttons += [Button("place",None,None,placeOrEditItem,False)]
+mainInterface.buttons += [Button("edit",but2InCol,but2OutCol,edit,activeInColor=but2PresInCol,activeOutColor=but2PresOutCol)]
 mainInterface.buttons += [Button("fuseRooms",but2InCol,but2OutCol,fusionSelect)]
 mainInterface.buttons += [Button("resetMap",but2InCol,but2OutCol,resetMap)]
 
@@ -218,9 +232,6 @@ mainInterface.buttons += [Button("loadMap",otherInCol,otherOutCol,loadMap)]
 mainInterface.buttons += [Button("saveMap",otherInCol,otherOutCol,saveMap)]
 mainInterface.buttons += [Button("saveImage",otherInCol,otherOutCol,saveImage)]
 mainInterface.buttons += [Button("goToGenerator",(250,250,50),(100,100,200),goToGenerator)]
-
-mainInterface.buttons += [TextBox("test")] #test
-
 
 
 for buttonName in itemNames:
@@ -233,9 +244,11 @@ for buttonName in itemNames:
 
         if variables["editing"]:
             variables["buttons"]["edit"].active = False
+            variables["editing"] = False
 
         button = variables["buttons"][itemName]
         variables["currentItem"] = itemName
         button.active = True
+
 
     mainInterface.buttons += [Button(buttonName,butInCol,butOutCol,selectItem,activeInColor=butPresInCol,activeOutColor=butPresOutCol)]

@@ -321,21 +321,29 @@
   ],
   "entities": [
     {
-      "name": "Anonymous",
-      "side": "enemy",
-      "health": 100,
-      "criticalHealth": 50,
-      "strength": 6,
-      "dexterity": 6,
-      "constitution": 6,
-      "weaponDamage": 15,
+      "name": "Madoc",
+      "side": "neutral",
+      "health": 115.0,
+      "criticalHealth": 50.0,
+      "strength": 9.0,
+      "dexterity": 11.0,
+      "constitution": 15.0,
+      "weaponDamage": 13.5,
       "square": {
         "x": 21,
         "y": 2
       },
-      "infos": ""
+      "infos": "Father_of_Jude"
     }
   ],
   "aggregatedRooms": [],
-  "informations": []
+  "informations": [
+    {
+      "square": {
+        "x": 12,
+        "y": 9
+      },
+      "infos": ""
+    }
+  ]
 }
