@@ -2,211 +2,211 @@
   "doors": [
     {
       "frontSquare": {
-        "x": 4,
+        "x": 8,
         "y": 15
+      },
+      "backSquare": {
+        "x": 9,
+        "y": 15
+      }
+    },
+    {
+      "frontSquare": {
+        "x": 5,
+        "y": 11
+      },
+      "backSquare": {
+        "x": 4,
+        "y": 11
+      }
+    },
+    {
+      "frontSquare": {
+        "x": 10,
+        "y": 17
+      },
+      "backSquare": {
+        "x": 10,
+        "y": 18
+      }
+    },
+    {
+      "frontSquare": {
+        "x": 5,
+        "y": 17
       },
       "backSquare": {
         "x": 5,
-        "y": 15
+        "y": 18
       }
     },
     {
       "frontSquare": {
-        "x": 8,
-        "y": 15
-      },
-      "backSquare": {
-        "x": 9,
-        "y": 15
-      }
-    },
-    {
-      "frontSquare": {
-        "x": 6,
-        "y": 12
-      },
-      "backSquare": {
-        "x": 6,
-        "y": 13
-      }
-    },
-    {
-      "frontSquare": {
-        "x": 6,
-        "y": 11
-      },
-      "backSquare": {
-        "x": 7,
-        "y": 11
-      }
-    },
-    {
-      "frontSquare": {
-        "x": 8,
-        "y": 11
-      },
-      "backSquare": {
-        "x": 9,
-        "y": 11
-      }
-    },
-    {
-      "frontSquare": {
-        "x": 11,
-        "y": 14
-      },
-      "backSquare": {
-        "x": 12,
-        "y": 14
-      }
-    },
-    {
-      "frontSquare": {
-        "x": 17,
-        "y": 13
-      },
-      "backSquare": {
-        "x": 17,
-        "y": 12
-      }
-    },
-    {
-      "frontSquare": {
-        "x": 15,
-        "y": 13
-      },
-      "backSquare": {
-        "x": 15,
-        "y": 12
-      }
-    },
-    {
-      "frontSquare": {
-        "x": 18,
+        "x": 2,
         "y": 10
       },
       "backSquare": {
-        "x": 18,
+        "x": 2,
         "y": 9
       }
     },
     {
       "frontSquare": {
-        "x": 16,
-        "y": 3
+        "x": 5,
+        "y": 10
       },
       "backSquare": {
-        "x": 17,
-        "y": 3
+        "x": 5,
+        "y": 9
       }
     },
     {
       "frontSquare": {
         "x": 20,
-        "y": 3
+        "y": 12
       },
       "backSquare": {
         "x": 21,
-        "y": 3
+        "y": 12
       }
     },
     {
       "frontSquare": {
-        "x": 22,
-        "y": 4
+        "x": 20,
+        "y": 15
       },
       "backSquare": {
-        "x": 22,
-        "y": 5
+        "x": 21,
+        "y": 15
       }
     },
     {
       "frontSquare": {
-        "x": 19,
-        "y": 4
-      },
-      "backSquare": {
-        "x": 19,
-        "y": 5
-      }
-    },
-    {
-      "frontSquare": {
-        "x": 13,
-        "y": 4
-      },
-      "backSquare": {
-        "x": 14,
-        "y": 4
-      }
-    },
-    {
-      "frontSquare": {
-        "x": 16,
-        "y": 7
+        "x": 18,
+        "y": 15
       },
       "backSquare": {
         "x": 17,
-        "y": 7
+        "y": 15
       }
     },
     {
       "frontSquare": {
         "x": 23,
-        "y": 9
+        "y": 17
       },
       "backSquare": {
         "x": 23,
-        "y": 8
-      }
-    },
-    {
-      "frontSquare": {
-        "x": 8,
-        "y": 4
-      },
-      "backSquare": {
-        "x": 9,
-        "y": 4
-      }
-    },
-    {
-      "frontSquare": {
-        "x": 10,
-        "y": 5
-      },
-      "backSquare": {
-        "x": 10,
-        "y": 6
-      }
-    },
-    {
-      "frontSquare": {
-        "x": 7,
-        "y": 8
-      },
-      "backSquare": {
-        "x": 7,
-        "y": 9
+        "y": 18
       }
     },
     {
       "frontSquare": {
         "x": 15,
-        "y": 11
+        "y": 17
       },
       "backSquare": {
-        "x": 16,
-        "y": 11
+        "x": 15,
+        "y": 18
       }
     },
     {
       "frontSquare": {
-        "x": 9,
-        "y": 9
+        "x": 20,
+        "y": 10
       },
       "backSquare": {
-        "x": 10,
+        "x": 20,
+        "y": 9
+      }
+    },
+    {
+      "frontSquare": {
+        "x": 20,
+        "y": 6
+      },
+      "backSquare": {
+        "x": 21,
+        "y": 6
+      }
+    },
+    {
+      "frontSquare": {
+        "x": 19,
+        "y": 4
+      },
+      "backSquare": {
+        "x": 19,
+        "y": 5
+      }
+    },
+    {
+      "frontSquare": {
+        "x": 24,
+        "y": 7
+      },
+      "backSquare": {
+        "x": 25,
+        "y": 7
+      }
+    },
+    {
+      "frontSquare": {
+        "x": 18,
+        "y": 1
+      },
+      "backSquare": {
+        "x": 18,
+        "y": 0
+      }
+    },
+    {
+      "frontSquare": {
+        "x": 23,
+        "y": 1
+      },
+      "backSquare": {
+        "x": 23,
+        "y": 0
+      }
+    },
+    {
+      "frontSquare": {
+        "x": 8,
+        "y": 2
+      },
+      "backSquare": {
+        "x": 9,
+        "y": 2
+      }
+    },
+    {
+      "frontSquare": {
+        "x": 6,
+        "y": 3
+      },
+      "backSquare": {
+        "x": 6,
+        "y": 4
+      }
+    },
+    {
+      "frontSquare": {
+        "x": 11,
+        "y": 2
+      },
+      "backSquare": {
+        "x": 12,
+        "y": 2
+      }
+    },
+    {
+      "frontSquare": {
+        "x": 5,
+        "y": 8
+      },
+      "backSquare": {
+        "x": 5,
         "y": 9
       }
     }
@@ -214,8 +214,32 @@
   "rocks": [
     {
       "square": {
-        "x": 14,
-        "y": 6
+        "x": 12,
+        "y": 3
+      }
+    },
+    {
+      "square": {
+        "x": 13,
+        "y": 3
+      }
+    },
+    {
+      "square": {
+        "x": 12,
+        "y": 17
+      }
+    },
+    {
+      "square": {
+        "x": 13,
+        "y": 17
+      }
+    },
+    {
+      "square": {
+        "x": 4,
+        "y": 9
       }
     },
     {
@@ -226,13 +250,7 @@
     },
     {
       "square": {
-        "x": 17,
-        "y": 9
-      }
-    },
-    {
-      "square": {
-        "x": 24,
+        "x": 19,
         "y": 9
       }
     },
@@ -244,102 +262,92 @@
     },
     {
       "square": {
-        "x": 11,
+        "x": 17,
         "y": 18
       }
     },
     {
       "square": {
-        "x": 16,
+        "x": 21,
+        "y": 18
+      }
+    },
+    {
+      "square": {
+        "x": 25,
+        "y": 8
+      }
+    },
+    {
+      "square": {
+        "x": 0,
+        "y": 8
+      }
+    }
+  ],
+  "traps": [
+    {
+      "square": {
+        "x": 21,
+        "y": 4
+      }
+    },
+    {
+      "square": {
+        "x": 18,
         "y": 6
+      }
+    },
+    {
+      "square": {
+        "x": 14,
+        "y": 8
+      }
+    },
+    {
+      "square": {
+        "x": 8,
+        "y": 13
+      }
+    }
+  ],
+  "treasures": [
+    {
+      "square": {
+        "x": 8,
+        "y": 4
+      }
+    },
+    {
+      "square": {
+        "x": 9,
+        "y": 8
+      }
+    },
+    {
+      "square": {
+        "x": 10,
+        "y": 9
+      }
+    },
+    {
+      "square": {
+        "x": 14,
+        "y": 11
+      }
+    },
+    {
+      "square": {
+        "x": 16,
+        "y": 12
       }
     }
   ],
   "entities": [
     {
-      "name": "Madoc",
-      "side": "enemy",
-      "species": "orc",
-      "health": 120,
-      "criticalHealth": 33,
-      "strength": 9,
-      "dexterity": 11,
-      "constitution": 12,
-      "weaponDamage": 15.5,
-      "square": {
-        "x": 19,
-        "y": 2
-      },
-      "infos": "Father of Vivienne"
-    },
-    {
       "name": "Anonymous",
       "side": "enemy",
-      "species": "mummy",
-      "health": 100,
-      "criticalHealth": 50,
-      "strength": 6,
-      "dexterity": 6,
-      "constitution": 6,
-      "weaponDamage": 15,
-      "square": {
-        "x": 2,
-        "y": 14
-      },
-      "infos": ""
-    },
-    {
-      "name": "Anonymous",
-      "side": "enemy",
-      "species": "zombie",
-      "health": 100,
-      "criticalHealth": 50,
-      "strength": 6,
-      "dexterity": 6,
-      "constitution": 6,
-      "weaponDamage": 15,
-      "square": {
-        "x": 2,
-        "y": 16
-      },
-      "infos": ""
-    },
-    {
-      "name": "Anonymous",
-      "side": "enemy",
-      "species": "skeleton",
-      "health": 100,
-      "criticalHealth": 50,
-      "strength": 6,
-      "dexterity": 6,
-      "constitution": 6,
-      "weaponDamage": 15,
-      "square": {
-        "x": 19,
-        "y": 12
-      },
-      "infos": ""
-    },
-    {
-      "name": "Anonymous",
-      "side": "enemy",
-      "species": "warrior",
-      "health": 100,
-      "criticalHealth": 50,
-      "strength": 6,
-      "dexterity": 6,
-      "constitution": 6,
-      "weaponDamage": 15,
-      "square": {
-        "x": 13,
-        "y": 9
-      },
-      "infos": ""
-    },
-    {
-      "name": "Anonymous",
-      "side": "enemy",
-      "species": "fimir",
+      "species": "Unkown",
       "health": 100,
       "criticalHealth": 50,
       "strength": 6,
@@ -348,12 +356,12 @@
       "weaponDamage": 15,
       "square": {
         "x": 14,
-        "y": 18
+        "y": 7
       },
       "infos": ""
     },
     {
-      "name": "Anonymous",
+      "name": "yoyo",
       "side": "enemy",
       "species": "goblin",
       "health": 100,
@@ -363,15 +371,15 @@
       "constitution": 6,
       "weaponDamage": 15,
       "square": {
-        "x": 6,
-        "y": 5
+        "x": 12,
+        "y": 9
       },
       "infos": ""
     },
     {
       "name": "Anonymous",
       "side": "enemy",
-      "species": "goblin",
+      "species": "Unkown",
       "health": 100,
       "criticalHealth": 50,
       "strength": 6,
@@ -379,36 +387,41 @@
       "constitution": 6,
       "weaponDamage": 15,
       "square": {
-        "x": 7,
-        "y": 7
-      },
-      "infos": ""
-    },
-    {
-      "name": "Anonymous",
-      "side": "enemy",
-      "species": "demon",
-      "health": 100,
-      "criticalHealth": 50,
-      "strength": 6,
-      "dexterity": 6,
-      "constitution": 6,
-      "weaponDamage": 15,
-      "square": {
-        "x": 24,
-        "y": 7
+        "x": 11,
+        "y": 10
       },
       "infos": ""
     }
   ],
-  "aggregatedRooms": [],
   "informations": [
     {
       "square": {
-        "x": 12,
-        "y": 8
+        "x": 19,
+        "y": 10
       },
-      "infos": "Big room"
+      "infos": ""
+    },
+    {
+      "square": {
+        "x": 19,
+        "y": 12
+      },
+      "infos": ""
+    },
+    {
+      "square": {
+        "x": 16,
+        "y": 13
+      },
+      "infos": ""
+    },
+    {
+      "square": {
+        "x": 9,
+        "y": 13
+      },
+      "infos": ""
     }
-  ]
+  ],
+  "aggregatedRooms": []
 }

@@ -2,8 +2,7 @@ from Square import *
 from display import *
 
 
-
-class Rock:
+class MapItem:
     def __init__(self,square):
         self.square = square
 
@@ -11,29 +10,32 @@ class Rock:
     def fromDict(cls,dict):
         return cls(Square.fromDict(dict["square"]))
 
-    def display(self,surface,shift,squareSize):
-        displayRock(surface,shift,squareSize,self.square)
-
     def toJSON(self):
         return {"square":self.square.toJSON()}
 
 
-
-class Door:
-    def __init__(self,frontSquare,backSquare):
-        self.frontSquare = frontSquare
-        self.backSquare = backSquare
-
-    @classmethod
-    def fromDict(cls,dict):
-        return cls(Square.fromDict(dict["frontSquare"]),Square.fromDict(dict["backSquare"]))
+class Rock(MapItem):
+    def __init__(self,square):
+        super().__init__(square)
 
     def display(self,surface,shift,squareSize):
-        displayDoor(surface,shift,squareSize,self.frontSquare,self.backSquare)
+        displayRock(surface,shift,squareSize,self.square)
 
-    def toJSON(self):
-        return {"frontSquare":self.frontSquare.toJSON(),"backSquare":self.backSquare.toJSON()}
 
+class Trap(MapItem):
+    def __init__(self,square):
+        super().__init__(square)
+
+    def display(self,surface,shift,squareSize):
+        displayTrap(surface,shift,squareSize,self.square)
+
+
+class Treasure(MapItem):
+    def __init__(self,square):
+        super().__init__(square)
+
+    def display(self,surface,shift,squareSize):
+        displayTreasure(surface,shift,squareSize,self.square)        
 
 
 class Informations:
@@ -50,3 +52,19 @@ class Informations:
 
     def toJSON(self):
         return {"square":self.square.toJSON(),"infos":self.infos}
+
+
+class Door:
+    def __init__(self,frontSquare,backSquare):
+        self.frontSquare = frontSquare
+        self.backSquare = backSquare
+
+    @classmethod
+    def fromDict(cls,dict):
+        return cls(Square.fromDict(dict["frontSquare"]),Square.fromDict(dict["backSquare"]))
+
+    def display(self,surface,shift,squareSize):
+        displayDoor(surface,shift,squareSize,self.frontSquare,self.backSquare)
+
+    def toJSON(self):
+        return {"frontSquare":self.frontSquare.toJSON(),"backSquare":self.backSquare.toJSON()}

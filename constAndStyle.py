@@ -24,7 +24,7 @@ generatorOptOutCol = [120,120,160]
 #game constants
 mapLength = 26
 mapWidth = 19
-itemNames = ["Door","Rock","Monster","Informations"] #known items
+itemNames = ["Door","Rock","Monster","Trap","Treasure","Informations"] #known items
 
 nbMaxDoors = 21
 

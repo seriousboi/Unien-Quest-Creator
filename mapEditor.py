@@ -27,7 +27,7 @@ def mainProcess(variables):
 
     #hiboxes definition
     #upper buttons
-    for index,buttonName in enumerate(["Door","Rock","Monster","Informations","edit","fuseRooms","resetMap"]):
+    for index,buttonName in enumerate(["Door","Rock","Trap","Treasure","Monster","Informations","edit","fuseRooms","resetMap"]):
         variables["buttons"][buttonName].rectangle = pygame.Rect(xMargin,(index*1.25+1/3)*squareSize,medButWidth,medButHeight)
 
     #lower buttons
@@ -74,7 +74,7 @@ def mainDisplay(window,variables):
 
 
 def placeOrEditItem(variables,event):
-    global mapLength,mapWidth
+    global mapLength,mapWidth,itemNames
     sqsz = variables["squareSize"]
 
     if event.type == pygame.MOUSEBUTTONDOWN:
@@ -85,7 +85,7 @@ def placeOrEditItem(variables,event):
         if currentItem == "Door":
             placeDoor(variables,x,y)
 
-        elif (currentItem in ["Rock","Monster","Informations"]) or variables["editing"]:
+        elif (currentItem in itemNames) or variables["editing"]:
             if (x >= 0 and x <= mapLength*sqsz and
                 y >= 0 and y <= mapWidth*sqsz):
                 xSquare = int(x/sqsz)
@@ -99,6 +99,10 @@ def placeOrEditItem(variables,event):
                 elif item == None:
                     if currentItem == "Rock":
                         variables["currentMap"].rocks += [Rock(square)]
+                    elif currentItem == "Trap":
+                        variables["currentMap"].traps += [Trap(square)]
+                    elif currentItem == "Treasure":
+                        variables["currentMap"].treasures += [Treasure(square)]
                     elif currentItem == "Monster":
                         variables["currentMap"].entities += [Entity(square.x,square.y)]
                     elif currentItem == "Informations":

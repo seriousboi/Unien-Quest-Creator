@@ -7,14 +7,15 @@ import json
 
 
 class QuestMap:
-    def __init__(self,doors=[],rocks=[],entities=[],aggregatedRooms=[],informations=[]):
+    def __init__(self,doors=[],rocks=[],entities=[],aggregatedRooms=[],informations=[],traps=[],treasures=[]):
         self.doors = doors
         self.rocks = rocks
         self.entities = entities
         self.informations = informations
+        self.traps = traps
+        self.treasures = treasures
         self.aggregatedRooms = aggregatedRooms
         self.rooms = getRoomsAfterAggregation(aggregatedRooms)
-
 
     @classmethod
     def loadFile(cls,fileName=None):
@@ -28,37 +29,26 @@ class QuestMap:
 
     @classmethod
     def fromDict(cls,dict):
-        doors = []
-        for door in dict["doors"]:
-            doors += [Door.fromDict(door)]
-        rocks = []
-        for rock in dict["rocks"]:
-            rocks += [Rock.fromDict(rock)]
-        entities = []
-        for entity in dict["entities"]:
-            entities += [Entity.fromDict(entity)]
-        aggregatedRooms = []
-        for aggregatedRoom in dict["aggregatedRooms"]:
-            aggregatedRooms += [listToTupleRec(aggregatedRoom)]
-        informations = []
-        for infos in dict["informations"]:
-            informations += [Informations.fromDict(infos)]
-        return cls(doors,rocks,entities,aggregatedRooms,informations)
+        listsToFill = {"doors":[],"rocks":[],"traps":[],"treasures":[],"entities":[],"aggregatedRooms":[],"informations":[]}
+        construtorsToUse = {"doors":Door.fromDict,"rocks":Rock.fromDict,"traps":Trap.fromDict,"treasures":Treasure.fromDict,"entities":Entity.fromDict,"aggregatedRooms":listToTupleRec,"informations":Informations.fromDict}
+
+        for key in listsToFill:
+            for thing in dict[key]:
+                listsToFill[key] += [construtorsToUse[key](thing)]
+
+        return cls(listsToFill["doors"],listsToFill["rocks"],listsToFill["entities"],listsToFill["aggregatedRooms"],listsToFill["informations"],listsToFill["traps"],listsToFill["treasures"])
+
 
     def toJSON(self):
-        doors = []
-        for door in self.doors:
-            doors += [door.toJSON()]
-        rocks = []
-        for rock in self.rocks:
-            rocks += [rock.toJSON()]
-        entities = []
-        for entity in self.entities:
-            entities += [entity.toJSON()]
-        informations = []
-        for infos in self.informations:
-            informations += [infos.toJSON()]
-        return {"doors":doors,"rocks":rocks,"entities":entities,"aggregatedRooms":self.aggregatedRooms,"informations":informations}
+        JSONdic = {"doors":[],"rocks":[],"traps":[],"treasures":[],"entities":[],"informations":[]}
+        listsToUse = {"doors":self.doors,"rocks":self.rocks,"traps":self.traps,"treasures":self.treasures,"entities":self.entities,"informations":self.informations}
+
+        for key in JSONdic:
+            for thing in listsToUse[key]:
+                JSONdic[key] += [thing.toJSON()]
+
+        JSONdic["aggregatedRooms"] = self.aggregatedRooms
+        return JSONdic
 
     def saveToFile(self,fileName = None):
         if fileName == None:
@@ -95,24 +85,21 @@ class QuestMap:
 
     def display(self,surface,shift,squareSize):
         displayBoard(surface,shift,squareSize,self.rooms)
-        for rock in self.rocks:
-            rock.display(surface,shift,squareSize)
-        for door in self.doors:
-            door.display(surface,shift,squareSize)
+        for item in self.rocks+self.doors+self.traps+self.treasures:
+            item.display(surface,shift,squareSize)
         for index,entity in enumerate(self.entities):
             entity.display(surface,shift,squareSize,index+1)
         for index,infos in enumerate(self.informations):
             infos.display(surface,shift,squareSize,index+1)
 
     def itemAt(self,square):
-        for item in self.rocks+self.entities+self.informations:
+        for item in self.rocks+self.entities+self.informations+self.traps+self.treasures:
             if item.square.equal(square):
                 return item
         return None
 
     def removeItemAT(self,item,square):
-
-        for itemsList in [self.rocks,self.entities,self.informations]:
+        for itemsList in [self.rocks,self.entities,self.informations,self.traps,self.treasures]:
             if item in itemsList:
                 itemsList.remove(item)
                 return

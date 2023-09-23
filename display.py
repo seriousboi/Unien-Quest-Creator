@@ -49,6 +49,24 @@ def displayGraph(surface,shift,squareSize,squareHelp,nbAreas,nbConnectors,areas,
             text(surface,str(area.id),(squareSize*3)//5,(0,0,0),"center",center[0],center[1])
 
 
+def displayTrap(surface,shift,squareSize,square):
+    X,Y = shift
+    x = X+square.x*squareSize
+    y = Y+square.y*squareSize
+    trapIcon = pygame.image.load("data/images/trap.png")
+    trapIcon = pygame.transform.scale(trapIcon,(squareSize,squareSize))
+    surface.blit(trapIcon,(x,y))
+
+
+def displayTreasure(surface,shift,squareSize,square):
+    X,Y = shift
+    x = X+square.x*squareSize
+    y = Y+square.y*squareSize
+    treasureIcon = pygame.image.load("data/images/treasure.png")
+    treasureIcon = pygame.transform.scale(treasureIcon,(squareSize,squareSize))
+    surface.blit(treasureIcon,(x,y))
+
+
 def displayInfos(surface,shift,squareSize,square,index = None):
     X,Y = shift
     x = (square.x+0.5)*squareSize+X
@@ -62,7 +80,7 @@ def displayInfos(surface,shift,squareSize,square,index = None):
     text(surface,msg,int(squareSize*(1/2)),(50,50,50),"center",x,y)
 
 
-def displayMonster(window,shift,squareSize,square,index=None,image=None):
+def displayMonster(surface,shift,squareSize,square,index=None,image=None):
     X,Y = shift
     xPos = square.x*squareSize
     Ypos = square.y*squareSize
@@ -73,10 +91,10 @@ def displayMonster(window,shift,squareSize,square,index=None,image=None):
         monsterIcon = pygame.transform.scale(monsterIcon,(squareSize-2*border,squareSize-2*border))
     else:
         monsterIcon = pygame.transform.scale(image,(squareSize-2*border,squareSize-2*border))
-    window.blit(monsterIcon,(X+xPos+border,Y+Ypos+border))
+    surface.blit(monsterIcon,(X+xPos+border,Y+Ypos+border))
 
     if index != None:
-        text(window,str(index),int(squareSize*(1/2)),(0,0,0),"center",X+(square.x+1)*squareSize,Y+Ypos)
+        text(surface,str(index),int(squareSize*(1/2)),(0,0,0),"center",X+(square.x+1)*squareSize,Y+Ypos)
 
 
 def displayRock(window,shift,squareSize,square):
