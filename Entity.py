@@ -42,8 +42,8 @@ class Entity():
                 ,"square":self.square.toJSON()
                 ,"infos":self.infos}
 
-    def display(self,surface,shift,squareSize):
-        displayMonster(surface,shift,squareSize,self.square)
+    def display(self,surface,shift,squareSize,index=None):
+        displayMonster(surface,shift,squareSize,self.square,index)
 
 
     def receiveDamage(self,damage,verbose=True):

@@ -45,8 +45,8 @@ class Informations:
     def fromDict(cls,dict):
         return cls(Square.fromDict(dict["square"]),dict["infos"])
 
-    def display(self,surface,shift,squareSize):
-        displayInfos(surface,shift,squareSize,self.square)
+    def display(self,surface,shift,squareSize,index=None):
+        displayInfos(surface,shift,squareSize,self.square,index)
 
     def toJSON(self):
         return {"square":self.square.toJSON(),"infos":self.infos}

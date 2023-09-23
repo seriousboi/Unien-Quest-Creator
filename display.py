@@ -49,17 +49,20 @@ def displayGraph(surface,shift,squareSize,squareHelp,nbAreas,nbConnectors,areas,
             text(surface,str(area.id),(squareSize*3)//5,(0,0,0),"center",center[0],center[1])
 
 
-def displayInfos(surface,shift,squareSize,square):
+def displayInfos(surface,shift,squareSize,square,index = None):
     X,Y = shift
     x = (square.x+0.5)*squareSize+X
     y = (square.y+0.5)*squareSize+Y
     pygame.draw.circle(surface,(245,245,245),(x,y),squareSize*(3/8))
     pygame.draw.circle(surface,(50,50,50),(x,y),squareSize*(3/8),2)
-    text(surface,"i",int(squareSize*(1/2)),(50,50,50),"center",x,y)
+
+    msg = "i"
+    if index != None:
+        msg += str(index)
+    text(surface,msg,int(squareSize*(1/2)),(50,50,50),"center",x,y)
 
 
-
-def displayMonster(window,shift,squareSize,square):
+def displayMonster(window,shift,squareSize,square,index=None):
     X,Y = shift
     xPos = square.x*squareSize
     Ypos = square.y*squareSize
@@ -68,6 +71,9 @@ def displayMonster(window,shift,squareSize,square):
     monsterIcon = pygame.image.load("data/images/monster.png")
     monsterIcon= pygame.transform.scale(monsterIcon,(squareSize-2*border,squareSize-2*border))
     window.blit(monsterIcon,(X+xPos+border,Y+Ypos+border))
+
+    if index != None:
+        text(window,str(index),int(squareSize*(1/2)),(50,50,50),"topright",X+(square.x+1)*squareSize,Y+Ypos)
 
 
 def displayRock(window,shift,squareSize,square):
