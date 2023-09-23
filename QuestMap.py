@@ -7,11 +7,11 @@ import json
 
 
 class QuestMap:
-    def __init__(self,doors=[],rocks=[],entities=[],aggregatedRooms=[],informations=[],traps=[],treasures=[]):
+    def __init__(self,doors=[],rocks=[],entities=[],aggregatedRooms=[],annotations=[],traps=[],treasures=[]):
         self.doors = doors
         self.rocks = rocks
         self.entities = entities
-        self.informations = informations
+        self.annotations = annotations
         self.traps = traps
         self.treasures = treasures
         self.aggregatedRooms = aggregatedRooms
@@ -29,19 +29,19 @@ class QuestMap:
 
     @classmethod
     def fromDict(cls,dict):
-        listsToFill = {"doors":[],"rocks":[],"traps":[],"treasures":[],"entities":[],"aggregatedRooms":[],"informations":[]}
-        construtorsToUse = {"doors":Door.fromDict,"rocks":Rock.fromDict,"traps":Trap.fromDict,"treasures":Treasure.fromDict,"entities":Entity.fromDict,"aggregatedRooms":listToTupleRec,"informations":Informations.fromDict}
+        listsToFill = {"doors":[],"rocks":[],"traps":[],"treasures":[],"entities":[],"aggregatedRooms":[],"annotations":[]}
+        construtorsToUse = {"doors":Door.fromDict,"rocks":Rock.fromDict,"traps":Trap.fromDict,"treasures":Treasure.fromDict,"entities":Entity.fromDict,"aggregatedRooms":listToTupleRec,"annotations":Informations.fromDict}
 
         for key in listsToFill:
             for thing in dict[key]:
                 listsToFill[key] += [construtorsToUse[key](thing)]
 
-        return cls(listsToFill["doors"],listsToFill["rocks"],listsToFill["entities"],listsToFill["aggregatedRooms"],listsToFill["informations"],listsToFill["traps"],listsToFill["treasures"])
+        return cls(listsToFill["doors"],listsToFill["rocks"],listsToFill["entities"],listsToFill["aggregatedRooms"],listsToFill["annotations"],listsToFill["traps"],listsToFill["treasures"])
 
 
     def toJSON(self):
-        JSONdic = {"doors":[],"rocks":[],"traps":[],"treasures":[],"entities":[],"informations":[]}
-        listsToUse = {"doors":self.doors,"rocks":self.rocks,"traps":self.traps,"treasures":self.treasures,"entities":self.entities,"informations":self.informations}
+        JSONdic = {"doors":[],"rocks":[],"traps":[],"treasures":[],"entities":[],"annotations":[]}
+        listsToUse = {"doors":self.doors,"rocks":self.rocks,"traps":self.traps,"treasures":self.treasures,"entities":self.entities,"annotations":self.annotations}
 
         for key in JSONdic:
             for thing in listsToUse[key]:
@@ -61,7 +61,7 @@ class QuestMap:
         self.doors = []
         self.rocks = []
         self.entities = []
-        self.informations = []
+        self.annotations = []
         for connector in questGraph.connectors:
             if connector.type == "Rock" and connector.open == False:
                 for square in connector.squares:
@@ -89,17 +89,17 @@ class QuestMap:
             item.display(surface,shift,squareSize)
         for index,entity in enumerate(self.entities):
             entity.display(surface,shift,squareSize,index+1)
-        for index,infos in enumerate(self.informations):
+        for index,infos in enumerate(self.annotations):
             infos.display(surface,shift,squareSize,index+1)
 
     def itemAt(self,square):
-        for item in self.rocks+self.entities+self.informations+self.traps+self.treasures:
+        for item in self.rocks+self.entities+self.annotations+self.traps+self.treasures:
             if item.square.equal(square):
                 return item
         return None
 
     def removeItemAT(self,item,square):
-        for itemsList in [self.rocks,self.entities,self.informations,self.traps,self.treasures]:
+        for itemsList in [self.rocks,self.entities,self.annotations,self.traps,self.treasures]:
             if item in itemsList:
                 itemsList.remove(item)
                 return

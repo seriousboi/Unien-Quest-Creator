@@ -27,7 +27,7 @@ def mainProcess(variables):
 
     #hiboxes definition
     #upper buttons
-    for index,buttonName in enumerate(["Door","Rock","Trap","Treasure","Monster","Informations","edit","fuseRooms","resetMap"]):
+    for index,buttonName in enumerate(["Door","Rock","Trap","Treasure","Monster","Annotation","edit","fuseRooms","resetMap"]):
         variables["buttons"][buttonName].rectangle = pygame.Rect(xMargin,(index*1.25+1/3)*squareSize,medButWidth,medButHeight)
 
     #lower buttons
@@ -105,8 +105,8 @@ def placeOrEditItem(variables,event):
                         variables["currentMap"].treasures += [Treasure(square)]
                     elif currentItem == "Monster":
                         variables["currentMap"].entities += [Entity(square.x,square.y)]
-                    elif currentItem == "Informations":
-                        variables["currentMap"].informations += [Informations(square)]
+                    elif currentItem == "Annotation":
+                        variables["currentMap"].annotations += [Informations(square)]
 
                 else:
                     variables["currentMap"].removeItemAT(item,square)
@@ -124,7 +124,7 @@ def editItem(variables,item):
     elif type(item) == Informations:
         TEvariables = copy(variables)
         TEvariables["text"] = item.infos
-        textEditor.run(variables["window"],TEvariables,"editing informations text")
+        textEditor.run(variables["window"],TEvariables,"editing annotation text")
         item.infos = TEvariables["text"]
         if TEvariables["state"] == "quitting":
             variables["state"] = "quitting"
