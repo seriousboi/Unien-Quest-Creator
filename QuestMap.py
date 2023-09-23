@@ -100,9 +100,9 @@ class QuestMap:
         for door in self.doors:
             door.display(surface,shift,squareSize)
         for index,entity in enumerate(self.entities):
-            entity.display(surface,shift,squareSize,index)
+            entity.display(surface,shift,squareSize,index+1)
         for index,infos in enumerate(self.informations):
-            infos.display(surface,shift,squareSize,index)
+            infos.display(surface,shift,squareSize,index+1)
 
     def itemAt(self,square):
         for item in self.rocks+self.entities+self.informations:

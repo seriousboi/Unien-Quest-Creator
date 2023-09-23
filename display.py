@@ -62,18 +62,21 @@ def displayInfos(surface,shift,squareSize,square,index = None):
     text(surface,msg,int(squareSize*(1/2)),(50,50,50),"center",x,y)
 
 
-def displayMonster(window,shift,squareSize,square,index=None):
+def displayMonster(window,shift,squareSize,square,index=None,image=None):
     X,Y = shift
     xPos = square.x*squareSize
     Ypos = square.y*squareSize
-
     border = 2
-    monsterIcon = pygame.image.load("data/images/monster.png")
-    monsterIcon= pygame.transform.scale(monsterIcon,(squareSize-2*border,squareSize-2*border))
+
+    if image == None:
+        monsterIcon = pygame.image.load("data/images/monster.png")
+        monsterIcon = pygame.transform.scale(monsterIcon,(squareSize-2*border,squareSize-2*border))
+    else:
+        monsterIcon = pygame.transform.scale(image,(squareSize-2*border,squareSize-2*border))
     window.blit(monsterIcon,(X+xPos+border,Y+Ypos+border))
 
     if index != None:
-        text(window,str(index),int(squareSize*(1/2)),(50,50,50),"topright",X+(square.x+1)*squareSize,Y+Ypos)
+        text(window,str(index),int(squareSize*(1/2)),(0,0,0),"center",X+(square.x+1)*squareSize,Y+Ypos)
 
 
 def displayRock(window,shift,squareSize,square):

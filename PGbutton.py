@@ -138,7 +138,6 @@ class TextBox(Button):
                 elif event.key == pygame.K_BACKSPACE:
                     self.text = self.text[:-1]
                 else:
-                    print(event.scancode)
                     if event.scancode in keyboardDic:
                         char = keyboardDic[event.scancode]
                         if pygame.key.get_pressed()[pygame.K_RSHIFT] or pygame.key.get_pressed()[pygame.K_LSHIFT]:
