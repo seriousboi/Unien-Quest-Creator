@@ -2,13 +2,18 @@ from constAndStyle import *
 from PGinterfaces import *
 from display import *
 from Entity import *
+from editText import *
+from copy import copy
+
+
 
 
 def EEinitialize(variables):
     global statsDic,statsTypes
     entity = variables["entity"]
-    statsDic ={"Name":entity.name,"Side":entity.side,"Strength":entity.strength,"Dexterity":entity.dexterity,"Constitution":entity.constitution,"Weapon Damage":entity.weaponDamage,"Health":entity.health,"Critical Health":entity.criticalHealth,"Informations":entity.infos}
-    statsTypes ={"Name":"text","Side":"text","Strength":"number","Dexterity":"number","Constitution":"number","Weapon Damage":"number","Health":"number","Critical Health":"number","Informations":"text"}
+    variables["Informations"] = entity.infos
+    statsDic ={"Name":entity.name,"Side":entity.side,"Strength":entity.strength,"Dexterity":entity.dexterity,"Constitution":entity.constitution,"Weapon Damage":entity.weaponDamage,"Health":entity.health,"Critical Health":entity.criticalHealth}
+    statsTypes ={"Name":"text","Side":"text","Strength":"number","Dexterity":"number","Constitution":"number","Weapon Damage":"number","Health":"number","Critical Health":"number"}
 
     squareSize = variables["squareSize"]
     for statName in statsDic:
@@ -20,10 +25,32 @@ def EEinitialize(variables):
         variables["buttons"][statName].text = str(statsDic[statName])
 
 
+def EEmainProcess(variables):
+    global mapLength,mapWidth
+    squareSize = variables["squareSize"]
+    xMargin = (mapLength+2/3)*squareSize
+    medButWidth = 5*squareSize
+    longButWidth = 7*squareSize
+    medButHeight = squareSize
+    namesWidth = 3*squareSize
+
+    variables["buttons"]["apply"].rectangle = pygame.Rect(xMargin,15.75*squareSize,medButWidth,medButHeight)
+    variables["buttons"]["back"].rectangle = pygame.Rect(xMargin,17*squareSize,medButWidth,medButHeight)
+
+    for index,statName in enumerate(statsDic):
+        variables["buttons"][statName].x = xMargin+namesWidth+4
+        variables["buttons"][statName].y = (index*1.25+1/3)*squareSize
+        variables["buttons"][statName].update()
+
+    variables["buttons"]["editInfos"].rectangle = pygame.Rect(xMargin+namesWidth+4,((index+1)*1.25+1/3)*squareSize,4*squareSize,squareSize-5)
+
+
 def EEmainDisplay(window,variables):
     global mapLength,mapWidth,itemNames
     squareSize = variables["squareSize"]
     shift = variables["shift"]
+    xMargin = (mapLength+2/3)*squareSize
+    namesWidth = 3*squareSize
 
     if variables["mainVars"]["currentMap"] != None:
         variables["mainVars"]["currentMap"].display(window,variables["shift"],squareSize)
@@ -36,29 +63,14 @@ def EEmainDisplay(window,variables):
     button = variables["buttons"]["back"]
     displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,"Back",25,(50,50,50))
 
-    xMargin = (mapLength+2/3)*squareSize
-    namesWidth = 3*squareSize
     for index,statName in enumerate(statsDic):
         variables["buttons"][statName].display(window)
         text(window,statName,squareSize//2,(50,50,50),"topright",xMargin+namesWidth,(index*1.25+1/3)*squareSize)
 
+    button = variables["buttons"]["editInfos"]
+    displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,variables["Informations"][0:9]+"...",25,(50,50,50))
+    text(window,"Informations",squareSize//2,(50,50,50),"topright",xMargin+namesWidth,((index+1)*1.25+1/3)*squareSize)
 
-def EEmainProcess(variables):
-    global mapLength,mapWidth
-    squareSize = variables["squareSize"]
-    xMargin = (mapLength+2/3)*squareSize
-    medButWidth = 5*squareSize
-    longButWidth = 7*squareSize
-    medButHeight = squareSize
-
-    variables["buttons"]["apply"].rectangle = pygame.Rect(xMargin,15.75*squareSize,medButWidth,medButHeight)
-    variables["buttons"]["back"].rectangle = pygame.Rect(xMargin,17*squareSize,medButWidth,medButHeight)
-
-    namesWidth = 3*squareSize
-    for index,statName in enumerate(statsDic):
-        variables["buttons"][statName].x = xMargin+namesWidth+4
-        variables["buttons"][statName].y = (index*1.25+1/3)*squareSize
-        variables["buttons"][statName].update()
 
 def EEback(variables,event):
     variables["state"] = "inEditor"
@@ -87,8 +99,7 @@ def EEapply(variables,event):
     entity.weaponDamage = statsDic["Weapon Damage"]
     entity.health = statsDic["Health"]
     entity.criticalHealth = statsDic["Critical Health"]
-    entity.infos = statsDic["Informations"]
-
+    entity.infos = variables["Informations"]
 
 
 def isNumber(string):
@@ -99,11 +110,20 @@ def isNumber(string):
         return False
 
 
+def EEeditInfos(variables,event):
+    TEvariables = copy(variables)
+    TEvariables["text"] = variables["Informations"]
+    textEditor.run(variables["window"],TEvariables,"editing entity text")
+    variables["Informations"] = TEvariables["text"]
+    if TEvariables["state"] == "quitting":
+        variables["state"] = "quitting"
+
 entityEditor = Interface()
 
 entityEditor.initialize = EEinitialize
 entityEditor.mainDisplay = EEmainDisplay
 entityEditor.mainProcess = EEmainProcess
 
+entityEditor.buttons += [Button("editInfos",butInCol,butOutCol,EEeditInfos,activeInColor=butPresInCol,activeOutColor=butPresOutCol)]
 entityEditor.buttons += [Button("apply",otherInCol,otherOutCol,EEapply)]
 entityEditor.buttons += [Button("back",otherInCol,otherOutCol,EEback)]
