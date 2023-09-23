@@ -112,14 +112,18 @@ def placeOrEditItem(variables,event):
 def editItem(variables,item):
     if type(item) == Entity:
         EEvariables = copy(variables)
-        EEvariables["mainVars"] = variables
         EEvariables["entity"] = item
         window = variables["window"]
         entityEditor.run(window,EEvariables,"editing entity")
         if EEvariables["state"] == "quitting":
             variables["state"] = "quitting"
     elif type(item) == Informations:
-        print("infos")
+        TEvariables = copy(variables)
+        TEvariables["text"] = item.infos
+        textEditor.run(variables["window"],TEvariables,"editing informations text")
+        item.infos = TEvariables["text"]
+        if TEvariables["state"] == "quitting":
+            variables["state"] = "quitting"
 
 
 
@@ -184,10 +188,10 @@ def saveMap(variables,event):
 
 def loadMap(variables,event):
     MSvariables = copy(variables)
-    MSvariables["mainVars"] = variables
-
     window = variables["window"]
     mapSelectInterface.run(window,MSvariables,"selecting")
+    if MSvariables["currentMap"] != None:
+        variables["currentMap"] = MSvariables["currentMap"]
 
     if MSvariables["state"] == "quitting":
         variables["state"] = "quitting"
@@ -196,11 +200,8 @@ def loadMap(variables,event):
 
 def fusionSelect(variables,event):
     FSvariables = copy(variables)
-    FSvariables["mainVars"] = variables
-
     window = variables["window"]
     fusionSelectInterface.run(window,FSvariables,"selecting")
-
     if FSvariables["state"] == "quitting":
         variables["state"] = "quitting"
 

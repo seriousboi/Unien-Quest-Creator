@@ -53,8 +53,8 @@ def FSmainDisplay(window,variables):
     shift = variables["shift"]
     xMargin = (mapLength+2/3)*squareSize
 
-    if variables["mainVars"]["currentMap"] != None:
-        variables["mainVars"]["currentMap"].display(window,variables["shift"],squareSize)
+    if variables["currentMap"] != None:
+        variables["currentMap"].display(window,variables["shift"],squareSize)
 
     pygame.draw.rect(window,(250,230,180),(mapLength*squareSize,0,8*squareSize,mapWidth*squareSize),0)
     pygame.draw.line(window,(200,184,144),(mapLength*squareSize,0),(mapLength*squareSize,mapWidth*squareSize),6)
