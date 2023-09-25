@@ -12,8 +12,8 @@ def EEinitialize(variables):
     global statsDic,statsTypes
     entity = variables["entity"]
     variables["Informations"] = entity.infos
-    statsDic ={"Name":entity.name,"Side":entity.side,"Species":entity.species,"Strength":entity.strength,"Dexterity":entity.dexterity,"Constitution":entity.constitution,"Weapon Damage":entity.weaponDamage,"Health":entity.health,"Critical Health":entity.criticalHealth}
-    statsTypes ={"Name":"text","Side":"text","Species":"text","Strength":"number","Dexterity":"number","Constitution":"number","Weapon Damage":"number","Health":"number","Critical Health":"number"}
+    statsDic ={"Name":entity.name,"Side":entity.side,"Species":entity.species,"Strength":entity.strength,"Dexterity":entity.dexterity,"Constitution":entity.constitution,"Weapon":entity.weaponName,"Weapon Damage":entity.weaponDamage,"Stamina":entity.stamina,"Health":entity.health,"Critical Health":entity.criticalHealth}
+    statsTypes ={"Name":"text","Side":"text","Species":"text","Strength":"number","Dexterity":"number","Constitution":"number","Weapon":"text","Weapon Damage":"number","Stamina":"number","Health":"number","Critical Health":"number"}
 
     squareSize = variables["squareSize"]
     for statName in statsDic:
@@ -97,7 +97,9 @@ def EEapply(variables,event):
     entity.strength = statsDic["Strength"]
     entity.dexterity = statsDic["Dexterity"]
     entity.constitution = statsDic["Constitution"]
+    entity.weaponName = statsDic["Weapon"]
     entity.weaponDamage = statsDic["Weapon Damage"]
+    entity.stamina = statsDic["Stamina"]
     entity.health = statsDic["Health"]
     entity.criticalHealth = statsDic["Critical Health"]
     entity.infos = variables["Informations"]
