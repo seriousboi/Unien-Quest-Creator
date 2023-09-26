@@ -326,14 +326,18 @@
       "name": "Braden",
       "side": "enemy",
       "species": "human",
-      "stamina": 5,
+      "strongAtkCost": 10,
+      "fastAtkCost": 10,
+      "counterAtkCost": 5,
+      "stamina": 50,
       "health": 100,
       "criticalHealth": 70,
       "strength": 5,
       "dexterity": 14,
       "constitution": 6,
-      "weaponName": "bruh",
-      "weaponDamage": 15,
+      "weaponName": "Long Knife",
+      "weaponDamage": 17,
+      "range": "normal",
       "square": {
         "x": 13,
         "y": 8
@@ -344,6 +348,9 @@
       "name": "Anonymous",
       "side": "enemy",
       "species": "orc",
+      "strongAtkCost": 10,
+      "fastAtkCost": 10,
+      "counterAtkCost": 10,
       "stamina": 5,
       "health": 100,
       "criticalHealth": 50,
@@ -352,6 +359,7 @@
       "constitution": 6,
       "weaponName": "bruh",
       "weaponDamage": 15,
+      "range": "normal",
       "square": {
         "x": 7,
         "y": 7
@@ -362,6 +370,9 @@
       "name": "Anonymous",
       "side": "enemy",
       "species": "skeleton",
+      "strongAtkCost": 10,
+      "fastAtkCost": 10,
+      "counterAtkCost": 10,
       "stamina": 5,
       "health": 100,
       "criticalHealth": 50,
@@ -370,6 +381,7 @@
       "constitution": 6,
       "weaponName": "bruh",
       "weaponDamage": 15,
+      "range": "normal",
       "square": {
         "x": 8,
         "y": 2
@@ -380,6 +392,9 @@
       "name": "Anonymous",
       "side": "enemy",
       "species": "mummy",
+      "strongAtkCost": 10,
+      "fastAtkCost": 10,
+      "counterAtkCost": 10,
       "stamina": 5,
       "health": 100,
       "criticalHealth": 50,
@@ -388,6 +403,7 @@
       "constitution": 6,
       "weaponName": "bruh",
       "weaponDamage": 15,
+      "range": "normal",
       "square": {
         "x": 7,
         "y": 3
@@ -398,6 +414,9 @@
       "name": "Anonymous",
       "side": "enemy",
       "species": "skeleton",
+      "strongAtkCost": 10,
+      "fastAtkCost": 10,
+      "counterAtkCost": 10,
       "stamina": 5,
       "health": 100,
       "criticalHealth": 50,
@@ -406,6 +425,7 @@
       "constitution": 6,
       "weaponName": "bruh",
       "weaponDamage": 15,
+      "range": "normal",
       "square": {
         "x": 5,
         "y": 3
@@ -416,6 +436,9 @@
       "name": "Anonymous",
       "side": "enemy",
       "species": "goblin",
+      "strongAtkCost": 10,
+      "fastAtkCost": 10,
+      "counterAtkCost": 10,
       "stamina": 5,
       "health": 100,
       "criticalHealth": 50,
@@ -424,6 +447,7 @@
       "constitution": 6,
       "weaponName": "bruh",
       "weaponDamage": 15,
+      "range": "normal",
       "square": {
         "x": 6,
         "y": 10
@@ -434,6 +458,9 @@
       "name": "Anonymous",
       "side": "enemy",
       "species": "goblin",
+      "strongAtkCost": 10,
+      "fastAtkCost": 10,
+      "counterAtkCost": 10,
       "stamina": 5,
       "health": 100,
       "criticalHealth": 50,
@@ -442,6 +469,7 @@
       "constitution": 6,
       "weaponName": "bruh",
       "weaponDamage": 15,
+      "range": "normal",
       "square": {
         "x": 5,
         "y": 13
@@ -452,6 +480,9 @@
       "name": "Anonymous",
       "side": "enemy",
       "species": "goblin",
+      "strongAtkCost": 10,
+      "fastAtkCost": 10,
+      "counterAtkCost": 10,
       "stamina": 5,
       "health": 100,
       "criticalHealth": 50,
@@ -460,6 +491,7 @@
       "constitution": 6,
       "weaponName": "bruh",
       "weaponDamage": 15,
+      "range": "normal",
       "square": {
         "x": 6,
         "y": 16

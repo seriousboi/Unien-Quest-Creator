@@ -10,8 +10,9 @@ class Entity():
                  name="Anonymous",side="enemy",species="Unkown",
                  strength=6,dexterity=6,constitution=6,
                  weaponName="unkown weapon",weaponDamage=15,
-                 stamina = 50,health=100,criticalHealth=50,
-                 infos="",control="AI"):
+                 stamina=50,strongAtkCost=10,fastAtkCost=10,counterAtkCost=10,
+                 health=100,criticalHealth=50,
+                 range="normal",infos="",control="AI"):
         global entityAmount
         self.x = x
         self.y = y
@@ -29,8 +30,12 @@ class Entity():
         self.weaponName = weaponName
         self.weaponDamage = weaponDamage
         self.stamina = stamina
+        self.strongAtkCost = strongAtkCost
+        self.fastAtkCost = fastAtkCost
+        self.counterAtkCost = counterAtkCost
         self.health = health
         self.criticalHealth = criticalHealth
+        self.range = range
         self.index = entityAmount
         entityAmount += 1
 
@@ -39,13 +44,20 @@ class Entity():
 
     @classmethod
     def fromDict(cls,dict):
-        return cls(dict["square"]["x"],dict["square"]["y"],dict["name"],dict["side"],dict["species"],dict["strength"],dict["dexterity"],dict["constitution"],dict["weaponName"],dict["weaponDamage"],dict["stamina"],dict["health"],dict["criticalHealth"],dict["infos"])
+        return cls(dict["square"]["x"],dict["square"]["y"],
+                   dict["name"],dict["side"],dict["species"],
+                   dict["strength"],dict["dexterity"],dict["constitution"],
+                   dict["weaponName"],dict["weaponDamage"],
+                   dict["stamina"],dict["strongAtkCost"],dict["fastAtkCost"],dict["counterAtkCost"],
+                   dict["health"],dict["criticalHealth"],
+                   dict["range"],dict["infos"])
 
     def toJSON(self):
         return {"name":self.name,"side":self.side,"species":self.species,
+                "strongAtkCost":self.strongAtkCost,"fastAtkCost":self.fastAtkCost,"counterAtkCost":self.counterAtkCost,
                 "stamina":self.stamina,"health":self.health,"criticalHealth":self.criticalHealth,
                 "strength":self.strength,"dexterity":self.dexterity,"constitution":self.constitution,
-                "weaponName":self.weaponName,"weaponDamage":self.weaponDamage,
+                "weaponName":self.weaponName,"weaponDamage":self.weaponDamage,"range":self.range,
                 "square":self.square.toJSON(),
                 "infos":self.infos}
 

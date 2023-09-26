@@ -12,8 +12,17 @@ def EEinitialize(variables):
     global statsDic,statsTypes
     entity = variables["entity"]
     variables["Informations"] = entity.infos
-    statsDic ={"Name":entity.name,"Side":entity.side,"Species":entity.species,"Strength":entity.strength,"Dexterity":entity.dexterity,"Constitution":entity.constitution,"Weapon":entity.weaponName,"Weapon Damage":entity.weaponDamage,"Stamina":entity.stamina,"Health":entity.health,"Critical Health":entity.criticalHealth}
-    statsTypes ={"Name":"text","Side":"text","Species":"text","Strength":"number","Dexterity":"number","Constitution":"number","Weapon":"text","Weapon Damage":"number","Stamina":"number","Health":"number","Critical Health":"number"}
+    statsDic ={"Name":entity.name,"Side":entity.side,"Species":entity.species,
+               "Strength":entity.strength,"Dexterity":entity.dexterity,"Constitution":entity.constitution,
+               "Health":entity.health,"Critical Health":entity.criticalHealth,
+               "Stamina":entity.stamina,"Strong attack cost":entity.strongAtkCost,"Fast attack cost":entity.fastAtkCost,"Counter atk. cost":entity.counterAtkCost,
+               "Weapon":entity.weaponName,"Weapon Damage":entity.weaponDamage,"Range":entity.range}
+    statsTypes ={"Name":"text","Side":"text","Species":"text",
+                 "Strength":"number","Dexterity":"number","Constitution":"number",
+                 "Weapon":"text","Weapon Damage":"number","Range":"text",
+                 "Stamina":"number",
+                 "Strong attack cost":"number","Fast attack cost":"number","Counter atk. cost":"number",
+                 "Health":"number","Critical Health":"number"}
 
     squareSize = variables["squareSize"]
     for statName in statsDic:
@@ -21,7 +30,7 @@ def EEinitialize(variables):
             length = 4*squareSize
         elif statsTypes[statName] == "number":
             length = 1*squareSize
-        variables["buttons"][statName] = TextBox(statName,squareSize//2,length,squareSize-5,inactiveInColor=butInCol,inactiveOutColor=butOutCol,activeInColor=butPresInCol,activeOutColor=butPresOutCol)
+        variables["buttons"][statName] = TextBox(statName,squareSize//2,length,(3*squareSize)//4,inactiveInColor=butInCol,inactiveOutColor=butOutCol,activeInColor=butPresInCol,activeOutColor=butPresOutCol)
         variables["buttons"][statName].text = str(statsDic[statName])
 
 
@@ -34,15 +43,15 @@ def EEmainProcess(variables):
     medButHeight = squareSize
     namesWidth = 3*squareSize
 
-    variables["buttons"]["apply"].rectangle = pygame.Rect(xMargin,15.75*squareSize,medButWidth,medButHeight)
-    variables["buttons"]["back"].rectangle = pygame.Rect(xMargin,17*squareSize,medButWidth,medButHeight)
+    variables["buttons"]["apply"].rectangle = pygame.Rect(xMargin+(1)*squareSize,16.5*squareSize,medButWidth,medButHeight)
+    variables["buttons"]["back"].rectangle = pygame.Rect(xMargin+(1)*squareSize,17.75*squareSize,medButWidth,medButHeight)
 
     for index,statName in enumerate(statsDic):
         variables["buttons"][statName].x = xMargin+namesWidth+4
-        variables["buttons"][statName].y = (index*1.25+1/3)*squareSize
+        variables["buttons"][statName].y = (index+1/3)*squareSize
         variables["buttons"][statName].update()
 
-    variables["buttons"]["editInfos"].rectangle = pygame.Rect(xMargin+namesWidth+4,((index+1)*1.25+1/3)*squareSize,4*squareSize,squareSize-5)
+    variables["buttons"]["editInfos"].rectangle = pygame.Rect(xMargin+namesWidth+4,((index+1)+1/3)*squareSize,4*squareSize,(3*squareSize)//4)
 
 
 def EEmainDisplay(window,variables):
@@ -65,11 +74,11 @@ def EEmainDisplay(window,variables):
 
     for index,statName in enumerate(statsDic):
         variables["buttons"][statName].display(window)
-        text(window,statName,squareSize//2,(50,50,50),"topright",xMargin+namesWidth,(index*1.25+1/3)*squareSize)
+        text(window,statName,squareSize//2,(50,50,50),"topright",xMargin+namesWidth,(index+1/3)*squareSize)
 
     button = variables["buttons"]["editInfos"]
     displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,variables["Informations"][0:9]+"...",25,(50,50,50))
-    text(window,"Informations",squareSize//2,(50,50,50),"topright",xMargin+namesWidth,((index+1)*1.25+1/3)*squareSize)
+    text(window,"Informations",squareSize//2,(50,50,50),"topright",xMargin+namesWidth,((index+1)+1/3)*squareSize)
 
 
 def EEback(variables,event):
@@ -100,8 +109,12 @@ def EEapply(variables,event):
     entity.weaponName = statsDic["Weapon"]
     entity.weaponDamage = statsDic["Weapon Damage"]
     entity.stamina = statsDic["Stamina"]
+    entity.strongAtkCost = statsDic["Strong attack cost"]
+    entity.fastAtkCost = statsDic["Fast attack cost"]
+    entity.counterAtkCost = statsDic["Counter atk. cost"]
     entity.health = statsDic["Health"]
     entity.criticalHealth = statsDic["Critical Health"]
+    entity.range = statsDic["Range"]
     entity.infos = variables["Informations"]
 
 
