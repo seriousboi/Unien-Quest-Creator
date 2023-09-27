@@ -1,4 +1,13 @@
 
+#game constants
+mapLength = 26
+mapWidth = 19
+itemNames = ["Door","Rock","Monster","Trap","Treasure","Annotation"] #known items
+speciesList = ["orc","goblin","skeleton","zombie","mummy","fimir","warrior","demon"]
+
+strengthColor = (247, 153, 2)
+dexterityColor = (188, 227, 235)
+constitutionColor = (217, 41, 97)
 
 #style constants
 butInCol = (215,174,129) #inside color of buttons
@@ -19,12 +28,6 @@ otherOutCol = generatorOutCol
 
 generatorOptInCol = [170,170,210]
 generatorOptOutCol = [120,120,160]
-
-
-#game constants
-mapLength = 26
-mapWidth = 19
-itemNames = ["Door","Rock","Monster","Trap","Treasure","Annotation"] #known items
 
 nbMaxDoors = 21
 

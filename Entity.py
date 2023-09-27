@@ -62,8 +62,8 @@ class Entity():
                 "infos":self.infos}
 
     def display(self,surface,shift,squareSize,index=None):
+        global speciesList
         image = None
-        speciesList = ["orc","goblin","skeleton","zombie","mummy","fimir","warrior","demon"]
         if self.species in speciesList:
             image = pygame.image.load("data/images/"+self.species+".png")
         displayMonster(surface,shift,squareSize,self.square,index,image)
