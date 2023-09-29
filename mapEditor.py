@@ -177,7 +177,7 @@ def saveImage(variables,event):
     window = variables["window"]
     imageOutput = Surface((squareSize*mapLength,squareSize*mapWidth))
     imageOutput.blit(window,(0,0))
-    pygame.image.save(imageOutput,"map.png")
+    pygame.image.save(imageOutput,"output/map.png")
     print("Map saved to map.png")
 
 
