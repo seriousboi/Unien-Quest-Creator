@@ -65,7 +65,10 @@ class Entity():
         global speciesList
         image = None
         if self.species in speciesList:
-            image = pygame.image.load("data/images/"+self.species+".png")
+            if self.species in monsters:
+                image = pygame.image.load("data/images/"+self.species+".png")
+            elif  self.species in nonMonsters:
+                image = pygame.image.load("data/images/icons/"+self.species+".png")
         displayMonster(surface,shift,squareSize,self.square,index,image)
 
 

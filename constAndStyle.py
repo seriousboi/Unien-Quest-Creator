@@ -3,11 +3,14 @@
 mapLength = 26
 mapWidth = 19
 itemNames = ["Door","Rock","Monster","Trap","Treasure","Annotation"] #known items
-speciesList = ["orc","goblin","skeleton","zombie","mummy","fimir","warrior","demon"]
+monsters = ["orc","goblin","skeleton","zombie","mummy","fimir","warrior","demon"]
+nonMonsters = ["human","elve","dwarf"]
+speciesList = monsters+nonMonsters
 
-strengthColor = (247, 153, 2)
-dexterityColor = (188, 227, 235)
-constitutionColor = (217, 41, 97)
+
+statsColors = {"strength":(252, 202, 0),"dexterity":(130, 209, 207),"constitution":(252, 3, 107),
+          "intelligence":(11, 3, 252),"perception":(68, 163, 8),"charisma":(175, 2, 232),
+          "health":(255, 0, 0),"stamina":(113, 227, 174)}
 
 #style constants
 butInCol = (215,174,129) #inside color of buttons
