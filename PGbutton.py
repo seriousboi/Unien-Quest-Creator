@@ -75,7 +75,7 @@ class TextBox(Button):
         self.lineBreaks = [0,0]
 
         if fontName == "default":
-            font = pygame.font.Font("data/blackchancery/BLKCHCRY.TTF", textSize)
+            font = pygame.font.Font("data/fonts/Jost/Jost-VariableFont_wght.ttf", textSize)
         else:
             font = pygame.font.Font(fontName,textSize)
         self.font = font
@@ -118,7 +118,8 @@ class TextBox(Button):
                     testSurface = self.font.render(self.text[lineStart:charIndex+1],True,self.textColor)
                     newLineWidth = testSurface.get_width() + 10
                     if newLineWidth > self.maxLineWidth:
-                        self.lineBreaks += [charIndex]
+                        breakIndex = 1 + findFirstSpaceBefore(self.text,charIndex)
+                        self.lineBreaks += [breakIndex]
                         break
             else:
                 done = True
@@ -164,6 +165,13 @@ class TextBox(Button):
                     lineEnd = self.lineBreaks[lineIndex+1]
                     lineSurface = self.font.render(self.text[lineStart:lineEnd],True,self.textColor)
                     surface.blit(lineSurface,(self.rectangle.x+5,self.rectangle.y+5+lineIndex*(self.minHeight-5)))
+
+
+def findFirstSpaceBefore(text,startCharIndex):
+    for charIndex in range(startCharIndex,-1,-1):
+        if text[charIndex] == " ":
+            return charIndex
+    return None
 
 
 keyboardDic = {20: 'a', 5: 'b', 6: 'c', 7: 'd', 8: 'e', 9: 'f', 10: 'g', 11: 'h', 12: 'i', 13: 'j', 14: 'k', 15: 'l', 51: 'm', 17: 'n', 18: 'o', 19: 'p', 4: 'q', 21: 'r', 22: 's', 23: 't', 24: 'u', 25: 'v', 29: 'w', 27: 'x', 28: 'y', 26: 'z',

@@ -221,7 +221,7 @@ def displayButton(surface,buttonRectangle,borderWidth,borderCurve,inColor,outCol
 def text(surface,message,size,color,anchor,x,y,fontName = "default"):
 
     if fontName == "default":
-        font = pygame.font.Font("data/blackchancery/BLKCHCRY.TTF", size)
+        font = pygame.font.Font("data/fonts/blackchancery/BLKCHCRY.TTF", size)
     else:
         font = pygame.font.Font(fontName, size)
 

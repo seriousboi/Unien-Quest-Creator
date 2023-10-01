@@ -4,19 +4,110 @@ from display import *
 import pygame
 
 from Entity import *
+from Item import *
 
 cardWidth = 59
 cardHeight = 86
-standardBackGroundColor=(250,230,180)
-standardBorderColor=(200,184,144)
+standardBackGroundColor = (250,230,180)
+standardBorderColor = (200,184,144)
+descFontName = "data/fonts/Jost/Jost-VariableFont_wght.ttf"
+
+
+def mainDraw():
+    #outPutTest()
+    generateMovesCards()
+    #generateItemsCards()
 
 
 def outPutTest():
     pygame.init()
-    testEntity = Entity(name="Kamul",species="demon",strength=5,dexterity=10,constitution=15,weaponName="claws")
-    cardSurface = getMonsterCard(testEntity,1,5)
+    #testEntity = Entity(name="Kamul",species="demon",strength=5,dexterity=10,constitution=15,weaponName="claws")
+    #cardSurface = getMonsterCard(testEntity,1,5)
     #cardSurface = getMoveCard("feint")
+    #cardSurface = getItemCard(weapons["rapière"])
+    cardSurface = getItemCard(tools["Verrou Déployable"],borderSize=1,sizeFactor=4)
     seeOutput(cardSurface)
+
+
+def generateItemsCards():
+    global weapons,tools
+    for item in weaponsList+toolsList:
+        pygame.init()
+        cardSurface = getItemCard(item,sizeFactor=6)
+        seeOutput(cardSurface)
+        pygame.image.save(cardSurface,"output/itemsCards/"+item.name+"Card.png")
+
+
+
+def getItemCard(item,borderSize=1,sizeFactor=7):
+    global cardWidth,cardHeight,attacks,defenses
+    width = cardWidth*sizeFactor
+    height = cardHeight*sizeFactor
+    borderSize = borderSize*sizeFactor
+    textSize = width//10
+    smallTextSize = width//16
+    verySmallTextSize = width//20
+
+    #background
+    cardSurface = getCardSurface(width,height,borderSize)
+
+    #infos on the requirements
+    highestStatReq = "health"
+    highestReq = 0
+    reqLine = ""
+    for stat in item.requirements:
+        if item.requirements[stat] > 0:
+            reqLine +=  statsAbridged[stat]+" "+str(item.requirements[stat])+"   "
+        if item.requirements[stat] > highestReq:
+            highestStatReq = stat
+            highestReq = item.requirements[stat]
+    if reqLine != "":
+        reqLine = " prérequis: " + reqLine
+
+    #item name
+    textColor = (0,0,0)
+    yMargin = borderSize*2
+    nameSurface = text(cardSurface,item.name,textSize,textColor,"midtop",width//2,yMargin)
+    yMargin += nameSurface.h + borderSize
+
+    #illustration background
+    illusSize = 5*height//12
+    borderColor = standardBorderColor
+    backGroundColor = getWhiterColor(statsColors[highestStatReq],0.8)
+    illustrationBackground = getIllustrationBackground(illusSize+6*borderSize,illusSize+2*borderSize,borderSize,backGroundColor,borderColor)
+    paste(cardSurface,illustrationBackground,(width//2,yMargin),"midtop")
+
+    #illustration
+    if item.imageFile != None:
+        illusSize = 5*height//12
+        itemIllustration = getImage(item.imageFile,illusSize,illusSize)
+        paste(cardSurface,itemIllustration,(width//2,yMargin+borderSize),"midtop")
+
+    yMargin += illustrationBackground.get_height() + borderSize
+
+    #cardType and requirements
+    xMargin = borderSize*2
+    if type(item) == Weapon:
+        cardType = "[arme]"
+    elif type(item) == Tool:
+        cardType = "[outil]"
+    yMargin += text(cardSurface,cardType+reqLine,smallTextSize,textColor,"topleft",xMargin,yMargin,descFontName).h
+
+    if type(item) == Weapon:
+        yMargin += text(cardSurface,"Dégats: "+str(item.damage),smallTextSize,textColor,"topleft",xMargin,yMargin,descFontName).h
+
+    #description
+    if item.description != None:
+        yMargin += borderSize
+        descTextSurface = pygame.Surface((width-4*borderSize,height//3),pygame.SRCALPHA)
+        drawTextLines(descTextSurface,item.description,verySmallTextSize,textColor,0.2,descFontName)
+        paste(cardSurface,descTextSurface,(xMargin,yMargin),"topleft")
+
+    #price
+    text(cardSurface,"prix: "+str(item.price),smallTextSize,textColor,"bottomright",width-2*borderSize,height-2*borderSize,descFontName)
+
+
+    return cardSurface
 
 
 def generateMovesCards():
@@ -41,11 +132,7 @@ def getMoveCard(move,borderSize=1,sizeFactor=7):
     textSize = width//10
     textColor = (0,0,0)
     yMargin = borderSize*2
-    if move in attacks:
-        moveName = move + " attack"
-    else:
-        moveName = move
-    nameSurface = text(cardSurface,moveName,textSize,textColor,"midtop",width//2,yMargin)
+    nameSurface = text(cardSurface,movesToFr[move],textSize,textColor,"midtop",width//2,yMargin)
     yMargin += nameSurface.h + borderSize
 
     #illustration background
@@ -60,44 +147,46 @@ def getMoveCard(move,borderSize=1,sizeFactor=7):
     paste(cardSurface,moveIllustration,(width//2,yMargin+borderSize),"midtop")
     yMargin += illustrationBackground.get_height() + borderSize
 
-    smallTextSize = width//12
-    verySmallTextSize = width//16
+    smallTextSize = width//16
+    verySmallTextSize = width//20
     xMargin = borderSize*2
 
     #type
     if move in attacks:
-        moveType = "[attack]"
-    elif move in defenses:
-        moveType = "[defense]"
-    else:
-        moveType = "[passive]"
-    yMargin += text(cardSurface,moveType,smallTextSize,textColor,"topleft",xMargin,yMargin).h
+        moveType = "[attaque]"
+    elif move in defenses or move == "rest":
+        moveType = "[défense]"
+    yMargin += text(cardSurface,moveType,smallTextSize,textColor,"topleft",xMargin,yMargin,descFontName).h
 
     if move in attacks:
-        line = "beats: "+exchangeTable[move]+" attack and "+defenseTable[move]
-        yMargin += text(cardSurface,line,verySmallTextSize,textColor,"topleft",xMargin,yMargin).h
-        line = "loses against: "+exchangeLosingTable[move]+" attack"
-        yMargin += text(cardSurface,line,verySmallTextSize,textColor,"topleft",xMargin,yMargin).h
+        line = "Gagne contre: "+movesToFr[exchangeTable[move]]+" et "+movesToFr[defenseTable[move]]
+        yMargin += text(cardSurface,line,verySmallTextSize,textColor,"topleft",xMargin,yMargin,descFontName).h
+        line = "Perd contre: "+movesToFr[exchangeLosingTable[move]]
+        yMargin += text(cardSurface,line,verySmallTextSize,textColor,"topleft",xMargin,yMargin,descFontName).h
     elif move in defenses:
-        line = "protects from: "+defenseWinningTable[move][0]+" and "+defenseWinningTable[move][1]+" attacks"
-        yMargin += text(cardSurface,line,verySmallTextSize,textColor,"topleft",xMargin,yMargin).h
-        line = "loses against: "+defenseLosingTable[move]+" attack"
-        yMargin += text(cardSurface,line,verySmallTextSize,textColor,"topleft",xMargin,yMargin).h
+        line = "Protège contre: "+movesToFr[defenseWinningTable[move][0]]+" et "+movesToFr[defenseWinningTable[move][1]]
+        yMargin += text(cardSurface,line,verySmallTextSize,textColor,"topleft",xMargin,yMargin,descFontName).h
+        line = "Perd contre: "+movesToFr[defenseLosingTable[move]]
+        yMargin += text(cardSurface,line,verySmallTextSize,textColor,"topleft",xMargin,yMargin,descFontName).h
     else:
-        line = "loses against: any attack"
-        yMargin += text(cardSurface,line,verySmallTextSize,textColor,"topleft",xMargin,yMargin).h
+        line = "Perd contre: n'importe quelle attaque"
+        yMargin += text(cardSurface,line,verySmallTextSize,textColor,"topleft",xMargin,yMargin,descFontName).h
+
+    #throwBonus
+    if move in attacks:
+        yMargin += text(cardSurface,"Bonus de lancé: "+throwBonus[move],verySmallTextSize,textColor,"topleft",xMargin,yMargin,descFontName).h
 
     #effect text
     yMargin += borderSize
     effectTextSurface = pygame.Surface((width-4*borderSize,height//3),pygame.SRCALPHA)
-    drawTextLines(effectTextSurface,"effect: "+movesEffects[move],verySmallTextSize,textColor,0.2)
+    drawTextLines(effectTextSurface,"Effet: "+movesEffects[move],verySmallTextSize,textColor,0.2,descFontName)
     paste(cardSurface,effectTextSurface,(xMargin,yMargin),"topleft")
     return cardSurface
 
 
 def drawTextLines(surface,text,textSize,textColor,overlap=0.0,fontName="default"):
     if fontName == "default":
-        font = pygame.font.Font("data/blackchancery/BLKCHCRY.TTF", textSize)
+        font = pygame.font.Font("data/fonts/blackchancery/BLKCHCRY.TTF", textSize)
     else:
         font = pygame.font.Font(fontName,textSize)
 
@@ -347,5 +436,5 @@ def seeOutput(surface):
             return
 
 
-#outPutTest()
-generateMovesCards()
+
+mainDraw()

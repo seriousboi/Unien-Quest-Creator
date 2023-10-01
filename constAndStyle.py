@@ -12,6 +12,11 @@ statsColors = {"strength":(252, 202, 0),"dexterity":(130, 209, 207),"constitutio
           "intelligence":(11, 3, 252),"perception":(68, 163, 8),"charisma":(175, 2, 232),
           "health":(255, 0, 0),"stamina":(113, 227, 174)}
 
+statsAbridged = {"strength":"STR","dexterity":"DEX","constitution":"CONST",
+          "intelligence":"INT","perception":"PER","charisma":"CHAR",
+          "health":"HP","stamina":"STAM"}
+
+
 #style constants
 butInCol = (215,174,129) #inside color of buttons
 butOutCol = (170,115,90) #outside color of buttons

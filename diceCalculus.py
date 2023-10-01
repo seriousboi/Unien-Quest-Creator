@@ -122,3 +122,6 @@ def getExchangeAvg(warriorA=Warrior(),warriorB=Warrior(),nbDices=3):
 
 
 #print(getExchangeAvg())
+differenceProbabilities = getDiceProbabilites(nbDices = 3)
+for key in differenceProbabilities:
+    print(key,round(differenceProbabilities[key]*100,3))

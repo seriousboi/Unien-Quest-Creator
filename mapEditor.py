@@ -130,7 +130,6 @@ def editItem(variables,item):
             variables["state"] = "quitting"
 
 
-
 def placeInfos(variables,x,y):
     variables["currentItem"] = None
     variables["editing"] = True
@@ -177,7 +176,7 @@ def saveImage(variables,event):
     window = variables["window"]
     imageOutput = Surface((squareSize*mapLength,squareSize*mapWidth))
     imageOutput.blit(window,(0,0))
-    pygame.image.save(imageOutput,"output/map.png")
+    pygame.image.save(imageOutput,"output/map/map.png")
     print("Map saved to map.png")
 
 
