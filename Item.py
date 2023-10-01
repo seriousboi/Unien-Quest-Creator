@@ -49,14 +49,14 @@ for weapon in weaponsList:
 
 
 toolsList = []
-toolsList += [Tool("Verrou Déployable",27,{"strength":8},"Peut être posé sur une porte, la porte reste fermée jusqu'à ce que le verrou soit détruit. le verrou est une considéré comme une entité avec 20 PV et 40 CONST qui utilise toujours la garde.")]
+toolsList += [Tool("Verrou Déployable",27,{"strength":8},"Peut être posé sur une porte, la porte reste fermée jusqu'à ce que le verrou soit détruit. le verrou est considéré comme une entité avec 20 PV et 40 CONST qui utilise toujours la garde.")]
 toolsList += [Tool("Piège à Loup",30,{"dexterity":8},"Piège déployable sur une dalle. Immobilise une entité pour deux tours et infligle 2 x DEX du déployeur en dégats.")]
-toolsList += [Tool("Pierre de Réflexion",26,{"intelligence":8},"Deux exemplaires par achat. Utilisable lors de situations de tensions. Ajoute deux minutes de temps au chronomètre.")]
+toolsList += [Tool("Pierre de Réflexion",26,{"intelligence":8},"Deux exemplaires par achat. Utilisable lors des situations de tensions. Ajoute deux minutes de temps au chronomètre.")]
 toolsList += [Tool("Loupe",29,{"perception":8},"Deux exemplaires par achat. Trouve un indice sur un lieu ou une situation.")]
 toolsList += [Tool("Cape",32,{"charisma":8},"Ajoute 8 points de charisme, avant application de l'affinité.")]
 toolsList += [Tool("Liqueur de Vigueur",54,{"intelligence":15},"Deux exemplaires par achat. Utilisibale lors d'une réanimation. Soigne 2 x INT de l'utilisateur à l'entité réanimée et annule la pénalité d'endurence.")]
-toolsList += [Tool("Ecailles d'Invisilbilité",66,{"perception":15},"Utilisale à tout moment. Rend l'utilisateur invisible pour trois tours.")]
-toolsList += [Tool("Masque Perfide",55,{"charisma":15},"Utilisale à tout moment. Donne l'apparence et la voix à l'utilisateur d'une autre personne au choix pour trois tours.")]
+toolsList += [Tool("Ecailles d'Invisilbilité",66,{"perception":15},"Utilisable à tout moment. Rend l'utilisateur invisible pour trois tours.")]
+toolsList += [Tool("Masque Perfide",55,{"charisma":15},"Utilisable à tout moment. Donne l'apparence et la voix à l'utilisateur d'une autre personne au choix pour trois tours.")]
 
 tools = {}
 for tool in toolsList:

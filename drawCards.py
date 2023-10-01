@@ -15,8 +15,8 @@ descFontName = "data/fonts/Jost/Jost-VariableFont_wght.ttf"
 
 def mainDraw():
     #outPutTest()
-    generateMovesCards()
-    #generateItemsCards()
+    #generateMovesCards()
+    generateItemsCards()
 
 
 def outPutTest():
@@ -112,7 +112,7 @@ def getItemCard(item,borderSize=1,sizeFactor=7):
 
 def generateMovesCards():
     global attacks, defenses
-    for move in attacks+defenses+otherMoves:
+    for move in secondaryMoves+otherMoves+attacks+defenses:
         pygame.init()
         cardSurface = getMoveCard(move,sizeFactor=6)
         seeOutput(cardSurface)
@@ -156,6 +156,8 @@ def getMoveCard(move,borderSize=1,sizeFactor=7):
         moveType = "[attaque]"
     elif move in defenses or move == "rest":
         moveType = "[défense]"
+    elif move in secondaryMoves:
+        moveType = "[action secondaire]"
     yMargin += text(cardSurface,moveType,smallTextSize,textColor,"topleft",xMargin,yMargin,descFontName).h
 
     if move in attacks:
@@ -168,7 +170,7 @@ def getMoveCard(move,borderSize=1,sizeFactor=7):
         yMargin += text(cardSurface,line,verySmallTextSize,textColor,"topleft",xMargin,yMargin,descFontName).h
         line = "Perd contre: "+movesToFr[defenseLosingTable[move]]
         yMargin += text(cardSurface,line,verySmallTextSize,textColor,"topleft",xMargin,yMargin,descFontName).h
-    else:
+    elif move == "rest":
         line = "Perd contre: n'importe quelle attaque"
         yMargin += text(cardSurface,line,verySmallTextSize,textColor,"topleft",xMargin,yMargin,descFontName).h
 
