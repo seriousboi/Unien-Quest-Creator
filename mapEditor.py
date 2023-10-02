@@ -16,6 +16,7 @@ from copy import copy
 def initialize(variables):
     variables["currentItem"] = None
     variables["editing"] = False
+    variables["copiedItem"] = None
 
 
 def mainProcess(variables):
@@ -27,7 +28,7 @@ def mainProcess(variables):
 
     #hiboxes definition
     #upper buttons
-    for index,buttonName in enumerate(["Door","Rock","Trap","Treasure","Monster","Annotation","edit","fuseRooms","resetMap"]):
+    for index,buttonName in enumerate(["Door","Rock","Trap","Treasure","Monster","Annotation","edit","copyItem","fuseRooms","resetMap"]):
         variables["buttons"][buttonName].rectangle = pygame.Rect(xMargin,(index*1.25+1/3)*squareSize,medButWidth,medButHeight)
 
     #lower buttons
@@ -57,7 +58,7 @@ def mainDisplay(window,variables):
 
     for buttonName,buttonText in [["fuseRooms","Fuse rooms"],["resetMap","Reset map"],
                                     ["loadMap","Load a map"],["saveMap","Save to file"],
-                                    ["saveImage","Save to image"],["edit","Edit items"]]:
+                                    ["saveImage","Save to image"],["edit","Edit items"],["copyItem","Copy item"]]:
 
         button = variables["buttons"][buttonName]
         displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,buttonText,25,(50,50,50))
@@ -200,7 +201,6 @@ def loadMap(variables,event):
         variables["state"] = "quitting"
 
 
-
 def fusionSelect(variables,event):
     FSvariables = copy(variables)
     window = variables["window"]
@@ -221,6 +221,24 @@ def edit(variables,event):
     variables["buttons"]["edit"].active = True
     variables["editing"] = True
 
+
+def copyItem(variables,event):
+    if variables["copiedItem"] == None:
+        sqsz = variables["squareSize"]
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            x = event.pos[0] - variables["shift"][0]
+            y = event.pos[1] - variables["shift"][1]
+            if (x >= 0 and x <= mapLength*sqsz and
+                y >= 0 and y <= mapWidth*sqsz):
+                xSquare = int(x/sqsz)
+                ySquare = int(y/sqsz)
+                square = Square(xSquare,ySquare)
+                item = variables["currentMap"].itemAt(square)
+                print(item)
+    else:
+        prin("copipi")
+
+
 mainInterface = Interface()
 
 mainInterface.initialize = initialize
@@ -229,6 +247,7 @@ mainInterface.mainProcess = mainProcess
 
 mainInterface.buttons += [Button("place",None,None,placeOrEditItem,False)]
 mainInterface.buttons += [Button("edit",but2InCol,but2OutCol,edit,activeInColor=but2PresInCol,activeOutColor=but2PresOutCol)]
+mainInterface.buttons += [Button("copyItem",but2InCol,but2OutCol,copyItem,activeInColor=but2PresInCol,activeOutColor=but2PresOutCol)]
 mainInterface.buttons += [Button("fuseRooms",but2InCol,but2OutCol,fusionSelect)]
 mainInterface.buttons += [Button("resetMap",but2InCol,but2OutCol,resetMap)]
 

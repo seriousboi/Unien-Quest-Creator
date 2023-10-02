@@ -439,4 +439,4 @@ def seeOutput(surface):
 
 
 
-mainDraw()
+#mainDraw()
