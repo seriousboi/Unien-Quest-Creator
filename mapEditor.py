@@ -15,9 +15,8 @@ from copy import copy
 
 def initialize(variables):
     variables["currentItem"] = None
-    variables["editing"] = False
     variables["copiedItem"] = None
-
+    variables["subState"] = "nothingSpecial"
 
 def mainProcess(variables):
     global mapLength,mapWidth
@@ -83,10 +82,10 @@ def placeOrEditItem(variables,event):
         y = event.pos[1] - variables["shift"][1]
 
         currentItem = variables["currentItem"]
-        if currentItem == "Door":
+        if currentItem == "Door" and variables["subState"] == "placing":
             placeDoor(variables,x,y)
 
-        elif (currentItem in itemNames) or variables["editing"]:
+        elif variables["subState"] != "nothingSpecial":
             if (x >= 0 and x <= mapLength*sqsz and
                 y >= 0 and y <= mapWidth*sqsz):
                 xSquare = int(x/sqsz)
@@ -94,25 +93,47 @@ def placeOrEditItem(variables,event):
                 square = Square(xSquare,ySquare)
                 item = variables["currentMap"].itemAt(square)
 
-                if variables["editing"]:
+                if variables["subState"] == "editing":
                     editItem(variables,item)
 
-                elif item == None:
-                    if currentItem == "Rock":
-                        variables["currentMap"].rocks += [Rock(square)]
-                    elif currentItem == "Trap":
-                        variables["currentMap"].traps += [Trap(square)]
-                    elif currentItem == "Treasure":
-                        variables["currentMap"].treasures += [Treasure(square)]
-                    elif currentItem == "Monster":
-                        variables["currentMap"].entities += [Entity(square.x,square.y)]
-                    elif currentItem == "Annotation":
-                        variables["currentMap"].annotations += [Informations(square)]
+                elif variables["subState"] == "copying":
+                    if item != None :
+                        copyItem(variables,item)
+                    elif variables["copiedItem"] != None:
+                        placeCopiedItem(variables,square)
 
-                else:
-                    variables["currentMap"].removeItemAT(item,square)
+                elif variables["subState"] == "placing":
+                    if item == None:
+                        if currentItem == "Rock":
+                            variables["currentMap"].rocks += [Rock(square)]
+                        elif currentItem == "Trap":
+                            variables["currentMap"].traps += [Trap(square)]
+                        elif currentItem == "Treasure":
+                            variables["currentMap"].treasures += [Treasure(square)]
+                        elif currentItem == "Monster":
+                            variables["currentMap"].entities += [Entity(square.x,square.y)]
+                        elif currentItem == "Annotation":
+                            variables["currentMap"].annotations += [Informations(square)]
+
+                    else:
+                        variables["currentMap"].removeItemAT(item,square)
 
 
+def copyItem(variables,item):
+    if type(item) == Entity or type(item) == Informations:
+        #doing weird stuff to because we want a new object rather than a reference to an existing one
+        #(and because there I havent done a copy method)
+        variables["copiedItem"] = item.fromDict(item.toJSON())
+
+
+def placeCopiedItem(variables,square):
+    item = variables["copiedItem"].fromDict(variables["copiedItem"].toJSON())
+    item.square.x = square.x
+    item.square.y = square.y
+    if type(item) == Entity:
+        variables["currentMap"].entities += [item]
+    if type(item) == Informations:
+        variables["currentMap"].annotations += [item]
 
 def editItem(variables,item):
     if type(item) == Entity:
@@ -129,11 +150,6 @@ def editItem(variables,item):
         item.infos = TEvariables["text"]
         if TEvariables["state"] == "quitting":
             variables["state"] = "quitting"
-
-
-def placeInfos(variables,x,y):
-    variables["currentItem"] = None
-    variables["editing"] = True
 
 
 def placeDoor(variables,x,y):
@@ -181,13 +197,11 @@ def saveImage(variables,event):
     print("Map saved to map.png")
 
 
-
 def saveMap(variables,event):
     try:
         variables["currentMap"].saveToFile()
     except FileNotFoundError:
         print("FileNotFoundError: bruh")
-
 
 
 def loadMap(variables,event):
@@ -214,29 +228,20 @@ def resetMap(variables,event):
 
 
 def edit(variables,event):
-    if variables["currentItem"] != None: # we reset the color of the last button pressed
-        previousButtonPressed = variables["buttons"][variables["currentItem"]]
-        previousButtonPressed.active = False
-        variables["currentItem"] = None
+    desactivateAllButtons(variables["buttons"])
     variables["buttons"]["edit"].active = True
-    variables["editing"] = True
+    variables["subState"] = "editing"
 
 
-def copyItem(variables,event):
-    if variables["copiedItem"] == None:
-        sqsz = variables["squareSize"]
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            x = event.pos[0] - variables["shift"][0]
-            y = event.pos[1] - variables["shift"][1]
-            if (x >= 0 and x <= mapLength*sqsz and
-                y >= 0 and y <= mapWidth*sqsz):
-                xSquare = int(x/sqsz)
-                ySquare = int(y/sqsz)
-                square = Square(xSquare,ySquare)
-                item = variables["currentMap"].itemAt(square)
-                print(item)
-    else:
-        prin("copipi")
+def selectCopy(variables,event):
+    desactivateAllButtons(variables["buttons"])
+    variables["buttons"]["copyItem"].active = True
+    variables["subState"] = "copying"
+
+
+def desactivateAllButtons(buttons):
+    for buttonName in buttons:
+        buttons[buttonName].active = False
 
 
 mainInterface = Interface()
@@ -247,7 +252,7 @@ mainInterface.mainProcess = mainProcess
 
 mainInterface.buttons += [Button("place",None,None,placeOrEditItem,False)]
 mainInterface.buttons += [Button("edit",but2InCol,but2OutCol,edit,activeInColor=but2PresInCol,activeOutColor=but2PresOutCol)]
-mainInterface.buttons += [Button("copyItem",but2InCol,but2OutCol,copyItem,activeInColor=but2PresInCol,activeOutColor=but2PresOutCol)]
+mainInterface.buttons += [Button("copyItem",but2InCol,but2OutCol,selectCopy,activeInColor=but2PresInCol,activeOutColor=but2PresOutCol)]
 mainInterface.buttons += [Button("fuseRooms",but2InCol,but2OutCol,fusionSelect)]
 mainInterface.buttons += [Button("resetMap",but2InCol,but2OutCol,resetMap)]
 
@@ -260,18 +265,11 @@ mainInterface.buttons += [Button("goToGenerator",(250,250,50),(100,100,200),goTo
 for buttonName in itemNames:
 
     def selectItem(variables,event,itemName = buttonName):
-        if variables["currentItem"] != None: # we reset the color of the last button pressed
-            previousButtonPressed = variables["buttons"][variables["currentItem"]]
-            previousButtonPressed.active = False
-            variables["currentItem"] = None
-
-        if variables["editing"]:
-            variables["buttons"]["edit"].active = False
-            variables["editing"] = False
-
+        desactivateAllButtons(variables["buttons"])
         button = variables["buttons"][itemName]
-        variables["currentItem"] = itemName
         button.active = True
+        variables["currentItem"] = itemName
+        variables["subState"] = "placing"
 
 
     mainInterface.buttons += [Button(buttonName,butInCol,butOutCol,selectItem,activeInColor=butPresInCol,activeOutColor=butPresOutCol)]
