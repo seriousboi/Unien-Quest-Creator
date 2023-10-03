@@ -10,6 +10,7 @@ from mapSelect import *
 from  fusionSelect import *
 from entityEditor import *
 from copy import copy
+from drawCards import *
 
 
 
@@ -194,8 +195,22 @@ def saveImage(variables,event):
     imageOutput = Surface((squareSize*mapLength,squareSize*mapWidth))
     imageOutput.blit(window,(0,0))
     pygame.image.save(imageOutput,"output/map/map.png")
-    print("Map saved to map.png")
+    for entity in variables["currentMap"].entities:
+        card = getMonsterCard(entity)
+        pygame.image.save(card,"output/entityCards/"+entity.name+".png")
 
+    #todo: vider le dossier output/map
+    fakeBooardSurface = Surface((squareSize*mapLength,squareSize*mapWidth))
+    displayBoard(fakeBooardSurface,(0,0),squareSize,variables["currentMap"].rooms)
+    for aggregatedRoom in variables["currentMap"].aggregatedRooms:
+        room1 = aggregatedRoom[0]
+        room2 = aggregatedRoom[1]
+        room3 = roomDicToTuple(aggregateRooms(tupleToRoomDic(room1),tupleToRoomDic(room2)))
+        roomSurface = Surface((squareSize*room3[2],squareSize*room3[3]))
+        roomSurface.blit(fakeBooardSurface,(-squareSize*room3[0],-squareSize*room3[1]))
+        pygame.image.save(roomSurface,"output/map/"+str(room3)+".png")
+
+    print("Images saved in output folder")
 
 def saveMap(variables,event):
     try:
