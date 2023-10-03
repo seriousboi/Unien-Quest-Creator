@@ -7,15 +7,20 @@ monsters = ["orc","goblin","skeleton","zombie","mummy","fimir","warrior","demon"
 nonMonsters = ["human","elve","dwarf"]
 speciesList = monsters+nonMonsters
 
+skillStats = ["strength","dexterity","constitution",
+             "intelligence","perception","charisma"]
 
 statsColors = {"strength":(252, 202, 0),"dexterity":(130, 209, 207),"constitution":(252, 3, 107),
           "intelligence":(11, 3, 252),"perception":(68, 163, 8),"charisma":(175, 2, 232),
           "health":(255, 0, 0),"stamina":(113, 227, 174)}
 
 statsAbridged = {"strength":"STR","dexterity":"DEX","constitution":"CONST",
-          "intelligence":"INT","perception":"PER","charisma":"CHAR",
-          "health":"HP","stamina":"STAM"}
+                 "intelligence":"INT","perception":"PER","charisma":"CHAR",
+                 "health":"HP","stamina":"STAM"}
 
+statsToFr = {"strength":"force","dexterity":"dextérité","constitution":"constitution",
+             "intelligence":"intelligence","perception":"perception","charisma":"charisme",
+             "health":"vie","stamina":"endurance"}
 
 #style constants
 butInCol = (215,174,129) #inside color of buttons

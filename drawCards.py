@@ -266,7 +266,6 @@ def getMonsterCard(entity,borderSize=1,sizeFactor=8):
         illustration = getImage(imageName,illusSize,illusSize)
         paste(cardSurface,illustration,(width-borderSize*2,borderSize*2),"topright")
 
-
     #name
     textSize = width//10
     textColor = (0,0,0)
@@ -336,7 +335,7 @@ def getCosts(entity,width,height,textSize):
 
 
 def getRange(entity,width,height):
-    rangeDrawing = pygame.Surface((width+1,height+1),pygame.SRCALPHA)
+    rangeDrawing = pygame.Surface((width+2,height+2),pygame.SRCALPHA)
     xStep = width//3
     yStep = height//3
     topleft = (0,0)
