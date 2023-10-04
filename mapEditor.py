@@ -39,6 +39,10 @@ def mainProcess(variables):
     for button in variables["buttons"].values():
         button.updateColor()
 
+    #removal of the copied item if were not int copying state
+    if variables["subState"] != "copying":
+        variables["copiedItem"] = None
+
 
 def mainDisplay(window,variables):
     global mapLength,mapWidth,itemNames
@@ -66,6 +70,7 @@ def mainDisplay(window,variables):
     button = variables["buttons"]["goToGenerator"]
     displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,"Generator",25,(100,100,200))
 
+    #doors amount text
     doorsAmount = len(variables["currentMap"].doors)
     if doorsAmount > nbMaxDoors:
         msgColor = (250,25,25)
@@ -73,6 +78,11 @@ def mainDisplay(window,variables):
         msgColor = (50,50,50)
     text(window,str(doorsAmount)+"/"+str(nbMaxDoors),int(squareSize*(1/2)),msgColor,"midleft",xMargin+5.5*squareSize,(0.5+1/3)*squareSize)
 
+    #copy text
+    if variables["copiedItem"] != None:
+        XcopyText = variables["buttons"]["copyItem"].rectangle.x + variables["buttons"]["copyItem"].rectangle.w*1.1
+        YcopyText = variables["buttons"]["copyItem"].rectangle.y + variables["buttons"]["copyItem"].rectangle.h/2
+        text(window,"copied",int(squareSize*(1/2)),(50,50,50),"midleft",XcopyText,YcopyText)
 
 def placeOrEditItem(variables,event):
     global mapLength,mapWidth,itemNames
