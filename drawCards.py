@@ -16,7 +16,8 @@ descFontName = "data/fonts/Jost/Jost-VariableFont_wght.ttf"
 def mainDraw():
     #outPutTest()
     #generateMovesCards()
-    generateItemsCards()
+    #generateItemsCards()
+    return
 
 
 def outPutTest():
@@ -24,18 +25,24 @@ def outPutTest():
     #testEntity = Entity(name="Kamul",species="demon",strength=5,dexterity=10,constitution=15,weaponName="claws")
     #cardSurface = getMonsterCard(testEntity,1,5)
     #cardSurface = getMoveCard("feint")
-    #cardSurface = getItemCard(weapons["rapière"])
-    cardSurface = getItemCard(tools["Verrou Déployable"],borderSize=1,sizeFactor=4)
+    cardSurface = getItemCard(weapons["rapière"])
+    #cardSurface = getItemCard(tools["Verrou Déployable"],borderSize=1,sizeFactor=4)
     seeOutput(cardSurface)
 
 
 def generateItemsCards():
     global weapons,tools
-    for item in weaponsList+toolsList:
+    for item in buyableWeapons+enemyWeapons+toolsList:
         pygame.init()
         cardSurface = getItemCard(item,sizeFactor=6)
-        seeOutput(cardSurface)
-        pygame.image.save(cardSurface,"output/itemsCards/"+item.name+"Card.png")
+        #seeOutput(cardSurface)
+        if item in buyableWeapons:
+            folderName = "buyableWeapons"
+        elif item in enemyWeapons:
+            folderName = "enemyWeapons"
+        elif item in toolsList:
+            folderName = "tools"
+        pygame.image.save(cardSurface,"output/"+folderName+"/"+item.name+"Card.png")
 
 
 
@@ -438,4 +445,4 @@ def seeOutput(surface):
 
 
 
-#mainDraw()
+mainDraw()
