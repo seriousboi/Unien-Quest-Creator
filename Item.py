@@ -51,6 +51,7 @@ enemyWeapons += [Weapon("Hachette",6,18,{"strength":14})]
 enemyWeapons += [Weapon("Double Hache",16,23,{"dexterity":16})]
 enemyWeapons += [Weapon("Faux Spectrale",12,29,{"dexterity":21})]
 enemyWeapons += [Weapon("Crocs Nécrosants",0,35,{"constitution":13})]
+enemyWeapons += [Weapon("Couteau Affûté",76,22,{"dexterity":13})]
 
 
 weaponsList = buyableWeapons + enemyWeapons

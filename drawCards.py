@@ -16,7 +16,7 @@ descFontName = "data/fonts/Jost/Jost-VariableFont_wght.ttf"
 def mainDraw():
     #outPutTest()
     #generateMovesCards()
-    #generateItemsCards()
+    generateItemsCards()
     return
 
 
@@ -307,10 +307,8 @@ def getMonsterCard(entity,borderSize=1,sizeFactor=8):
     yMargin = yPos - (tableHeight + 2*borderSize)
 
     #weapon,weaponDamage
-    infos = ["weapon damage: "+str(entity.weaponDamage),"weapon: "+entity.weaponName]
-    for index,info in enumerate(infos):
-        yMargin += -text(cardSurface,info,smallTextSize,textColor,"bottomleft",xMargin,yMargin).h + borderSize
-
+    yMargin += -text(cardSurface,"weapon damage: "+str(entity.weaponDamage),smallTextSize,textColor,"bottomleft",xMargin,yMargin).h + borderSize
+    yMargin += -text(cardSurface,"weapon: "+entity.weaponName,verySmallTextSize,textColor,"bottomleft",xMargin,yMargin).h + borderSize
 
     return cardSurface
 

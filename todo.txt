@@ -1,10 +1,5 @@
 
-faire génération en plusieur sous générations constructives
-empêcher la surconnexité à l'intérieur d'un même groupe salles
-faire convertisseur de map vers graphe
-
-général:
--nouvelle mécanique de combat
--changer méchanique de targeting
--changer les mécaniques de déplacement
--faire les classes
+générateur:
+-faire génération en plusieur sous générations constructives
+-empêcher la surconnexité à l'intérieur d'un même groupe salles
+-faire convertisseur de map vers graphe
