@@ -303,7 +303,7 @@
     {
       "square": {
         "x": 13,
-        "y": 12
+        "y": 13
       }
     }
   ],
@@ -323,7 +323,7 @@
   ],
   "entities": [
     {
-      "name": "Draden",
+      "name": "Braden",
       "side": "enemy",
       "species": "human",
       "strongAtkCost": 10,
@@ -343,28 +343,6 @@
         "y": 8
       },
       "infos": "plus aventurier que mercenaire, il offre ses services de chef d'exp\u00e9dition au plus offrand, ce qui l'am\u00e8ne a traviller dans l'ill\u00e9galit\u00e9 pourla pegre voir parfois forces du mal."
-    },
-    {
-      "name": "Anonymous",
-      "side": "enemy",
-      "species": "orc",
-      "strongAtkCost": 10,
-      "fastAtkCost": 10,
-      "counterAtkCost": 10,
-      "stamina": 5,
-      "health": 100,
-      "criticalHealth": 50,
-      "strength": 6,
-      "dexterity": 6,
-      "constitution": 6,
-      "weaponName": "bruh",
-      "weaponDamage": 15,
-      "range": "normal",
-      "square": {
-        "x": 7,
-        "y": 7
-      },
-      "infos": ""
     },
     {
       "name": "Anonymous",
@@ -497,6 +475,50 @@
         "y": 16
       },
       "infos": ""
+    },
+    {
+      "name": "Mercenaire exp\u00e9riment\u00e9",
+      "side": "enemy",
+      "species": "orc",
+      "strongAtkCost": 5,
+      "fastAtkCost": 15,
+      "counterAtkCost": 10,
+      "stamina": 6,
+      "health": 100,
+      "criticalHealth": 70,
+      "strength": 19,
+      "dexterity": 10,
+      "constitution": 10,
+      "weaponName": "Hachoir Rouill\u00e9",
+      "weaponDamage": 22,
+      "range": "normal",
+      "square": {
+        "x": 7,
+        "y": 8
+      },
+      "infos": "Evitera les combats si possible, mais un fois dans un combat il se battera jusqu'\u00e0 la mort par fiert\u00e9."
+    },
+    {
+      "name": "Mercenaire exp\u00e9riment\u00e9",
+      "side": "enemy",
+      "species": "orc",
+      "strongAtkCost": 5,
+      "fastAtkCost": 15,
+      "counterAtkCost": 10,
+      "stamina": 6,
+      "health": 100,
+      "criticalHealth": 70,
+      "strength": 19,
+      "dexterity": 10,
+      "constitution": 10,
+      "weaponName": "Hachoir Rouill\u00e9",
+      "weaponDamage": 22,
+      "range": "normal",
+      "square": {
+        "x": 5,
+        "y": 7
+      },
+      "infos": "Evitera les combats si possible, mais un fois dans un combat il se battera jusqu'\u00e0 la mort par fiert\u00e9."
     }
   ],
   "annotations": [
@@ -505,42 +527,42 @@
         "x": 16,
         "y": 14
       },
-      "infos": "Start. La porte au sud ne s'ouvre que de l'ext\u00e9rieur."
+      "infos": "D\u00e9but. La porte au sud ne s'ouvre que de l'ext\u00e9rieur. La porte du sud est renforc\u00e9e et r\u00e9cente."
     },
     {
       "square": {
         "x": 12,
         "y": 15
       },
-      "infos": "Les avanturiers peuvent voirde l'autre cot\u00e9 des rochers grace \u00e0 une fissure. (cela permet de voir le rocher au sud est eet donc de d\u00e9duire que l'acc\u00e8s viens de l'ouest."
+      "infos": "Les avanturiers peuvent voire l'autre cot\u00e9 des rochers grace \u00e0 une fissure. (cela permet de voir le rocher au sud et donc de d\u00e9duire que l'acc\u00e8s viens de l'ouest.   Les murs ont des gravures \u00e0 motifs floral."
     },
     {
       "square": {
         "x": 14,
         "y": 12
       },
-      "infos": "Pi\u00e8ge mineur (9 d\u00e9gats), plac\u00e9  par braden \"piege modeste\""
+      "infos": "Pi\u00e8ge mineur (9 d\u00e9gats), plac\u00e9 par Draden, \"piege modeste\". C'est une dalle creuse qui se brise si on marche dessu avec un pieu juste en dessous."
     },
     {
       "square": {
         "x": 14,
         "y": 8
       },
-      "infos": "humain en habits d'aventurier mais pas visiblement arm\u00e9. a engag\u00e9 les goblins et l'orc pour piller les tombes. lors de la rencontre avec l'\u00e9quipe il prend un ton famlier et pr\u00e9tend etre un arch\u00e9ologue (cependnt il a une pioche mais pas de brosse). il indiquera qu'un tr\u00e9sor se trouve dans la r\u00e9gion nord est de ces ruines pour vous leurrer dans un piege. si questionn\u00e9 sur les pots il essayera de les faire passer pour des anciens pot de fleurs et la cendre pour de la d\u00e9compostion"
+      "infos": "humain en habits d'aventurier mais pas visiblement arm\u00e9. a engag\u00e9 les goblins et l'orc pour piller les tombes. lors de la rencontre avec l'\u00e9quipe il prend un ton famlier et pr\u00e9tend etre un arch\u00e9ologue (cependnt il a une pioche mais pas de brosse). il indiquera qu'un tr\u00e9sor se trouve dans la r\u00e9gion nord est de ces ruines pour vous leurrer dans un piege. si questionn\u00e9 sur les pots il essayera de les faire passer pour des anciens pot de fleurs et la cendre pour de la d\u00e9compostion de plantes."
     },
     {
       "square": {
         "x": 12,
         "y": 10
       },
-      "infos": "salle contenant plein de vases rang\u00e9s sur des \u00e9tag\u00e8res orn\u00e9es. les vases son ferm\u00e9 et contiennent beaucoup de poucci\u00e8re. ces vases sont en r\u00e9alit\u00e9 des urnes fun\u00e9raires et contiennent de cendres (mais de quoi?)"
+      "infos": "Salle contenant plein de vases rang\u00e9s sur des \u00e9tag\u00e8res orn\u00e9es. Les vases son ferm\u00e9 et contiennent beaucoup de poussi\u00e8re. Ces vases sont en r\u00e9alit\u00e9 des urnes fun\u00e9raires et contiennent des cendres (mais de quoi?)"
     },
     {
       "square": {
         "x": 19,
         "y": 6
       },
-      "infos": "pi\u00e8ges s\u00e9rieux (19 d\u00e9gats), pos\u00e9s par braden en anticipation de visite non d\u00e9sir\u00e9e."
+      "infos": "pi\u00e8ges s\u00e9rieux (19 d\u00e9gats), pos\u00e9s par braden en anticipation de visite non d\u00e9sir\u00e9e. Ce sont des pi\u00e8ges \u00e0 loups tr\u00e8s fins."
     },
     {
       "square": {
@@ -562,6 +584,41 @@
         "y": 9
       },
       "infos": "l\u00e9ger courrant d'air dans le couloir (du \u00e0 la salle secrette qui contient une sortie."
+    },
+    {
+      "square": {
+        "x": 15,
+        "y": 3
+      },
+      "infos": "Salle contenant des grands trou rectangulaires \u00e0 espaces r\u00e9guliers.   Ce sont des tombes qui ont \u00e9t\u00e9 pill\u00e9es."
+    },
+    {
+      "square": {
+        "x": 5,
+        "y": 9
+      },
+      "infos": "Ce couloir poss\u00e8de aussi des gravures florales sur les mur mais en plus grand grand nombre et plus d\u00e9tailles que dans les autres couloirs."
+    },
+    {
+      "square": {
+        "x": 10,
+        "y": 3
+      },
+      "infos": "Plusieurs tas d'ossements  jonchent le sol de la piece. Ces ossements sont humanoides mais plus imposant que des os humans, aucuns crane c'est pr\u00e9sent.   Ce sont des corps d\u00e9terr\u00e9s par les orcs dans, les ossements viennent de plusieurs endroits du souterrain.   Les cranes \u00e9taient d\u00e9j\u00e0 absent avant qu'ils soient d\u00e9terr\u00e9s."
+    },
+    {
+      "square": {
+        "x": 7,
+        "y": 5
+      },
+      "infos": "Chaise et table dans la piece. nb orc = nb joueurs -1.   Les deux orc se la coulent douce. Ils mettent imm\u00e9diatement sur la d\u00e9fensive une fois les joueurs pr\u00e9sents et disent qu'ils \u00e9taient sur le point de continuer leur travail. (ils pensent que les joueurs travaillent pour  Draden et qu'ils vont avoir des probl\u00e8mes).   Les orcs ont pour travail de pillers les tombes creus\u00e9es par les goblins puis d'ouvrir l'acc\u00e8s au mosol\u00e9 de la salle d'\u00e0 cot\u00e9.   En cas de conflit ils proposeront de vous laisser passer si vous dite \u00e0 Draden que vous ne les avez pas vu.   Ils conaissent la position du tr\u00e9sor car ils y ont amen\u00e9 ce qu'ils ont pill\u00e9s.   Ils ont remarqu\u00e9s que beaucoup de corps \u00e9taient manquant alors le les bijoux fun\u00e9raires \u00e9taient toujours pr\u00e9sents."
+    },
+    {
+      "square": {
+        "x": 3,
+        "y": 5
+      },
+      "infos": ""
     }
   ],
   "aggregatedRooms": [
