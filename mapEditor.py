@@ -62,7 +62,7 @@ def mainDisplay(window,variables):
 
     for buttonName,buttonText in [["fuseRooms","Fuse rooms"],["resetMap","Reset map"],
                                     ["loadMap","Load a map"],["saveMap","Save to file"],
-                                    ["saveImage","Save to image"],["edit","Edit items"],["copyItem","Copy item"]]:
+                                    ["saveImage","Output files"],["edit","Edit items"],["copyItem","Copy item"]]:
 
         button = variables["buttons"][buttonName]
         displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,buttonText,25,(50,50,50))
@@ -220,7 +220,9 @@ def saveImage(variables,event):
         roomSurface.blit(fakeBooardSurface,(-squareSize*room3[0],-squareSize*room3[1]))
         pygame.image.save(roomSurface,"output/map/"+str(room3)+".png")
 
-    print("Images saved in output folder")
+    #todo: vider le dossier output/text
+    variables["currentMap"].outputTextFiles()
+    print("Files saved in output folder")
 
 def saveMap(variables,event):
     try:

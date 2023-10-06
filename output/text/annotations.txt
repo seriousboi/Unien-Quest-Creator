@@ -1,0 +1,42 @@
+
+ 
+[0]
+Début. La porte au sud ne s'ouvre que de l'extérieur. La porte du sud est renforcée et récente.
+ 
+[1]
+Les avanturiers peuvent voire l'autre coté des rochers grace à une fissure. (cela permet de voir le rocher au sud et donc de déduire que l'accès viens de l'ouest.   Les murs ont des gravures à motifs floral.
+ 
+[2]
+Piège mineur (9 dégats), placé par Draden, "piege modeste". C'est une dalle creuse qui se brise si on marche dessu avec un pieu juste en dessous.
+ 
+[3]
+humain en habits d'aventurier mais pas visiblement armé. a engagé les goblins et l'orc pour piller les tombes. lors de la rencontre avec l'équipe il prend un ton famlier et prétend etre un archéologue (cependnt il a une pioche mais pas de brosse). il indiquera qu'un trésor se trouve dans la région nord est de ces ruines pour vous leurrer dans un piege. si questionné sur les pots il essayera de les faire passer pour des anciens pot de fleurs et la cendre pour de la décompostion de plantes.
+ 
+[4]
+Salle contenant plein de vases rangés sur des étagères ornées. Les vases son fermé et contiennent beaucoup de poussière. Ces vases sont en réalité des urnes funéraires et contiennent des cendres (mais de quoi?)
+ 
+[5]
+pièges sérieux (19 dégats), posés par braden en anticipation de visite non désirée. Ce sont des pièges à loups très fins.
+ 
+[6]
+porte invisble, sortie vers le reste de la citadelle que braden connais et peux utiliser pour s'enfuir, meme après que braden passe par la porte elle reste invsible. meubles dans cette salle.
+ 
+[7]
+porte inisible, corps des défaunt réanimés parun nécromancien mais laissé dans cette salle à cause de sa nature secrette. les corps sont donc resté rénimé dans cette piece longtemps.
+ 
+[8]
+léger courrant d'air dans le couloir (du à la salle secrette qui contient une sortie.
+ 
+[9]
+Salle contenant des grands trou rectangulaires à espaces réguliers.   Ce sont des tombes qui ont été pillées.
+ 
+[10]
+Ce couloir possède aussi des gravures florales sur les mur mais en plus grand grand nombre et plus détailles que dans les autres couloirs.
+ 
+[11]
+Plusieurs tas d'ossements  jonchent le sol de la piece. Ces ossements sont humanoides mais plus imposant que des os humans, aucuns crane c'est présent.   Ce sont des corps déterrés par les orcs dans, les ossements viennent de plusieurs endroits du souterrain.   Les cranes étaient déjà absent avant qu'ils soient déterrés.
+ 
+[12]
+Chaise et table dans la piece. nb orc = nb joueurs -1.   Les deux orc se la coulent douce. Ils mettent immédiatement sur la défensive une fois les joueurs présents et disent qu'ils étaient sur le point de continuer leur travail. (ils pensent que les joueurs travaillent pour  Draden et qu'ils vont avoir des problèmes).   Les orcs ont pour travail de pillers les tombes creusées par les goblins puis d'ouvrir l'accès au mosolé de la salle d'à coté.   En cas de conflit ils proposeront de vous laisser passer si vous dite à Draden que vous ne les avez pas vu.   Ils conaissent la position du trésor car ils y ont amené ce qu'ils ont pillés.   Ils ont remarqués que beaucoup de corps étaient manquant alors le les bijoux funéraires étaient toujours présents.
+ 
+[13]

@@ -72,6 +72,26 @@ class QuestMap:
         self.aggregatedRooms = []
         self.rooms = getRoomsAfterAggregation(self.aggregatedRooms)
 
+    def outputTextFiles(self,folderPath="output/text/"):
+        #annotations
+        file= open(folderPath+"annotations.txt","w")
+        newLines = []
+        for index,annotation in enumerate(self.annotations):
+            newLines += ["\n \n["+str(index)+"]\n"]
+            newLines += [annotation.infos]
+        file.writelines(newLines)
+        file.close()
+
+        #entities
+        for index,entity in enumerate(self.entities):
+            if entity.infos != "":
+                file = open(folderPath+entity.name+"_infos.txt","w")
+                newLines = ["["+str(index)+"]\n"]
+                newLines += [entity.name+"\n \n"]
+                newLines += [entity.infos]
+                file.writelines(newLines)
+                file.close()
+
     def fuseRooms(self,room1,room2):
         newRoom = roomDicToTuple(aggregateRooms(tupleToRoomDic(room1),tupleToRoomDic(room2)))
         self.rooms += [newRoom]
