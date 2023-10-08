@@ -1,4 +1,4 @@
-[7]
-Mercenaire expérimenté
+[2]
+Mercenaire
  
 Evitera les combats si possible, mais un fois dans un combat il se battera jusqu'à la mort par fierté.

@@ -275,15 +275,15 @@ def getMonsterCard(entity,borderSize=1,sizeFactor=8):
 
     #name
     textSize = width//10
+    smallTextSize = width//12
+    verySmallTextSize = width//16
     textColor = (0,0,0)
     xMargin = borderSize*2
     yMargin = borderSize*4
-    nameSurface = text(cardSurface,entity.name,textSize,textColor,"topleft",xMargin,yMargin)
+    nameSurface = text(cardSurface,entity.name,smallTextSize,textColor,"topleft",xMargin,yMargin)
     yMargin += nameSurface.h + 4*borderSize
 
     #species,healths,stamina
-    smallTextSize = width//12
-    verySmallTextSize = width//16
     infos = ["["+entity.species+"]","health: "+str(entity.health),
              "regen ceiling: "+str(entity.criticalHealth),"stamina: "+str(entity.stamina)]
     for index,info in enumerate(infos):

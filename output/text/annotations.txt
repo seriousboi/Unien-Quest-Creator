@@ -1,42 +1,70 @@
 
  
 [0]
-DÃ©but. La porte au sud ne s'ouvre que de l'extÃ©rieur. La porte du sud est renforcÃ©e et rÃ©cente.
+Début. La porte au sud ne s'ouvre que de l'extérieur. La porte du sud est renforcée et récente.
  
 [1]
-Les avanturiers peuvent voire l'autre cotÃ© des rochers grace Ã  une fissure. (cela permet de voir le rocher au sud et donc de dÃ©duire que l'accÃ¨s viens de l'ouest.   Les murs ont des gravures Ã  motifs floral.
+Les avanturiers peuvent voire l'autre coté des rochers grace à une fissure. (cela permet de voir le rocher au sud et donc de déduire que l'accès viens de l'ouest.   Les murs ont des gravures à motifs floral.
  
 [2]
-PiÃ¨ge mineur (9 dÃ©gats), placÃ© par Draden, "piege modeste". C'est une dalle creuse qui se brise si on marche dessu avec un pieu juste en dessous.
+Piège mineur (9 dégats), placé par Draden, "piege modeste". C'est une dalle creuse qui se brise si on marche dessu avec un pieu juste en dessous.
  
 [3]
-humain en habits d'aventurier mais pas visiblement armÃ©. a engagÃ© les goblins et l'orc pour piller les tombes. lors de la rencontre avec l'Ã©quipe il prend un ton famlier et prÃ©tend etre un archÃ©ologue (cependnt il a une pioche mais pas de brosse). il indiquera qu'un trÃ©sor se trouve dans la rÃ©gion nord est de ces ruines pour vous leurrer dans un piege. si questionnÃ© sur les pots il essayera de les faire passer pour des anciens pot de fleurs et la cendre pour de la dÃ©compostion de plantes.
+Salle contenant plein de vases rangés sur des étagères ornées. Les vases son fermé et contiennent beaucoup de poussière. Ces vases sont en réalité des urnes funéraires et contiennent des cendres (mais de quoi?)
  
 [4]
-Salle contenant plein de vases rangÃ©s sur des Ã©tagÃ¨res ornÃ©es. Les vases son fermÃ© et contiennent beaucoup de poussiÃ¨re. Ces vases sont en rÃ©alitÃ© des urnes funÃ©raires et contiennent des cendres (mais de quoi?)
+humain en habits d'aventurier mais pas visiblement armé. a engagé les goblins et l'orc pour piller les tombes. lors de la rencontre avec l'équipe il prend un ton famlier et prétend etre un archéologue (cependnt il a une pioche mais pas de brosse). il indiquera qu'un trésor se trouve dans la région nord est de ces ruines pour vous leurrer dans un piege. si questionné sur les pots il essayera de les faire passer pour des anciens pot de fleurs et la cendre pour de la décompostion de plantes.
  
 [5]
-piÃ¨ges sÃ©rieux (19 dÃ©gats), posÃ©s par braden en anticipation de visite non dÃ©sirÃ©e. Ce sont des piÃ¨ges Ã  loups trÃ¨s fins.
+léger courrant d'air dans le couloir (du à la salle secrette qui contient une sortie.
  
 [6]
-porte invisble, sortie vers le reste de la citadelle que braden connais et peux utiliser pour s'enfuir, meme aprÃ¨s que braden passe par la porte elle reste invsible. meubles dans cette salle.
+porte invisble, sortie vers le reste de la citadelle que braden connais et peux utiliser pour s'enfuir, meme après que braden passe par la porte elle reste invsible. meubles dans cette salle.   Le trésor est caché sous la dalle.   Burreau dans cette pièce.
  
 [7]
-porte inisible, corps des dÃ©faunt rÃ©animÃ©s parun nÃ©cromancien mais laissÃ© dans cette salle Ã  cause de sa nature secrette. les corps sont donc restÃ© rÃ©nimÃ© dans cette piece longtemps.
+pièges sérieux (19 dégats), posés par braden en anticipation de visite non désirée. Ce sont des pièges à loups très fins.
  
 [8]
-lÃ©ger courrant d'air dans le couloir (du Ã  la salle secrette qui contient une sortie.
+Salle contenant des grands trou rectangulaires à espaces réguliers.   Ce sont des tombes qui ont été pillées.
  
 [9]
-Salle contenant des grands trou rectangulaires Ã  espaces rÃ©guliers.   Ce sont des tombes qui ont Ã©tÃ© pillÃ©es.
+Le couloir est faiblement éclairé (rien de spécial).
  
 [10]
-Ce couloir possÃ¨de aussi des gravures florales sur les mur mais en plus grand grand nombre et plus dÃ©tailles que dans les autres couloirs.
+Les aventuriers entendent des voix (si il y a deux orcs) et provenance de derrirèe la porte.
  
 [11]
-Plusieurs tas d'ossements  jonchent le sol de la piece. Ces ossements sont humanoides mais plus imposant que des os humans, aucuns crane c'est prÃ©sent.   Ce sont des corps dÃ©terrÃ©s par les orcs dans, les ossements viennent de plusieurs endroits du souterrain.   Les cranes Ã©taient dÃ©jÃ  absent avant qu'ils soient dÃ©terrÃ©s.
+Chaise et table dans la piece. nb orc = nb joueurs -1.   Les deux orc se la coulent douce. Ils mettent immédiatement sur la défensive une fois les joueurs présents et disent qu'ils étaient sur le point de continuer leur travail. (ils pensent que les joueurs travaillent pour  Draden et qu'ils vont avoir des problèmes).   Les orcs ont pour travail de sortir les coprs des tombes creusées par les goblins puis d'ouvrir l'accès au mosolé de la salle d'à coté.   En cas de conflit ils proposeront de vous laisser passer si vous dite à Draden que vous ne les avez pas vu.   Ils conaissent la position du trésor car ils y ont amené ce qu'ils ont pillés.   Ils ont remarqués que beaucoup de corps étaient manquant alors le les bijoux funéraires étaient toujours présents.
  
 [12]
-Chaise et table dans la piece. nb orc = nb joueurs -1.   Les deux orc se la coulent douce. Ils mettent immÃ©diatement sur la dÃ©fensive une fois les joueurs prÃ©sents et disent qu'ils Ã©taient sur le point de continuer leur travail. (ils pensent que les joueurs travaillent pour  Draden et qu'ils vont avoir des problÃ¨mes).   Les orcs ont pour travail de pillers les tombes creusÃ©es par les goblins puis d'ouvrir l'accÃ¨s au mosolÃ© de la salle d'Ã  cotÃ©.   En cas de conflit ils proposeront de vous laisser passer si vous dite Ã  Draden que vous ne les avez pas vu.   Ils conaissent la position du trÃ©sor car ils y ont amenÃ© ce qu'ils ont pillÃ©s.   Ils ont remarquÃ©s que beaucoup de corps Ã©taient manquant alors le les bijoux funÃ©raires Ã©taient toujours prÃ©sents.
+Plusieurs tas d'ossements  jonchent le sol de la piece. Ces ossements sont humanoides mais plus imposant que des os humans, aucuns crane c'est présent.   Ce sont des corps déterrés par les orcs dans, les ossements viennent de plusieurs endroits du souterrain.   Les cranes étaient déjà absent avant qu'ils soient déterrés.   Le trésor est caché sous la dalle, 12 argents.
  
 [13]
+Une statue se trouve devant la porte (ne pas placer la porte).   C'est une state d'ange avec une coupelle entre ces ses mains.   Une inscription se trouve sur la statue "pour passer donnez une preuve qu'il vous étaient cher".   La statue s'ouvre pour révéler une porte si une larme est versée dans la coupelle.
+ 
+[14]
+Tombes dans la piece (placer le meuble).   Les tombes sont ouvertes et ne contiennent pas de corps, mais ilm reste cependant des masques funéraires qui valident l'objectif d'information.
+ 
+[15]
+Ce couloir possède aussi des gravures florales sur les mur mais en plus grand grand nombre et plus détailles que dans les autres couloirs.
+ 
+[16]
+Cette salle contient des grands trou retangulaires à espaces réguliers. Dont un à moitié finit en train d'etre creusé par un goblin (ils sont chargé de creuser et piller).   (si les aventurier creusent plus ils trouveront un skelette sans crane et des bijoux funéraires (qui ne rapportent rien car trop peux))   nb goblins = nb players.   Les goblins seront aggressifs directement mais le une fois qu'un seul reste il propose de le laisser partir en échange d'informations. (ils savent où est caché le trésor au sud ouest mais n'indiqueront pas qu'il faut révéler une porte invisible.)
+ 
+[17]
+La salle est vide à l'execption d'un pot de chambre (fermé). Il contient de la merde de goblin.
+ 
+[18]
+La porte sud est invisible, contient une table. La salle a suspiciesement peu de poussière.
+ 
+[19]
+Coffre en vue, contient les bijoux funéraires qui valident l'objectif d'exploration.
+ 
+[20]
+La porte peut s'ouvrir depuis ce coté.
+ 
+[21]
+Il y a une mauvaise odeur dans ce couloir. Elle vient des réanimés de la pièce cachée.
+ 
+[22]
+Porte inisible, corps des défunts réanimés parun nécromancien mais laissé dans cette salle à cause de sa nature secrette. Les corps sont donc restés réanimés dans cette piece longtemps.
