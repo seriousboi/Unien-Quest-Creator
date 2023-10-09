@@ -77,7 +77,7 @@ class QuestMap:
         file= open(folderPath+"annotations.txt","w")
         newLines = []
         for index,annotation in enumerate(self.annotations):
-            newLines += ["\n \n["+str(index)+"]\n"]
+            newLines += ["\n \n["+str(index+1)+"]\n"]
             newLines += [annotation.infos]
         file.writelines(newLines)
         file.close()
@@ -86,8 +86,7 @@ class QuestMap:
         for index,entity in enumerate(self.entities):
             if entity.infos != "":
                 file = open(folderPath+entity.name+"_infos.txt","w")
-                newLines = ["["+str(index)+"]\n"]
-                newLines += [entity.name+"\n \n"]
+                newLines = ["["+entity.name+"("+str(index+1)+")]\n"]
                 newLines += [entity.infos]
                 file.writelines(newLines)
                 file.close()
