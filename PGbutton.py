@@ -73,6 +73,7 @@ class TextBox(Button):
 
         self.multiLines = multiLines
         self.lineBreaks = [0,0]
+        self.cursorPos = 0
 
         if fontName == "default":
             font = pygame.font.Font("data/fonts/Jost/Jost-VariableFont_wght.ttf", textSize)
@@ -133,18 +134,25 @@ class TextBox(Button):
                 self.active = False
 
         if event.type == pygame.KEYDOWN:
+            textLen = len(self.text)
+            insertionPos = textLen + self.cursorPos
             if self.active:
                 if event.key == pygame.K_RETURN:
                     pass
                 elif event.key == pygame.K_BACKSPACE:
-                    self.text = self.text[:-1]
+
+                    self.text = self.text[0:max(0,insertionPos-1)] + self.text[insertionPos:textLen]
+                elif event.key == pygame.K_RIGHT:
+                    self.cursorPos = min(0,self.cursorPos+1)
+                elif event.key == pygame.K_LEFT:
+                    self.cursorPos = max(-len(self.text),self.cursorPos-1)
                 else:
                     if event.scancode in keyboardDic:
                         char = keyboardDic[event.scancode]
                         if pygame.key.get_pressed()[pygame.K_RSHIFT] or pygame.key.get_pressed()[pygame.K_LSHIFT]:
                             if char in toUpperCase:
                                 char = toUpperCase[char]
-                        self.text += char
+                        self.text = self.text[0:insertionPos] + char + self.text[insertionPos:textLen]
         self.update()
 
     def display(self,surface):
