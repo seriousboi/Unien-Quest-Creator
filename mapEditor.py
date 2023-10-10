@@ -17,6 +17,8 @@ from drawCards import *
 def initialize(variables):
     variables["currentItem"] = None
     variables["copiedItem"] = None
+    variables["indexToSwitch"] = None
+    variables["itemToSwitchType"] = None
     variables["subState"] = "nothingSpecial"
 
 def mainProcess(variables):
@@ -28,12 +30,12 @@ def mainProcess(variables):
 
     #hiboxes definition
     #upper buttons
-    for index,buttonName in enumerate(["Door","Rock","Trap","Treasure","Monster","Annotation","edit","copyItem","fuseRooms","resetMap"]):
+    for index,buttonName in enumerate(["Door","Rock","Trap","Treasure","Monster","Annotation","edit","copyItem","indexItem","fuseRooms","resetMap"]):
         variables["buttons"][buttonName].rectangle = pygame.Rect(xMargin,(index*1.25+1/3)*squareSize,medButWidth,medButHeight)
 
     #lower buttons
     for index,buttonName in enumerate(["goToGenerator","saveImage","saveMap","loadMap"]):
-        variables["buttons"][buttonName].rectangle = pygame.Rect(xMargin,(17-1.25*index)*squareSize,medButWidth,medButHeight)
+        variables["buttons"][buttonName].rectangle = pygame.Rect(xMargin,(17.75-1.25*index)*squareSize,medButWidth,medButHeight)
 
     #button color update
     for button in variables["buttons"].values():
@@ -62,7 +64,8 @@ def mainDisplay(window,variables):
 
     for buttonName,buttonText in [["fuseRooms","Fuse rooms"],["resetMap","Reset map"],
                                     ["loadMap","Load a map"],["saveMap","Save to file"],
-                                    ["saveImage","Output files"],["edit","Edit items"],["copyItem","Copy item"]]:
+                                    ["saveImage","Output files"],["edit","Edit items"],["copyItem","Copy item"],
+                                    ["indexItem","Index items"]]:
 
         button = variables["buttons"][buttonName]
         displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,buttonText,25,(50,50,50))
@@ -83,6 +86,12 @@ def mainDisplay(window,variables):
         XcopyText = variables["buttons"]["copyItem"].rectangle.x + variables["buttons"]["copyItem"].rectangle.w*1.1
         YcopyText = variables["buttons"]["copyItem"].rectangle.y + variables["buttons"]["copyItem"].rectangle.h/2
         text(window,"copied",int(squareSize*(1/2)),(50,50,50),"midleft",XcopyText,YcopyText)
+
+    #indexing text
+    if variables["subState"] == "indexing" and variables["indexToSwitch"] != None:
+        XcopyText = variables["buttons"]["indexItem"].rectangle.x + variables["buttons"]["indexItem"].rectangle.w*1.1
+        YcopyText = variables["buttons"]["indexItem"].rectangle.y + variables["buttons"]["indexItem"].rectangle.h/2
+        text(window,str(variables["indexToSwitch"]+1),int(squareSize*(1/2)),(50,50,50),"midleft",XcopyText,YcopyText)
 
 def placeOrEditItem(variables,event):
     global mapLength,mapWidth,itemNames
@@ -107,6 +116,9 @@ def placeOrEditItem(variables,event):
                 if variables["subState"] == "editing":
                     editItem(variables,item)
 
+                elif variables["subState"] == "indexing":
+                    indexItem(variables,item)
+
                 elif variables["subState"] == "copying":
                     if item != None :
                         copyItem(variables,item)
@@ -128,6 +140,35 @@ def placeOrEditItem(variables,event):
 
                     else:
                         variables["currentMap"].removeItemAT(item,square)
+
+
+def indexItem(variables,item):
+
+    if item != None:
+
+        itemType = type(item)
+        if variables["indexToSwitch"] == None or variables["itemToSwitchType"] != itemType:
+            print('1')
+            if itemType == Entity:
+                variables["indexToSwitch"] = variables["currentMap"].entities.index(item)
+                variables["itemToSwitchType"] = itemType
+            elif itemType == Informations:
+                variables["indexToSwitch"] = variables["currentMap"].annotations.index(item)
+                variables["itemToSwitchType"] = itemType
+        else:
+            print('2')
+            if itemType == Entity:
+                itemToSwitch = variables["currentMap"].entities[variables["indexToSwitch"]]
+                otherIdexToSwitch = variables["currentMap"].entities.index(item)
+                variables["currentMap"].entities[variables["indexToSwitch"]] = item
+                variables["currentMap"].entities[otherIdexToSwitch] = itemToSwitch
+            elif itemType == Informations:
+                itemToSwitch = variables["currentMap"].annotations[variables["indexToSwitch"]]
+                otherIdexToSwitch = variables["currentMap"].annotations.index(item)
+                variables["currentMap"].annotations[variables["indexToSwitch"]] = item
+                variables["currentMap"].annotations[otherIdexToSwitch] = itemToSwitch
+            variables["indexToSwitch"] = None
+            variables["itemToSwitchType"] = None
 
 
 def copyItem(variables,item):
@@ -266,6 +307,14 @@ def selectCopy(variables,event):
     variables["subState"] = "copying"
 
 
+def selectIndex(variables,event):
+    desactivateAllButtons(variables["buttons"])
+    variables["buttons"]["indexItem"].active = True
+    variables["subState"] = "indexing"
+    variables["indexToSwitch"] = None
+    variables["itemToSwitchType"] = None
+
+
 def desactivateAllButtons(buttons):
     for buttonName in buttons:
         buttons[buttonName].active = False
@@ -277,8 +326,10 @@ mainInterface.initialize = initialize
 mainInterface.mainDisplay = mainDisplay
 mainInterface.mainProcess = mainProcess
 
+
 mainInterface.buttons += [Button("place",None,None,placeOrEditItem,False)]
 mainInterface.buttons += [Button("edit",but2InCol,but2OutCol,edit,activeInColor=but2PresInCol,activeOutColor=but2PresOutCol)]
+mainInterface.buttons += [Button("indexItem",but2InCol,but2OutCol,selectIndex,activeInColor=but2PresInCol,activeOutColor=but2PresOutCol)]
 mainInterface.buttons += [Button("copyItem",but2InCol,but2OutCol,selectCopy,activeInColor=but2PresInCol,activeOutColor=but2PresOutCol)]
 mainInterface.buttons += [Button("fuseRooms",but2InCol,but2OutCol,fusionSelect)]
 mainInterface.buttons += [Button("resetMap",but2InCol,but2OutCol,resetMap)]
