@@ -21,10 +21,10 @@ def getHeroSheet(sizeFactor = 6):
     height = sheetHeight*sizeFactor
     spaceSize = width//100
 
-    #background
     sheetSurface = pygame.Surface((width,height),pygame.SRCALPHA)
-    backGroundColor = (255,255,255)
-    pygame.draw.rect(sheetSurface,backGroundColor,pygame.Rect(0,0,width,height))
+    #background
+    #backGroundColor = (255,255,255)
+    #pygame.draw.rect(sheetSurface,backGroundColor,pygame.Rect(0,0,width,height))
 
     textSize = width//30
     smallTextSize = width//40
