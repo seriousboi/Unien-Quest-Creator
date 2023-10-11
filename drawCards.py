@@ -16,17 +16,14 @@ descFontName = "data/fonts/Jost/Jost-VariableFont_wght.ttf"
 def mainDraw():
     #outPutTest()
     #generateMovesCards()
-    generateItemsCards()
+    #generateItemsCards()
     return
 
 
 def outPutTest():
     pygame.init()
-    #testEntity = Entity(name="Kamul",species="demon",strength=5,dexterity=10,constitution=15,weaponName="claws")
-    #cardSurface = getMonsterCard(testEntity,1,5)
-    #cardSurface = getMoveCard("feint")
-    cardSurface = getItemCard(weapons["rapière"])
-    #cardSurface = getItemCard(tools["Verrou Déployable"],borderSize=1,sizeFactor=4)
+    testEntity = Entity(name="Kamul",species="demon",strength=5,dexterity=10,constitution=15,weaponName="claws")
+    cardSurface = getMonsterCard(testEntity,1)
     seeOutput(cardSurface)
 
 
@@ -284,8 +281,9 @@ def getMonsterCard(entity,borderSize=1,sizeFactor=8):
     yMargin += nameSurface.h + 4*borderSize
 
     #species,healths,stamina
-    infos = ["["+entity.species+"]","health: "+str(entity.health),
-             "regen ceiling: "+str(entity.criticalHealth),"stamina: "+str(entity.stamina)]
+    infos = ["["+speciesToFr[entity.species]+"]","vie: "+str(entity.health),
+             "endurance: "+str(entity.stamina)]
+    #infos += ["régénération: "+str(entity.criticalHealth)]
     for index,info in enumerate(infos):
         yMargin += text(cardSurface,info,smallTextSize,textColor,"topleft",xMargin,yMargin).h + borderSize
 
@@ -297,7 +295,7 @@ def getMonsterCard(entity,borderSize=1,sizeFactor=8):
     drawingSize = width//3
     rangeDrawing = getRange(entity,drawingSize,drawingSize)
     paste(cardSurface,rangeDrawing,(width-borderSize*2,height-borderSize*2),"bottomright")
-    text(cardSurface,"range",verySmallTextSize,textColor,"midbottom",width-borderSize*2-drawingSize//2,height-borderSize*2-drawingSize)
+    text(cardSurface,"portée",verySmallTextSize,textColor,"midbottom",width-borderSize*2-drawingSize//2,height-borderSize*2-drawingSize)
 
     #stamina costs
     tableHeight = width//3
@@ -307,8 +305,8 @@ def getMonsterCard(entity,borderSize=1,sizeFactor=8):
     yMargin = yPos - (tableHeight + 2*borderSize)
 
     #weapon,weaponDamage
-    yMargin += -text(cardSurface,"weapon damage: "+str(entity.weaponDamage),smallTextSize,textColor,"bottomleft",xMargin,yMargin).h + borderSize
-    yMargin += -text(cardSurface,"weapon: "+entity.weaponName,verySmallTextSize,textColor,"bottomleft",xMargin,yMargin).h + borderSize
+    yMargin += -text(cardSurface,"dégats d'arme: "+str(entity.weaponDamage),smallTextSize,textColor,"bottomleft",xMargin,yMargin).h + borderSize
+    yMargin += -text(cardSurface,"arme: "+entity.weaponName,verySmallTextSize,textColor,"bottomleft",xMargin,yMargin).h + borderSize
 
     return cardSurface
 
@@ -326,8 +324,8 @@ def getCosts(entity,width,height,textSize):
             hStart = 0
         pygame.draw.line(costsTable,(50,50,50),(xStep*index,hStart),(xStep*index,3*yStep),2)
 
-    text(costsTable,"attack costs",textSize,(0,0,0),"center",width//2,yStep//2)
-    labels = ["strong","fast","counter"]
+    text(costsTable,"coûts d'attaque",textSize,(0,0,0),"center",width//2,yStep//2)
+    labels = ["forte","rapide","contre"]
     costs = [entity.strongAtkCost,entity.fastAtkCost,entity.counterAtkCost]
     for index,label in enumerate(labels):
         moveColor = (0,0,0)

@@ -7,6 +7,11 @@ monsters = ["orc","goblin","skeleton","zombie","mummy","fimir","warrior","demon"
 nonMonsters = ["human","elve","dwarf"]
 speciesList = monsters+nonMonsters
 
+speciesToFr = { "orc":"Orc","goblin":"Goblin","fimir":"Fimir",
+                "skeleton":"Squelette","zombie":"Zombie","mummy":"Mommie",
+                "warrior":"Ancient Guerrier","demon":"Démon",
+                "human":"Humain","elve":"Elfe","dwarf":"Nain"}
+
 skillStats = ["strength","dexterity","constitution",
              "intelligence","perception","charisma"]
 
