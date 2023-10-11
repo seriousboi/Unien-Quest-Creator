@@ -146,6 +146,11 @@ class TextBox(Button):
                     self.cursorPos = min(0,self.cursorPos+1)
                 elif event.key == pygame.K_LEFT:
                     self.cursorPos = max(-len(self.text),self.cursorPos-1)
+                elif event.key == pygame.K_DOWN:
+                    self.cursorPos = min(0,self.cursorPos+20)
+                elif event.key == pygame.K_UP:
+                    self.cursorPos = max(-len(self.text),self.cursorPos-20)
+
                 else:
                     if event.scancode in keyboardDic:
                         char = keyboardDic[event.scancode]
@@ -163,6 +168,12 @@ class TextBox(Button):
             if self.hasBorder:
                 pygame.draw.rect(surface,self.outColor,self.rectangle,self.borderWidth,self.borderCurve)
 
+            if self.cursorPos != 0:
+                originalText = self.text
+                textLen = len(self.text)
+                insertionPos = textLen + self.cursorPos
+                self.text = originalText[0:insertionPos] + "|" + originalText[insertionPos:textLen]
+
             if (not self.multiLines) or (len(self.lineBreaks)-1 == 1):
                 limitRect = pygame.Surface((self.rectangle.w,self.rectangle.h),pygame.SRCALPHA)
                 limitRect.blit(self.textSurface,(5,5))
@@ -174,6 +185,8 @@ class TextBox(Button):
                     lineSurface = self.font.render(self.text[lineStart:lineEnd],True,self.textColor)
                     surface.blit(lineSurface,(self.rectangle.x+5,self.rectangle.y+5+lineIndex*(self.minHeight-5)))
 
+            if self.cursorPos != 0:
+                self.text = originalText
 
 def findFirstSpaceBefore(text,startCharIndex):
     for charIndex in range(startCharIndex,-1,-1):
