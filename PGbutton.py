@@ -173,7 +173,7 @@ class TextBox(Button):
                 textLen = len(self.text)
                 insertionPos = textLen + self.cursorPos
                 self.text = originalText[0:insertionPos] + "|" + originalText[insertionPos:textLen]
-
+                self.lineBreaks[-1] += 1
             if (not self.multiLines) or (len(self.lineBreaks)-1 == 1):
                 limitRect = pygame.Surface((self.rectangle.w,self.rectangle.h),pygame.SRCALPHA)
                 limitRect.blit(self.textSurface,(5,5))
@@ -187,6 +187,7 @@ class TextBox(Button):
 
             if self.cursorPos != 0:
                 self.text = originalText
+                self.lineBreaks[-1] -= 1
 
 def findFirstSpaceBefore(text,startCharIndex):
     for charIndex in range(startCharIndex,-1,-1):
