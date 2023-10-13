@@ -148,7 +148,6 @@ def indexItem(variables,item):
 
         itemType = type(item)
         if variables["indexToSwitch"] == None or variables["itemToSwitchType"] != itemType:
-            print('1')
             if itemType == Entity:
                 variables["indexToSwitch"] = variables["currentMap"].entities.index(item)
                 variables["itemToSwitchType"] = itemType
@@ -156,7 +155,6 @@ def indexItem(variables,item):
                 variables["indexToSwitch"] = variables["currentMap"].annotations.index(item)
                 variables["itemToSwitchType"] = itemType
         else:
-            print('2')
             if itemType == Entity:
                 itemToSwitch = variables["currentMap"].entities[variables["indexToSwitch"]]
                 otherIdexToSwitch = variables["currentMap"].entities.index(item)
