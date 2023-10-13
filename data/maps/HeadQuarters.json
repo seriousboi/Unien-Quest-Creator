@@ -1,0 +1,704 @@
+{
+  "doors": [
+    {
+      "frontSquare": {
+        "x": 3,
+        "y": 8
+      },
+      "backSquare": {
+        "x": 3,
+        "y": 9
+      }
+    },
+    {
+      "frontSquare": {
+        "x": 13,
+        "y": 6
+      },
+      "backSquare": {
+        "x": 13,
+        "y": 7
+      }
+    },
+    {
+      "frontSquare": {
+        "x": 6,
+        "y": 8
+      },
+      "backSquare": {
+        "x": 6,
+        "y": 9
+      }
+    },
+    {
+      "frontSquare": {
+        "x": 22,
+        "y": 9
+      },
+      "backSquare": {
+        "x": 22,
+        "y": 10
+      }
+    },
+    {
+      "frontSquare": {
+        "x": 13,
+        "y": 15
+      },
+      "backSquare": {
+        "x": 14,
+        "y": 15
+      }
+    },
+    {
+      "frontSquare": {
+        "x": 17,
+        "y": 15
+      },
+      "backSquare": {
+        "x": 18,
+        "y": 15
+      }
+    },
+    {
+      "frontSquare": {
+        "x": 22,
+        "y": 13
+      },
+      "backSquare": {
+        "x": 22,
+        "y": 14
+      }
+    },
+    {
+      "frontSquare": {
+        "x": 16,
+        "y": 2
+      },
+      "backSquare": {
+        "x": 17,
+        "y": 2
+      }
+    },
+    {
+      "frontSquare": {
+        "x": 13,
+        "y": 2
+      },
+      "backSquare": {
+        "x": 14,
+        "y": 2
+      }
+    },
+    {
+      "frontSquare": {
+        "x": 19,
+        "y": 8
+      },
+      "backSquare": {
+        "x": 19,
+        "y": 9
+      }
+    },
+    {
+      "frontSquare": {
+        "x": 19,
+        "y": 0
+      },
+      "backSquare": {
+        "x": 19,
+        "y": 1
+      }
+    },
+    {
+      "frontSquare": {
+        "x": 19,
+        "y": 4
+      },
+      "backSquare": {
+        "x": 19,
+        "y": 5
+      }
+    },
+    {
+      "frontSquare": {
+        "x": 22,
+        "y": 8
+      },
+      "backSquare": {
+        "x": 22,
+        "y": 9
+      }
+    },
+    {
+      "frontSquare": {
+        "x": 22,
+        "y": 0
+      },
+      "backSquare": {
+        "x": 22,
+        "y": 1
+      }
+    },
+    {
+      "frontSquare": {
+        "x": 11,
+        "y": 2
+      },
+      "backSquare": {
+        "x": 12,
+        "y": 2
+      }
+    },
+    {
+      "frontSquare": {
+        "x": 19,
+        "y": 9
+      },
+      "backSquare": {
+        "x": 19,
+        "y": 10
+      }
+    },
+    {
+      "frontSquare": {
+        "x": 4,
+        "y": 2
+      },
+      "backSquare": {
+        "x": 5,
+        "y": 2
+      }
+    }
+  ],
+  "rocks": [
+    {
+      "square": {
+        "x": 11,
+        "y": 18
+      }
+    },
+    {
+      "square": {
+        "x": 0,
+        "y": 10
+      }
+    },
+    {
+      "square": {
+        "x": 9,
+        "y": 10
+      }
+    },
+    {
+      "square": {
+        "x": 11,
+        "y": 12
+      }
+    }
+  ],
+  "traps": [],
+  "treasures": [
+    {
+      "square": {
+        "x": 20,
+        "y": 15
+      }
+    },
+    {
+      "square": {
+        "x": 20,
+        "y": 16
+      }
+    },
+    {
+      "square": {
+        "x": 8,
+        "y": 1
+      }
+    },
+    {
+      "square": {
+        "x": 9,
+        "y": 5
+      }
+    }
+  ],
+  "entities": [
+    {
+      "name": "Int\u00e9rim",
+      "side": "enemy",
+      "species": "goblin",
+      "strongAtkCost": 10,
+      "fastAtkCost": 5,
+      "counterAtkCost": 10,
+      "stamina": 40,
+      "health": 80,
+      "criticalHealth": 40,
+      "strength": 6,
+      "dexterity": 12,
+      "constitution": 7,
+      "weaponName": "Sabre Rouill\u00e9",
+      "weaponDamage": 13,
+      "range": "normal",
+      "square": {
+        "x": 12,
+        "y": 4
+      },
+      "infos": "Goblin patrouilleur avec sabre."
+    },
+    {
+      "name": "Int\u00e9rim (2)",
+      "side": "enemy",
+      "species": "goblin",
+      "strongAtkCost": 10,
+      "fastAtkCost": 5,
+      "counterAtkCost": 10,
+      "stamina": 40,
+      "health": 80,
+      "criticalHealth": 40,
+      "strength": 14,
+      "dexterity": 8,
+      "constitution": 7,
+      "weaponName": "Hachette",
+      "weaponDamage": 13,
+      "range": "normal",
+      "square": {
+        "x": 14,
+        "y": 8
+      },
+      "infos": "Goblin endormi avec hachette."
+    },
+    {
+      "name": "Int\u00e9rim (2)",
+      "side": "enemy",
+      "species": "goblin",
+      "strongAtkCost": 10,
+      "fastAtkCost": 5,
+      "counterAtkCost": 10,
+      "stamina": 40,
+      "health": 80,
+      "criticalHealth": 40,
+      "strength": 14,
+      "dexterity": 8,
+      "constitution": 7,
+      "weaponName": "Hachette",
+      "weaponDamage": 13,
+      "range": "normal",
+      "square": {
+        "x": 14,
+        "y": 10
+      },
+      "infos": "Goblin endormi avec hachette."
+    },
+    {
+      "name": "Int\u00e9rim (3)",
+      "side": "enemy",
+      "species": "goblin",
+      "strongAtkCost": 15,
+      "fastAtkCost": 10,
+      "counterAtkCost": 10,
+      "stamina": 40,
+      "health": 60,
+      "criticalHealth": 30,
+      "strength": 6,
+      "dexterity": 18,
+      "constitution": 7,
+      "weaponName": "Stylet",
+      "weaponDamage": 21,
+      "range": "normal",
+      "square": {
+        "x": 11,
+        "y": 8
+      },
+      "infos": "Goblin endormi avec stylet."
+    },
+    {
+      "name": "Int\u00e9rim (3)",
+      "side": "enemy",
+      "species": "goblin",
+      "strongAtkCost": 15,
+      "fastAtkCost": 10,
+      "counterAtkCost": 10,
+      "stamina": 40,
+      "health": 60,
+      "criticalHealth": 30,
+      "strength": 6,
+      "dexterity": 18,
+      "constitution": 7,
+      "weaponName": "Stylet",
+      "weaponDamage": 21,
+      "range": "normal",
+      "square": {
+        "x": 11,
+        "y": 10
+      },
+      "infos": "Goblin endormi avec stylet."
+    },
+    {
+      "name": "Int\u00e9rim",
+      "side": "enemy",
+      "species": "goblin",
+      "strongAtkCost": 10,
+      "fastAtkCost": 5,
+      "counterAtkCost": 10,
+      "stamina": 40,
+      "health": 80,
+      "criticalHealth": 40,
+      "strength": 6,
+      "dexterity": 12,
+      "constitution": 7,
+      "weaponName": "Sabre Rouill\u00e9",
+      "weaponDamage": 13,
+      "range": "normal",
+      "square": {
+        "x": 23,
+        "y": 6
+      },
+      "infos": "Goblin qui a la chiasse avec un sabre."
+    },
+    {
+      "name": "Mercenaire",
+      "side": "enemy",
+      "species": "orc",
+      "strongAtkCost": 5,
+      "fastAtkCost": 15,
+      "counterAtkCost": 10,
+      "stamina": 40,
+      "health": 100,
+      "criticalHealth": 70,
+      "strength": 19,
+      "dexterity": 10,
+      "constitution": 12,
+      "weaponName": "Hachoir Rouill\u00e9",
+      "weaponDamage": 22,
+      "range": "normal",
+      "square": {
+        "x": 19,
+        "y": 13
+      },
+      "infos": "Evitera les combats si possible, mais un fois dans un combat il se battera jusqu'\u00e0 la mort par fiert\u00e9."
+    },
+    {
+      "name": "Mercenaire",
+      "side": "enemy",
+      "species": "orc",
+      "strongAtkCost": 5,
+      "fastAtkCost": 15,
+      "counterAtkCost": 10,
+      "stamina": 40,
+      "health": 100,
+      "criticalHealth": 70,
+      "strength": 19,
+      "dexterity": 10,
+      "constitution": 12,
+      "weaponName": "Hachoir Rouill\u00e9",
+      "weaponDamage": 22,
+      "range": "normal",
+      "square": {
+        "x": 7,
+        "y": 7
+      },
+      "infos": "Evitera les combats si possible, mais un fois dans un combat il se battera jusqu'\u00e0 la mort par fiert\u00e9."
+    },
+    {
+      "name": "Contremaitre",
+      "side": "enemy",
+      "species": "orc",
+      "strongAtkCost": 10,
+      "fastAtkCost": 15,
+      "counterAtkCost": 10,
+      "stamina": 40,
+      "health": 90,
+      "criticalHealth": 50,
+      "strength": 14,
+      "dexterity": 8,
+      "constitution": 10,
+      "weaponName": "Sabre sauvage",
+      "weaponDamage": 19,
+      "range": "normal",
+      "square": {
+        "x": 6,
+        "y": 5
+      },
+      "infos": ""
+    },
+    {
+      "name": "Servant malfaisant",
+      "side": "enemy",
+      "species": "fimir",
+      "strongAtkCost": 10,
+      "fastAtkCost": 10,
+      "counterAtkCost": 10,
+      "stamina": 40,
+      "health": 100,
+      "criticalHealth": 50,
+      "strength": 10,
+      "dexterity": 16,
+      "constitution": 4,
+      "weaponName": "Double Hache",
+      "weaponDamage": 23,
+      "range": "normal",
+      "square": {
+        "x": 17,
+        "y": 14
+      },
+      "infos": ""
+    },
+    {
+      "name": "Servant malfaisant",
+      "side": "enemy",
+      "species": "fimir",
+      "strongAtkCost": 10,
+      "fastAtkCost": 10,
+      "counterAtkCost": 10,
+      "stamina": 40,
+      "health": 100,
+      "criticalHealth": 50,
+      "strength": 10,
+      "dexterity": 16,
+      "constitution": 4,
+      "weaponName": "Double Hache",
+      "weaponDamage": 23,
+      "range": "normal",
+      "square": {
+        "x": 17,
+        "y": 16
+      },
+      "infos": ""
+    },
+    {
+      "name": "Draden",
+      "side": "enemy",
+      "species": "human",
+      "strongAtkCost": 10,
+      "fastAtkCost": 10,
+      "counterAtkCost": 5,
+      "stamina": 40,
+      "health": 100,
+      "criticalHealth": 70,
+      "strength": 5,
+      "dexterity": 16,
+      "constitution": 8,
+      "weaponName": "Couteau Affut\u00e9",
+      "weaponDamage": 17,
+      "range": "normal",
+      "square": {
+        "x": 22,
+        "y": 17
+      },
+      "infos": "plus aventurier que mercenaire, il offre ses services de chef d'exp\u00e9dition au plus offrand, ce qui l'am\u00e8ne a traviller dans l'ill\u00e9galit\u00e9 pourla pegre voir parfois forces du mal."
+    },
+    {
+      "name": "L'albinos",
+      "side": "enemy",
+      "species": "orc",
+      "strongAtkCost": 10,
+      "fastAtkCost": 10,
+      "counterAtkCost": 5,
+      "stamina": 50,
+      "health": 140,
+      "criticalHealth": 50,
+      "strength": 14,
+      "dexterity": 14,
+      "constitution": 12,
+      "weaponName": "Fl\u00e9au",
+      "weaponDamage": 16,
+      "range": "long",
+      "square": {
+        "x": 3,
+        "y": 2
+      },
+      "infos": "Orc \u00e0 la peau bleue tr\u00e8s intelligent. Son entrainement lui donne une meilleur alonge qu'un guerrier normal."
+    }
+  ],
+  "annotations": [
+    {
+      "square": {
+        "x": 23,
+        "y": 2
+      },
+      "infos": "Entr\u00e9e. On voit que l'endroit est habit\u00e9 \u00e0 l'asbence de poussi\u00e8re et la pr\u00e9sence de buches pos\u00e9es dans un coin."
+    },
+    {
+      "square": {
+        "x": 22,
+        "y": 0
+      },
+      "infos": "Les couloirs sont bien \u00e9clair\u00e9s."
+    },
+    {
+      "square": {
+        "x": 13,
+        "y": 4
+      },
+      "infos": "Ce goblin est un garde qui fait ses rondes. Il se d\u00e9place."
+    },
+    {
+      "square": {
+        "x": 20,
+        "y": 2
+      },
+      "infos": "Il y a une biblioth\u00e8que sur laquelle repose des papier tels que des emplois tu temps pour les tours de garde et l'organisation des repas. Si inspect\u00e9e on y trouve un papier coll\u00e9 en dessous d'une \u00e9tag\u00e8re avec \"251\" \u00e9crit dessus."
+    },
+    {
+      "square": {
+        "x": 20,
+        "y": 7
+      },
+      "infos": "Il y a des carte des souterrains de la citadelle avec plusieurs locations entour\u00e9es. Certaines sont ray\u00e9e avec une liste de tr\u00e9sors obtenus \u00e9crite \u00e0 cot\u00e9. Chaque lieu semble etre une forme de s\u00e9pulture (cimeti\u00e8re, tombe, mausaul\u00e9, fosse)."
+    },
+    {
+      "square": {
+        "x": 15,
+        "y": 5
+      },
+      "infos": "Il y a une chemin\u00e9e. Semble etre une cuisine. Il y flotte l'odeur d'un bon repas r\u00e9\u00e7ament pr\u00e9par\u00e9. Mais il y a une montagne de vaisselle salle qui prendrait plusieurs jours \u00e0 laver."
+    },
+    {
+      "square": {
+        "x": 12,
+        "y": 2
+      },
+      "infos": "Il y a plaque (en bois) \u00e0 cot\u00e9 de la porte avec \"contremaitre\" \u00e9crit dessus.  Il y a aussi une note accroch\u00e9e \u00e0 la poign\u00e9e \"en pause d\u00e9jeun\u00e9 dans la salle commune\" \u00e9crit grossi\u00e8rement avec des fautes."
+    },
+    {
+      "square": {
+        "x": 9,
+        "y": 3
+      },
+      "infos": "Il y a une table et une armoire. Il y des \u00e9tag\u00e8res avec divers objets utilitaires dessus. Si l'armoire est inspect\u00e9e on y trouve une cl\u00e9 (pour la prison)."
+    },
+    {
+      "square": {
+        "x": 10,
+        "y": 5
+      },
+      "infos": "12 argents sont cach\u00e9s dans une dalle creuse."
+    },
+    {
+      "square": {
+        "x": 13,
+        "y": 6
+      },
+      "infos": "Il y a \u00e9crit \"dortoire sur une plaque\""
+    },
+    {
+      "square": {
+        "x": 13,
+        "y": 7
+      },
+      "infos": "Les goblins dorment dans des lits."
+    },
+    {
+      "square": {
+        "x": 22,
+        "y": 9
+      },
+      "infos": "Il y a \u00e9crit \"latrines\" \u00e0 cot\u00e9 de la porte nord et \"cellule\" \u00e0 cot\u00e9 de la porte sud."
+    },
+    {
+      "square": {
+        "x": 22,
+        "y": 6
+      },
+      "infos": "Ce sont les toilettes du quartier g\u00e9n\u00e9ral. Le goblin semble en avoir pour longtemps."
+    },
+    {
+      "square": {
+        "x": 22,
+        "y": 13
+      },
+      "infos": "Il y a une table de torture. La porte est blind\u00e9e et ferm\u00e9e. Il faut une cl\u00e9 pour l'ouvrir."
+    },
+    {
+      "square": {
+        "x": 23,
+        "y": 17
+      },
+      "infos": "Draden est enchain\u00e9 au mur. Il a \u00e9t\u00e9 enferm\u00e9 par son propre employeur car il en savait trop. Le principal objectif de son exp\u00e9dition au cimeti\u00e8re \u00e9tais de trouver certains ossements sp\u00e9cifiques, les crystaux \u00e9taient secondaires. Cependant les os en questions n'\u00e9taient pas l\u00e0. Draden \u00e0 par la suite men\u00e9 une autre exp\u00e9dition o\u00f9 les os ont \u00e9t\u00e9 trouv\u00e9s, c'est juste apr\u00e8s \u00e7a qu'il a \u00e9t\u00e9 enferm\u00e9."
+    },
+    {
+      "square": {
+        "x": 20,
+        "y": 13
+      },
+      "infos": "L'orc est assis sur une chaise en train d'aiguiser une arme. Il y a des balais et des outils de m\u00e9nage dans la pi\u00e8ce. Il y a aussi des armes rouill\u00e9es entrepos\u00e9es."
+    },
+    {
+      "square": {
+        "x": 15,
+        "y": 15
+      },
+      "infos": "Les firmirs gardent l'entr\u00e9e de l'entrepot. Il sont capables de parler. Il n'ob\u00e9issent qu'aux ordres de l'Albinos.  Ils laisseront partir les aventuriers sans alerter d'autres enemis car leur seuls ordres sont de garder l'entrepot."
+    },
+    {
+      "square": {
+        "x": 19,
+        "y": 16
+      },
+      "infos": "Contient divers butins pill\u00e9s tels que de l'or, des armes et des rouleaux ancients. Chaque aventurier doit en porter une partie pour valider l'objectif d'exploration."
+    },
+    {
+      "square": {
+        "x": 6,
+        "y": 9
+      },
+      "infos": "Il y a une plaque avec \"r\u00e9fectoire\" \u00e9crit dessus. Les voix des orcs peuvent etre entendues depuis le couloir."
+    },
+    {
+      "square": {
+        "x": 7,
+        "y": 6
+      },
+      "infos": "Il y a une table sur laquelle il y a manger. L'orc du fond est le contremaitre. Ils discutent du fait que les exp\u00e9ditions se font toujours dans les cimiti\u00e8res alors que peu de tr\u00e9sors sont trouv\u00e9s \u00e0 chaque fois. L'autre orc dit l'Albinos doit chercher quelquechose de sp\u00e9cifique et que les tr\u00e9sors ne sont qu'une couverture.     Le sujet change, l'orc B  dit qu'il en revient pas que l'orc A soir devenu contremaitre. A dit \"je suis un super contremaitre\". B dit \"est ce que tu as ferm\u00e9 la porte de ton bureau ou au moins pris les cl\u00e9s de la prison avec toi\". A dit \"euuu, non\". B \"comment \u00e7a non?\". A \"Non au deux questions\". Ils rient."
+    },
+    {
+      "square": {
+        "x": 3,
+        "y": 9
+      },
+      "infos": "Il y a marqu\u00e9 \"chef\" sur une plaque \u00e0 cot\u00e9 de la porte. La porte est dor\u00e9e et doit etre ouverte avec un code (251). Si les aventurier frappent \u00e0 la porte l'Albinos ouvrira la porte (la porte s'ouvre de l'int\u00e9rieur sans code)."
+    },
+    {
+      "square": {
+        "x": 2,
+        "y": 2
+      },
+      "infos": "Il y a un bureau, la porte \u00e0 l'est est invisible. L'orc est l'Albinos. Le tuer ou le capturer valide l'objectif d'\u00e9limination. Il ne r\u00e9v\u00e8lera pas son objectif \u00e0 moins d'etre persud\u00e9, cependant il donnera certaines informations telles que: Il travail vers un objectif plus ambitieu que d'obtenir de l'or. Il trouv\u00e9 ce qu'il voullait. L'objet en question \u00e0 d\u00e9j\u00e0 \u00e9t\u00e9 donn\u00e9 \u00e0 celui qui acomplira son objectif.  Il essayera d'alerter d'autres enemis \u00e0 un moment donn\u00e9."
+    },
+    {
+      "square": {
+        "x": 7,
+        "y": 1
+      },
+      "infos": "Il y a une biblioth\u00e8que qui contient des lettres de communications entre l'Albinos et Murgol, elles confirment la recherche des ossements d'un ancient. Il y a aussi 24 argent dans une bourse et d'anciens livres qui parlent des l\u00e9gendes des ancients et de r\u00e9surection."
+    }
+  ],
+  "aggregatedRooms": [
+    [
+      [
+        1,
+        4,
+        4,
+        5,
+        [
+          118,
+          118,
+          123
+        ]
+      ],
+      [
+        1,
+        1,
+        4,
+        3,
+        [
+          174,
+          120,
+          87
+        ]
+      ]
+    ]
+  ]
+}

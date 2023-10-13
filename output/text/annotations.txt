@@ -1,70 +1,70 @@
 
  
 [1]
-Début. La porte au sud ne s'ouvre que de l'extérieur. La porte du sud est renforcée et récente.
+Entrée. On voit que l'endroit est habité à l'asbence de poussière et la présence de buches posées dans un coin.
  
 [2]
-Les aventuriers peuvent voire l'autre coté des rochers grace à une fissure.   Cela permet de voir le rocher au sud et donc de déduire que l'accès viens de l'ouest.   Les murs ont des gravures à motifs floral.
+Les couloirs sont bien éclairés.
  
 [3]
-Piège mineur (9 dégats), placé par Draden, "piège modeste". C'est une dalle creuse qui se brise si on marche dessus avec un pieu juste en dessous.
+Ce goblin est un garde qui fait ses rondes. Il se déplace.
  
 [4]
-Salle contenant plein de vases rangés sur des étagères ornées. Les vases sont fermé et contiennent beaucoup de poussière. Ces vases sont en réalité des urnes funéraires et contiennent des cendres.
+Il y a une bibliothèque sur laquelle repose des papier tels que des emplois tu temps pour les tours de garde et l'organisation des repas. Si inspectée on y trouve un papier collé en dessous d'une étagère avec "251" écrit dessus.
  
 [5]
-Humain en habits d'aventurier mais pas visiblement armé. Il a engagé les goblins et l'orc pour piller les tombes. lors de la rencontre avec l'équipe il prend un ton famlier et prétend etre un archéologue (cependant il a une pioche mais pas de brosse). il indiquera qu'un trésor se trouve dans la région nord est de ces ruines pour vous leurrer dans un piege. Si questionné sur les pots il essayera de les faire passer pour des anciens pot de fleurs et la cendre pour de la décompostion de plantes.
+Il y a des carte des souterrains de la citadelle avec plusieurs locations entourées. Certaines sont rayée avec une liste de trésors obtenus écrite à coté. Chaque lieu semble etre une forme de sépulture (cimetière, tombe, mausaulé, fosse).
  
 [6]
-Léger courrant d'air dans le couloir (du à la salle secrette qui contient une sortie).
+Il y a une cheminée. Semble etre une cuisine. Il y flotte l'odeur d'un bon repas réçament préparé. Mais il y a une montagne de vaisselle salle qui prendrait plusieurs jours à laver.
  
 [7]
-Porte invisble, sortie vers le reste de la citadelle que braden connais et peux utiliser pour s'enfuir, meme après que braden passe par la porte elle reste invsible. Meubles dans cette salle.   Le trésor est caché sous la dalle.   Burreau dans cette pièce.
+Il y a plaque (en bois) à coté de la porte avec "contremaitre" écrit dessus.  Il y a aussi une note accrochée à la poignée "en pause déjeuné dans la salle commune" écrit grossièrement avec des fautes.
  
 [8]
-Pièges sérieux (19 dégats), posés par braden en anticipation de visite non désirée. Ce sont des pièges à loups très fins.
+Il y a une table et une armoire. Il y des étagères avec divers objets utilitaires dessus. Si l'armoire est inspectée on y trouve une clé (pour la prison).
  
 [9]
-Salle contenant des grands trou rectangulaires à espaces réguliers.   Ce sont des tombes qui ont été pillées.
+12 argents sont cachés dans une dalle creuse.
  
 [10]
-Le couloir est faiblement éclairé (rien de spécial).
+Il y a écrit "dortoire sur une plaque"
  
 [11]
-Les aventuriers entendent des voix (si il y a deux orcs) et provenance de derrirère la porte.
+Les goblins dorment dans des lits.
  
 [12]
-Chaise et table dans la pièce. nb orc = nb joueurs -1.   Les deux orc se la coulent douce. Ils mettent immédiatement sur la défensive une fois les joueurs présents et disent qu'ils étaient sur le point de continuer leur travail. (ils pensent que les joueurs travaillent pour  Draden et qu'ils vont avoir des problèmes).   Les orcs ont pour travail de sortir les corps des tombes creusées par les goblins puis d'ouvrir l'accès au mosolé de la salle d'à coté.   En cas de conflit ils proposeront de vous laisser passer si vous dite à Draden que vous ne les avez pas vu.   Ils conaissent la position du trésor car ils y ont amené ce qu'ils ont pillés.   Ils ont remarqués que beaucoup de corps étaient manquant alors le les bijoux funéraires étaient toujours présents.
+Il y a écrit "latrines" à coté de la porte nord et "cellule" à coté de la porte sud.
  
 [13]
-Plusieurs tas d'ossements  jonchent le sol de la piece. Ces ossements sont humanoides mais plus imposant que des os humains, aucuns crane c'est présent.   Ce sont des corps déterrés par les orcs dans, les ossements viennent de plusieurs endroits du souterrain.   Les cranes étaient déjà absent avant qu'ils soient déterrés.   Le trésor est caché sous la dalle, 12 argents.
+Ce sont les toilettes du quartier général. Le goblin semble en avoir pour longtemps.
  
 [14]
-Une statue se trouve devant la porte (ne pas placer la porte).   C'est une state d'ange avec une coupelle entre ces ses mains.   Une inscription se trouve sur la statue "pour passer donnez une preuve qu'il vous étaient cher".   La statue s'ouvre pour révéler une porte si une larme est versée dans la coupelle.
+Il y a une table de torture. La porte est blindée et fermée. Il faut une clé pour l'ouvrir.
  
 [15]
-Tombes dans la pièce (placer le meuble).   Les tombes sont ouvertes et ne contiennent pas de corps, mais ils reste cependant des masques funéraires qui valident l'objectif d'information.
+Draden est enchainé au mur. Il a été enfermé par son propre employeur car il en savait trop. Le principal objectif de son expédition au cimetière étais de trouver certains ossements spécifiques, les crystaux étaient secondaires. Cependant les os en questions n'étaient pas là. Draden à par la suite mené une autre expédition où les os ont été trouvés, c'est juste après ça qu'il a été enfermé.
  
 [16]
-Ce couloir possède aussi des gravures florales sur les mur mais en plus grand grand nombre et plus détailles que dans les autres couloirs.
+L'orc est assis sur une chaise en train d'aiguiser une arme. Il y a des balais et des outils de ménage dans la pièce. Il y a aussi des armes rouillées entreposées.
  
 [17]
-Cette salle contient des grands trou rectangulaires à espaces réguliers. Dont un à moitié finit en train d'etre creusé par un goblin (ils sont chargé de creuser et piller).   (si les aventurier creusent plus ils trouveront un skelette sans crane et des bijoux funéraires (qui ne rapportent rien car trop peux))   nb goblins = nb players.   Les goblins seront agressifs directement mais le une fois qu'un seul reste il propose de le laisser partir en échange d'informations. (ils savent où est caché le trésor au sud ouest mais n'indiqueront pas qu'il faut révéler une porte invisible.)
+Les firmirs gardent l'entrée de l'entrepot. Il sont capables de parler. Il n'obéissent qu'aux ordres de l'Albinos.  Ils laisseront partir les aventuriers sans alerter d'autres enemis car leur seuls ordres sont de garder l'entrepot.
  
 [18]
-La salle est vide à l'exception d'un pot de chambre (fermé). Il contient de la merde de goblin.
+Contient divers butins pillés tels que de l'or, des armes et des rouleaux ancients. Chaque aventurier doit en porter une partie pour valider l'objectif d'exploration.
  
 [19]
-La porte sud est invisible, contient une table. La salle a suspicieusement peu de poussière.
+Il y a une plaque avec "réfectoire" écrit dessus. Les voix des orcs peuvent etre entendues depuis le couloir.
  
 [20]
-Coffre en vue, contient les bijoux funéraires qui valident l'objectif d'exploration.
+Il y a une table sur laquelle il y a manger. L'orc du fond est le contremaitre. Ils discutent du fait que les expéditions se font toujours dans les cimitières alors que peu de trésors sont trouvés à chaque fois. L'autre orc dit l'Albinos doit chercher quelquechose de spécifique et que les trésors ne sont qu'une couverture.     Le sujet change, l'orc B  dit qu'il en revient pas que l'orc A soir devenu contremaitre. A dit "je suis un super contremaitre". B dit "est ce que tu as fermé la porte de ton bureau ou au moins pris les clés de la prison avec toi". A dit "euuu, non". B "comment ça non?". A "Non au deux questions". Ils rient.
  
 [21]
-La porte peut s'ouvrir depuis ce coté.
+Il y a marqué "chef" sur une plaque à coté de la porte. La porte est dorée et doit etre ouverte avec un code (251). Si les aventurier frappent à la porte l'Albinos ouvrira la porte (la porte s'ouvre de l'intérieur sans code).
  
 [22]
-Il y a une mauvaise odeur dans ce couloir. Elle vient des réanimés de la pièce cachée.
+Il y a un bureau, la porte à l'est est invisible. L'orc est l'Albinos. Le tuer ou le capturer valide l'objectif d'élimination. Il ne révèlera pas son objectif à moins d'etre persudé, cependant il donnera certaines informations telles que: Il travail vers un objectif plus ambitieu que d'obtenir de l'or. Il trouvé ce qu'il voullait. L'objet en question à déjà été donné à celui qui acomplira son objectif.  Il essayera d'alerter d'autres enemis à un moment donné.
  
 [23]
-Porte inisible, corps des défunts réanimés parun nécromancien mais laissé dans cette salle à cause de sa nature secrette. Les corps sont donc restés réanimés dans cette piece longtemps.
+Il y a une bibliothèque qui contient des lettres de communications entre l'Albinos et Murgol, elles confirment la recherche des ossements d'un ancient. Il y a aussi 24 argent dans une bourse et d'anciens livres qui parlent des légendes des ancients et de résurection.
