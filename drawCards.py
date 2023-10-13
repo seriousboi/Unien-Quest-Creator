@@ -262,7 +262,9 @@ def getMonsterCard(entity,borderSize=1,sizeFactor=8):
 
     #illustration
     if entity.species in speciesList:
-        if entity.species in monsters:
+        if entity.species == "fimir":
+            imageName = "data/images/fimir.png"
+        elif entity.species in monsters and entity.species:
             imageName = "data/images/modern_"+entity.species+".png"
         elif entity.species in nonMonsters:
             imageName = "data/images/icons/"+entity.species+".png"
@@ -293,7 +295,7 @@ def getMonsterCard(entity,borderSize=1,sizeFactor=8):
 
     #range
     drawingSize = width//3
-    rangeDrawing = getRange(entity,drawingSize,drawingSize)
+    rangeDrawing = getRange(entity,drawingSize,drawingSize,entity.range)
     paste(cardSurface,rangeDrawing,(width-borderSize*2,height-borderSize*2),"bottomright")
     text(cardSurface,"portée",verySmallTextSize,textColor,"midbottom",width-borderSize*2-drawingSize//2,height-borderSize*2-drawingSize)
 
@@ -337,39 +339,71 @@ def getCosts(entity,width,height,textSize):
 
 
 
-def getRange(entity,width,height):
+def getRange(entity,width,height,attackRange="normal"):
     rangeDrawing = pygame.Surface((width+2,height+2),pygame.SRCALPHA)
-    xStep = width//3
-    yStep = height//3
-    topleft = (0,0)
-    midtop1 = (1*xStep,0*yStep)
-    midtop2 = (2*xStep,0*yStep)
-    topright = (3*xStep,0*yStep)
-    midright = (3*xStep,1*yStep)
-    bottomright = (3*xStep,2*yStep)
-    midbottom2 = (2*xStep,2*yStep)
-    bottomBottomright = (2*xStep,3*yStep)
-    bottomBottomleft = (1*xStep,3*yStep)
-    midbottom1 = (1*xStep,2*yStep)
-    bottomleft = (0*xStep,2*yStep)
-    midleft = (0*xStep,1*yStep)
+
+    if attackRange == "long":
+        xStep = width//4
+        yStep = height//4
+        xShift = xStep/2
+        topleft = (xShift+0,0)
+        midtop1 = (xShift+1*xStep,0*yStep)
+        midtop2 = (xShift+2*xStep,0*yStep)
+        topright = (xShift+3*xStep,0*yStep)
+        midright = (xShift+3*xStep,1*yStep)
+        midright2 = (xShift+3*xStep,2*yStep)
+        bottomright = (xShift+3*xStep,3*yStep)
+        midbottom2 = (xShift+2*xStep,3*yStep)
+        bottomBottomright = (xShift+2*xStep,4*yStep)
+        bottomBottomleft = (xShift+1*xStep,4*yStep)
+        midbottom1 = (xShift+1*xStep,3*yStep)
+        bottomleft = (xShift+0*xStep,3*yStep)
+        midleft2 = (xShift+0*xStep,2*yStep)
+        midleft = (xShift+0*xStep,1*yStep)
+
+    else:
+        xStep = width//3
+        yStep = height//3
+        topleft = (0,0)
+        midtop1 = (1*xStep,0*yStep)
+        midtop2 = (2*xStep,0*yStep)
+        topright = (3*xStep,0*yStep)
+        midright = (3*xStep,1*yStep)
+        bottomright = (3*xStep,2*yStep)
+        midbottom2 = (2*xStep,2*yStep)
+        bottomBottomright = (2*xStep,3*yStep)
+        bottomBottomleft = (1*xStep,3*yStep)
+        midbottom1 = (1*xStep,2*yStep)
+        bottomleft = (0*xStep,2*yStep)
+        midleft = (0*xStep,1*yStep)
 
     contour=[topleft,topright,bottomright,midbottom2,bottomBottomright,bottomBottomleft,midbottom1,bottomleft]
+
     for index in range(len(contour)):
         pygame.draw.line(rangeDrawing,(50,50,50),contour[index-1],contour[index],2)
 
-    xMiniStep = width//12
-    yMiniStep = height//12
-    point = (1*xStep+2*xMiniStep,2*yStep+1*yMiniStep)
-    leftBase = (1*xStep+1*xMiniStep,2*yStep+3*yMiniStep)
-    rightBase = (1*xStep+3*xMiniStep,2*yStep+3*yMiniStep)
+    xMiniStep = width//16
+    yMiniStep = height//16
+    if attackRange == "long":
+        point = (xShift+1*xStep+2*xMiniStep,3*yStep+1*yMiniStep)
+        leftBase = (xShift+1*xStep+1*xMiniStep,3*yStep+3*yMiniStep)
+        rightBase = (xShift+1*xStep+3*xMiniStep,3*yStep+3*yMiniStep)
+    else:
+        point = (1*xStep+2*xMiniStep,2*yStep+1*yMiniStep)
+        leftBase = (1*xStep+1*xMiniStep,2*yStep+3*yMiniStep)
+        rightBase = (1*xStep+3*xMiniStep,2*yStep+3*yMiniStep)
 
     contour = [point,leftBase,rightBase]
     for index in range(len(contour)):
         pygame.draw.line(rangeDrawing,(50,50,50),contour[index-1],contour[index],2)
 
-    for points in [[midtop1,midbottom1],[midtop2,midbottom2],[midleft,midright],[midbottom1,midbottom2]]:
-        pygame.draw.line(rangeDrawing,(100,100,100),points[0],points[1],1)
+    linePoints = [[midtop1,midbottom1],[midtop2,midbottom2],[midleft,midright],[midbottom1,midbottom2]]
+    if attackRange == "long":
+        linePoints += [[midleft2,midright2]]
+    for points in linePoints:
+        point1 = points[0]
+        point2 = points[1]
+        pygame.draw.line(rangeDrawing,(100,100,100),point1,point2,1)
 
     return rangeDrawing
 
