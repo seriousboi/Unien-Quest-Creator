@@ -239,16 +239,23 @@ def goToGenerator(variables,event):
 
 def saveImage(variables,event):
     global mapLength,mapWidth
+
+    #clearing map and entity folder
+    clearFolder("output/map/")
+    clearFolder("output/entityCards/")
+
     squareSize = variables["squareSize"]
     window = variables["window"]
     imageOutput = Surface((squareSize*mapLength,squareSize*mapWidth))
     imageOutput.blit(window,(0,0))
     pygame.image.save(imageOutput,"output/map/map.png")
+
     for entity in variables["currentMap"].entities:
         card = getMonsterCard(entity)
         pygame.image.save(card,"output/entityCards/"+entity.name+".png")
 
-    #todo: vider le dossier output/map
+
+
     fakeBooardSurface = Surface((squareSize*mapLength,squareSize*mapWidth))
     displayBoard(fakeBooardSurface,(0,0),squareSize,variables["currentMap"].rooms)
     for aggregatedRoom in variables["currentMap"].aggregatedRooms:
@@ -259,7 +266,6 @@ def saveImage(variables,event):
         roomSurface.blit(fakeBooardSurface,(-squareSize*room3[0],-squareSize*room3[1]))
         pygame.image.save(roomSurface,"output/map/"+str(room3)+".png")
 
-    #todo: vider le dossier output/text
     variables["currentMap"].outputTextFiles()
     print("Files saved in output folder")
 

@@ -73,6 +73,9 @@ class QuestMap:
         self.rooms = getRoomsAfterAggregation(self.aggregatedRooms)
 
     def outputTextFiles(self,folderPath="output/text/"):
+        #clearing text folder
+        clearFolder(folderPath)
+
         #annotations
         file= open(folderPath+"annotations.txt","w")
         newLines = []
@@ -170,3 +173,16 @@ def aggregateRooms(room1,room2):
 
 def listToTupleRec(l):
     return tuple(listToTupleRec(x) for x in l) if type(l) is list else l
+
+
+import os, shutil
+def clearFolder(folderPath):
+    for filename in os.listdir(folderPath):
+        file_path = os.path.join(folderPath, filename)
+        try:
+            if os.path.isfile(file_path) or os.path.islink(file_path):
+                os.unlink(file_path)
+            elif os.path.isdir(file_path):
+                shutil.rmtree(file_path)
+        except Exception as e:
+            print('Failed to delete %s. Reason: %s' % (file_path, e))
