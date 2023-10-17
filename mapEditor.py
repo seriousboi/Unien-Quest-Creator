@@ -11,6 +11,7 @@ from  fusionSelect import *
 from entityEditor import *
 from copy import copy
 from drawCards import *
+from printer import *
 
 
 
@@ -252,8 +253,8 @@ def saveImage(variables,event):
 
     for entity in variables["currentMap"].entities:
         card = getMonsterCard(entity)
-        pygame.image.save(card,"output/entityCards/"+entity.name+".png")
-
+        pygame.image.save(card,"output/entityCards/"+entity.name+"Card.png")
+    outputSheets("output/entityCards/")
 
 
     fakeBooardSurface = Surface((squareSize*mapLength,squareSize*mapWidth))
