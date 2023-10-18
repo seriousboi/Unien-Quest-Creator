@@ -1,0 +1,27 @@
+{
+  "doors": [],
+  "rocks": [],
+  "furniture": [
+    {
+      "square": {
+        "x": 22,
+        "y": 6
+      },
+      "name": "torture table",
+      "orientation": "north"
+    },
+    {
+      "square": {
+        "x": 18,
+        "y": 7
+      },
+      "name": "torture table",
+      "orientation": "east"
+    }
+  ],
+  "traps": [],
+  "treasures": [],
+  "entities": [],
+  "annotations": [],
+  "aggregatedRooms": []
+}

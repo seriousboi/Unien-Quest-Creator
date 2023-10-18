@@ -6,6 +6,7 @@ from display import *
 
 def FSinitialize(variables):
     variables["furnitureSelected"] = "chair"
+    variables["orientation"] = "north"
 
 
 def FSmainDisplay(window,variables):
@@ -21,6 +22,10 @@ def FSmainDisplay(window,variables):
 
     button = variables["buttons"]["back"]
     displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,"Back",25,(50,50,50))
+
+    button = variables["buttons"]["rotate"]
+    displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,"Change orientation: "+variables["orientation"],25,(50,50,50))
+
 
     for itemName in furniture:
         button = variables["buttons"][itemName]
@@ -41,9 +46,17 @@ def FSmainProcess(variables):
     for index,buttonName in enumerate(furniture):
         variables["buttons"][buttonName].rectangle = pygame.Rect(xMargin,index*vSpace+(1/3)*squareSize,medButWidth,medButHeight)
 
+    middleVspace = squareSize
+    variables["buttons"]["rotate"].rectangle = pygame.Rect(xMargin,middleVspace+(index+1)*vSpace+(1/3)*squareSize,medButWidth,medButHeight)
+
+
 def FSback(variables,event):
     variables["state"] = "inEditor"
 
+
+def rotate(variables,event):
+    nextOrientation = {"north":"east","east":"south","south":"west","west":"north"}
+    variables["orientation"] = nextOrientation[variables["orientation"]]
 
 
 furnitureSelectInterface = Interface()
@@ -52,6 +65,7 @@ furnitureSelectInterface.initialize = FSinitialize
 furnitureSelectInterface.mainDisplay = FSmainDisplay
 furnitureSelectInterface.mainProcess = FSmainProcess
 
+furnitureSelectInterface.buttons += [Button("rotate",but2InCol,but2OutCol,rotate)]
 furnitureSelectInterface.buttons += [Button("back",otherInCol,otherOutCol,FSback)]
 
 

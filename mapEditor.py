@@ -18,10 +18,12 @@ from printer import *
 
 def initialize(variables):
     variables["currentItem"] = None
+    variables["furnitureOrientation"] = None
     variables["copiedItem"] = None
     variables["indexToSwitch"] = None
     variables["itemToSwitchType"] = None
     variables["subState"] = "nothingSpecial"
+
 
 def mainProcess(variables):
     global mapLength,mapWidth
@@ -72,8 +74,9 @@ def mainDisplay(window,variables):
 
     for buttonName,buttonText in [["fuseRooms","Fuse rooms"],["resetMap","Reset map"],
                                     ["loadMap","Load a map"],["saveMap","Save to file"],
-                                    ["saveImage","Output files"],["edit","Edit items"],["copyItem","Copy item"],
-                                    ["indexItem","Index items"],["furniture","Furniture"]]:
+                                    ["saveImage","Output files"],["edit","Edit items"],
+                                    ["copyItem","Copy items"],["indexItem","Index items"],
+                                    ["furniture","Furniture"]]:
 
         button = variables["buttons"][buttonName]
         displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,buttonText,25,(50,50,50))
@@ -153,7 +156,7 @@ def placeOrEditItem(variables,event):
                         elif currentItem == "Annotation":
                             variables["currentMap"].annotations += [Informations(square)]
                         elif currentItem in furniture:
-                            variables["currentMap"].furniture += [Furniture(square,currentItem)]
+                            variables["currentMap"].furniture += [Furniture(square,currentItem,variables["furnitureOrientation"])]
                     else:
                         variables["currentMap"].removeItemAT(item,square)
 
@@ -200,6 +203,7 @@ def placeCopiedItem(variables,square):
         variables["currentMap"].entities += [item]
     if type(item) == Informations:
         variables["currentMap"].annotations += [item]
+
 
 def editItem(variables,item):
     if type(item) == Entity:
@@ -285,6 +289,7 @@ def saveImage(variables,event):
     variables["currentMap"].outputTextFiles()
     print("Files saved in output folder")
 
+
 def saveMap(variables,event):
     try:
         variables["currentMap"].saveToFile()
@@ -353,6 +358,7 @@ def selectFurniture(variables,event):
         button = variables["buttons"]["furniture"]
         button.active = True
         variables["currentItem"] = FSvariables["furnitureSelected"]
+        variables["furnitureOrientation"] = FSvariables["orientation"]
         variables["subState"] = "placing"
 
 

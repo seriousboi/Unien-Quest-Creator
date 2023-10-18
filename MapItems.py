@@ -31,19 +31,20 @@ class Trap(MapItem):
 
 
 class Furniture(MapItem):
-    def __init__(self,square,name="chair"):
+    def __init__(self,square,name="chair",orientation="north"):
         super().__init__(square)
         self.name = name
+        self.orientation = orientation
 
     @classmethod
     def fromDict(cls,dict):
-        return cls(Square.fromDict(dict["square"]),dict["name"])
+        return cls(Square.fromDict(dict["square"]),dict["name"],dict["orientation"])
 
     def display(self,surface,shift,squareSize):
-        displayFurniture(surface,shift,squareSize,self.square,self.name)
+        displayFurniture(surface,shift,squareSize,self.square,self.name,self.orientation)
 
     def toJSON(self):
-        return {"square":self.square.toJSON(),"name":self.infos}
+        return {"square":self.square.toJSON(),"name":self.name,"orientation":self.orientation}
 
 
 

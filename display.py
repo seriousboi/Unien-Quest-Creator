@@ -49,7 +49,7 @@ def displayGraph(surface,shift,squareSize,squareHelp,nbAreas,nbConnectors,areas,
             text(surface,str(area.id),(squareSize*3)//5,(0,0,0),"center",center[0],center[1])
 
 
-def displayFurniture(surface,shift,squareSize,square,furnitureName):
+def displayFurniture(surface,shift,squareSize,square,furnitureName,orientation="north"):
     global furnitureDims
     X,Y = shift
     x = X+square.x*squareSize
@@ -58,6 +58,9 @@ def displayFurniture(surface,shift,squareSize,square,furnitureName):
     width = squareSize*furnitureDims[furnitureName][0]
     height = squareSize*furnitureDims[furnitureName][1]
     furnitureIcon = pygame.transform.scale(furnitureIcon,(width,height))
+    rotations = {"north":0,"east":1,"south":2,"west":3}
+    rotation = rotations[orientation]
+    furnitureIcon = pygame.transform.rotate(furnitureIcon,rotation*90)
     surface.blit(furnitureIcon,(x,y))
 
 
