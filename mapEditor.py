@@ -8,6 +8,7 @@ from pygame import *
 from generators import *
 from mapSelect import *
 from  fusionSelect import *
+from furnitureSelect import *
 from entityEditor import *
 from copy import copy
 from drawCards import *
@@ -27,16 +28,22 @@ def mainProcess(variables):
     squareSize = variables["squareSize"]
     xMargin = (mapLength+2/3)*squareSize
     medButWidth = 5*squareSize
-    medButHeight = squareSize
+    medButHeight = (4/5)*squareSize
+    vSpace = squareSize
 
     #hiboxes definition
     #upper buttons
-    for index,buttonName in enumerate(["Door","Rock","Trap","Treasure","Monster","Annotation","edit","copyItem","indexItem","fuseRooms","resetMap"]):
-        variables["buttons"][buttonName].rectangle = pygame.Rect(xMargin,(index*1.25+1/3)*squareSize,medButWidth,medButHeight)
+    for index,buttonName in enumerate(["Door","Rock","Trap","Treasure","furniture","Entity","Annotation"]):
+        variables["buttons"][buttonName].rectangle = pygame.Rect(xMargin,index*vSpace+(1/3)*squareSize,medButWidth,medButHeight)
+
+    middleVspace = 1*squareSize + squareSize/3 + index*(vSpace)
+    #middle buttons
+    for index,buttonName in enumerate(["edit","copyItem","indexItem","fuseRooms","resetMap"]):
+        variables["buttons"][buttonName].rectangle = pygame.Rect(xMargin,middleVspace + index*vSpace+(1/3)*squareSize,medButWidth,medButHeight)
 
     #lower buttons
     for index,buttonName in enumerate(["goToGenerator","saveImage","saveMap","loadMap"]):
-        variables["buttons"][buttonName].rectangle = pygame.Rect(xMargin,(17.75-1.25*index)*squareSize,medButWidth,medButHeight)
+        variables["buttons"][buttonName].rectangle = pygame.Rect(xMargin,-index*vSpace+(17.75)*squareSize,medButWidth,medButHeight)
 
     #button color update
     for button in variables["buttons"].values():
@@ -66,7 +73,7 @@ def mainDisplay(window,variables):
     for buttonName,buttonText in [["fuseRooms","Fuse rooms"],["resetMap","Reset map"],
                                     ["loadMap","Load a map"],["saveMap","Save to file"],
                                     ["saveImage","Output files"],["edit","Edit items"],["copyItem","Copy item"],
-                                    ["indexItem","Index items"]]:
+                                    ["indexItem","Index items"],["furniture","Furniture"]]:
 
         button = variables["buttons"][buttonName]
         displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,buttonText,25,(50,50,50))
@@ -93,6 +100,13 @@ def mainDisplay(window,variables):
         XcopyText = variables["buttons"]["indexItem"].rectangle.x + variables["buttons"]["indexItem"].rectangle.w*1.1
         YcopyText = variables["buttons"]["indexItem"].rectangle.y + variables["buttons"]["indexItem"].rectangle.h/2
         text(window,str(variables["indexToSwitch"]+1),int(squareSize*(1/2)),(50,50,50),"midleft",XcopyText,YcopyText)
+
+    #furniture text
+    if variables["currentItem"] in furniture:
+        XcopyText = variables["buttons"]["furniture"].rectangle.x + variables["buttons"]["furniture"].rectangle.w*1.02
+        YcopyText = variables["buttons"]["furniture"].rectangle.y + variables["buttons"]["furniture"].rectangle.h/2
+        text(window,variables["currentItem"],int(squareSize*(1/2)),(50,50,50),"midleft",XcopyText,YcopyText)
+
 
 def placeOrEditItem(variables,event):
     global mapLength,mapWidth,itemNames
@@ -134,11 +148,12 @@ def placeOrEditItem(variables,event):
                             variables["currentMap"].traps += [Trap(square)]
                         elif currentItem == "Treasure":
                             variables["currentMap"].treasures += [Treasure(square)]
-                        elif currentItem == "Monster":
+                        elif currentItem == "Entity":
                             variables["currentMap"].entities += [Entity(square.x,square.y)]
                         elif currentItem == "Annotation":
                             variables["currentMap"].annotations += [Informations(square)]
-
+                        elif currentItem in furniture:
+                            variables["currentMap"].furniture += [Furniture(square,currentItem)]
                     else:
                         variables["currentMap"].removeItemAT(item,square)
 
@@ -297,7 +312,7 @@ def fusionSelect(variables,event):
 
 
 def resetMap(variables,event):
-    variables["currentMap"] = QuestMap([],[],[],[],[],[])
+    variables["currentMap"] = QuestMap([],[],[],[],[],[],[])
 
 
 def edit(variables,event):
@@ -325,6 +340,23 @@ def desactivateAllButtons(buttons):
         buttons[buttonName].active = False
 
 
+def selectFurniture(variables,event):
+    FSvariables = copy(variables)
+    window = variables["window"]
+    furnitureSelectInterface.run(window,FSvariables,"selecting")
+
+    if FSvariables["state"] == "quitting":
+        variables["state"] = "quitting"
+
+    if FSvariables["furnitureSelected"] != None:
+        desactivateAllButtons(variables["buttons"])
+        button = variables["buttons"]["furniture"]
+        button.active = True
+        variables["currentItem"] = FSvariables["furnitureSelected"]
+        variables["subState"] = "placing"
+
+
+
 mainInterface = Interface()
 
 mainInterface.initialize = initialize
@@ -333,6 +365,7 @@ mainInterface.mainProcess = mainProcess
 
 
 mainInterface.buttons += [Button("place",None,None,placeOrEditItem,False)]
+mainInterface.buttons += [Button("furniture",butInCol,butOutCol,selectFurniture,activeInColor=butPresInCol,activeOutColor=butPresOutCol)]
 mainInterface.buttons += [Button("edit",but2InCol,but2OutCol,edit,activeInColor=but2PresInCol,activeOutColor=but2PresOutCol)]
 mainInterface.buttons += [Button("indexItem",but2InCol,but2OutCol,selectIndex,activeInColor=but2PresInCol,activeOutColor=but2PresOutCol)]
 mainInterface.buttons += [Button("copyItem",but2InCol,but2OutCol,selectCopy,activeInColor=but2PresInCol,activeOutColor=but2PresOutCol)]

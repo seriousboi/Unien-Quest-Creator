@@ -49,6 +49,18 @@ def displayGraph(surface,shift,squareSize,squareHelp,nbAreas,nbConnectors,areas,
             text(surface,str(area.id),(squareSize*3)//5,(0,0,0),"center",center[0],center[1])
 
 
+def displayFurniture(surface,shift,squareSize,square,furnitureName):
+    global furnitureDims
+    X,Y = shift
+    x = X+square.x*squareSize
+    y = Y+square.y*squareSize
+    furnitureIcon = pygame.image.load("data/images/HQ furniture/"+furnitureName+".png")
+    width = squareSize*furnitureDims[furnitureName][0]
+    height = squareSize*furnitureDims[furnitureName][1]
+    furnitureIcon = pygame.transform.scale(furnitureIcon,(width,height))
+    surface.blit(furnitureIcon,(x,y))
+
+
 def displayTrap(surface,shift,squareSize,square):
     X,Y = shift
     x = X+square.x*squareSize
@@ -186,11 +198,6 @@ def displayBoard(window,shift,squareSize,rooms,aggregatedRooms=[]):
             pygame.draw.line(window,(50,50,50),(left,bottom),(left,top),2)
 
 
-
-
-
-
-
 def getRectangleFromSquares(shift,xSquare,ySquare,width,length,squareSize):
     X,Y = shift
     #(xSquare,ySquare) is the topleft square of the room in the board
@@ -219,7 +226,6 @@ def displayButton(surface,buttonRectangle,borderWidth,borderCurve,inColor,outCol
 
 
 def text(surface,message,size,color,anchor,x,y,fontName = "default"):
-
     if fontName == "default":
         font = pygame.font.Font("data/fonts/blackchancery/BLKCHCRY.TTF", size)
     else:

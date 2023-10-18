@@ -30,12 +30,29 @@ class Trap(MapItem):
         displayTrap(surface,shift,squareSize,self.square)
 
 
+class Furniture(MapItem):
+    def __init__(self,square,name="chair"):
+        super().__init__(square)
+        self.name = name
+
+    @classmethod
+    def fromDict(cls,dict):
+        return cls(Square.fromDict(dict["square"]),dict["name"])
+
+    def display(self,surface,shift,squareSize):
+        displayFurniture(surface,shift,squareSize,self.square,self.name)
+
+    def toJSON(self):
+        return {"square":self.square.toJSON(),"name":self.infos}
+
+
+
 class Treasure(MapItem):
     def __init__(self,square):
         super().__init__(square)
 
     def display(self,surface,shift,squareSize):
-        displayTreasure(surface,shift,squareSize,self.square)        
+        displayTreasure(surface,shift,squareSize,self.square)
 
 
 class Informations:

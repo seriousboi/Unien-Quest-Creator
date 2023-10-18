@@ -2,10 +2,13 @@
 #game constants
 mapLength = 26
 mapWidth = 19
-itemNames = ["Door","Rock","Monster","Trap","Treasure","Annotation"] #known items
+itemNames = ["Door","Rock","Entity","Trap","Treasure","Annotation"] #known items
+furniture = ["bookshelf","cupboard","table","chair","fireplace","desk","torture table","tomb","stairway","weapons rack"]
 monsters = ["orc","goblin","skeleton","zombie","mummy","fimir","warrior","demon"]
 nonMonsters = ["human","elve","dwarf"]
 speciesList = monsters+nonMonsters
+
+furnitureDims = {"bookshelf":(2,1),"cupboard":(2,1),"table":(2,1),"chair":(1,1),"fireplace":(3,1),"desk":(2,1),"torture table":(2,1),"tomb":(2,1),"stairway":(2,2),"weapons rack":(3,1)}
 
 speciesToFr = { "orc":"Orc","goblin":"Goblin","fimir":"Fimir",
                 "skeleton":"Squelette","zombie":"Zombie","mummy":"Mommie",
