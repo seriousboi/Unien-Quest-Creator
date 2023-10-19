@@ -108,14 +108,15 @@ class QuestMap:
 
     def display(self,surface,shift,squareSize):
         displayBoard(surface,shift,squareSize,self.rooms)
+        for furniture in self.furniture:
+            furniture.display(surface,shift,squareSize)
         for item in self.rocks+self.doors+self.traps+self.treasures:
             item.display(surface,shift,squareSize)
         for index,entity in enumerate(self.entities):
             entity.display(surface,shift,squareSize,index+1)
         for index,infos in enumerate(self.annotations):
             infos.display(surface,shift,squareSize,index+1)
-        for furniture in self.furniture:
-            furniture.display(surface,shift,squareSize)
+
 
     def itemAt(self,square):
         for item in self.rocks+self.entities+self.annotations+self.traps+self.treasures+self.furniture:

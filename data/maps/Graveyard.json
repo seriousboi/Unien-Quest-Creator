@@ -281,7 +281,56 @@
       }
     }
   ],
-  "furniture": [],
+  "furniture": [
+    {
+      "square": {
+        "x": 16,
+        "y": 16
+      },
+      "name": "stairway",
+      "orientation": "east"
+    },
+    {
+      "square": {
+        "x": 17,
+        "y": 10
+      },
+      "name": "desk",
+      "orientation": "east"
+    },
+    {
+      "square": {
+        "x": 12,
+        "y": 9
+      },
+      "name": "table",
+      "orientation": "north"
+    },
+    {
+      "square": {
+        "x": 5,
+        "y": 8
+      },
+      "name": "table",
+      "orientation": "north"
+    },
+    {
+      "square": {
+        "x": 8,
+        "y": 8
+      },
+      "name": "chair",
+      "orientation": "south"
+    },
+    {
+      "square": {
+        "x": 2,
+        "y": 2
+      },
+      "name": "tomb",
+      "orientation": "north"
+    }
+  ],
   "traps": [
     {
       "square": {
@@ -629,8 +678,8 @@
     },
     {
       "square": {
-        "x": 2,
-        "y": 2
+        "x": 3,
+        "y": 3
       },
       "infos": "Tombes dans la piece (placer le meuble).   Les tombes sont ouvertes et ne contiennent pas de corps, mais ilm reste cependant des masques fun\u00e9raires qui valident l'objectif d'information."
     },

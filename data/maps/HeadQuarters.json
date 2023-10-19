@@ -197,7 +197,88 @@
       }
     }
   ],
-  "furniture": [],
+  "furniture": [
+    {
+      "square": {
+        "x": 21,
+        "y": 3
+      },
+      "name": "stairway",
+      "orientation": "north"
+    },
+    {
+      "square": {
+        "x": 20,
+        "y": 2
+      },
+      "name": "bookshelf",
+      "orientation": "east"
+    },
+    {
+      "square": {
+        "x": 17,
+        "y": 6
+      },
+      "name": "table",
+      "orientation": "east"
+    },
+    {
+      "square": {
+        "x": 14,
+        "y": 1
+      },
+      "name": "fireplace",
+      "orientation": "north"
+    },
+    {
+      "square": {
+        "x": 23,
+        "y": 11
+      },
+      "name": "torture table",
+      "orientation": "west"
+    },
+    {
+      "square": {
+        "x": 18,
+        "y": 13
+      },
+      "name": "chair",
+      "orientation": "south"
+    },
+    {
+      "square": {
+        "x": 9,
+        "y": 2
+      },
+      "name": "desk",
+      "orientation": "east"
+    },
+    {
+      "square": {
+        "x": 6,
+        "y": 6
+      },
+      "name": "table",
+      "orientation": "north"
+    },
+    {
+      "square": {
+        "x": 6,
+        "y": 1
+      },
+      "name": "bookshelf",
+      "orientation": "south"
+    },
+    {
+      "square": {
+        "x": 2,
+        "y": 1
+      },
+      "name": "desk",
+      "orientation": "north"
+    }
+  ],
   "traps": [],
   "treasures": [
     {
@@ -537,7 +618,7 @@
     },
     {
       "square": {
-        "x": 20,
+        "x": 19,
         "y": 2
       },
       "infos": "Il y a une biblioth\u00e8que sur laquelle repose des papier tels que des emplois tu temps pour les tours de garde et l'organisation des repas. Si inspect\u00e9e on y trouve un papier coll\u00e9 en dessous d'une \u00e9tag\u00e8re avec \"251\" \u00e9crit dessus."
@@ -565,7 +646,7 @@
     },
     {
       "square": {
-        "x": 9,
+        "x": 10,
         "y": 3
       },
       "infos": "Il y a une table et une armoire. Il y des \u00e9tag\u00e8res avec divers objets utilitaires dessus. Si l'armoire est inspect\u00e9e on y trouve une cl\u00e9 (pour la prison)."
