@@ -4,24 +4,36 @@ import glob
 
 
 def printerMain():
-    #outputSheets('output/buyableWeapons/')
-    #outputSheets('output/enemyWeapons/')
-    #outputSheets('output/movesCards/')
+    '''
+    outputSheetsFromFolders(['output/buyableWeapons/',
+                             'output/enemyWeapons/',
+                             'output/tools/',
+                             'output/movesCards/'])
+    '''
     return
 
 
-def outputSheets(folderPath):
-    sheets = getImageFromCardFolder(folderPath)
+def outputSheetsFromFolder(folderPath):
+    outputSheetsFromFolders([folderPath])
+
+
+def outputSheetsFromFolders(folderPaths):
+    sheets = getImageFromCardFolders(folderPaths)
     for index,sheet in enumerate(sheets):
         pygame.init()
-        saveName = folderPath+"sheet"+str(index+1)+".png"
+        if len(folderPaths) == 1:
+            saveName = folderPaths[0]+"sheet"+str(index+1)+".png"
+        else:
+            saveName = "output/sheets/sheet"+str(index+1)+".png"
         pygame.image.save(sheet,saveName)
 
 
-def getImageFromCardFolder(folderPath):
-    #créer une image en concaténant les images des cartes (par paquet de 9)
-    formula = folderPath+"*.png"
-    fileNames = glob.glob(formula)
+
+def getImageFromCardFolders(folderPaths):
+    fileNames = []
+    for folderPath in folderPaths:
+        formula = folderPath+"*.png"
+        fileNames += glob.glob(formula)
 
     cardAmount = len(fileNames)
     cardPacks = [[]]
