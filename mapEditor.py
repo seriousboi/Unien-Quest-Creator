@@ -317,7 +317,7 @@ def fusionSelect(variables,event):
 
 
 def resetMap(variables,event):
-    variables["currentMap"] = QuestMap([],[],[],[],[],[],[])
+    variables["currentMap"] = QuestMap([],[],[],[],[],[],[],[])
 
 
 def edit(variables,event):

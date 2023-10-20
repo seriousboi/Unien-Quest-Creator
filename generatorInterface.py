@@ -90,7 +90,7 @@ def generate(variables,event):
     graph = QuestGraph()
     config,visited = genHtCC(graph,visitedPenalty)
     graph.applyConfiguration(config,visited)
-    map = QuestMap()
+    map = QuestMap([],[],[],[],[],[],[],[],)
     map.loadGraph(graph)
 
     variables["currentGraph"] = graph
