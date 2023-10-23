@@ -39,7 +39,6 @@ class QuestMap:
 
         return cls(listsToFill["doors"],listsToFill["rocks"],listsToFill["furniture"],listsToFill["entities"],listsToFill["aggregatedRooms"],listsToFill["annotations"],listsToFill["traps"],listsToFill["treasures"])
 
-
     def toJSON(self):
         JSONdic = {"doors":[],"rocks":[],"furniture":[],"traps":[],"treasures":[],"entities":[],"annotations":[]}
         listsToUse = {"doors":self.doors,"rocks":self.rocks,"furniture":self.furniture,"traps":self.traps,"treasures":self.treasures,"entities":self.entities,"annotations":self.annotations}
@@ -139,7 +138,14 @@ class QuestMap:
                 return door
         return None
 
-
+    def countFurniture(self):
+        global furniture
+        furnitureCount = {}
+        for itemName in furniture:
+            furnitureCount[itemName] = 0
+        for item in self.furniture:
+            furnitureCount[item.name] += 1
+        return furnitureCount
 
 def getRoomsAfterAggregation(aggregatedRooms=[]):
     rooms = getRooms()

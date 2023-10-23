@@ -10,6 +10,8 @@ speciesList = monsters+nonMonsters
 
 furnitureDims = {"bookshelf":(2,1),"cupboard":(2,1),"table":(2,1),"chair":(1,1),"fireplace":(3,1),"desk":(2,1),"torture table":(2,1),"tomb":(2,1),"stairway":(2,2),"weapons rack":(3,1)}
 
+furnitureAmounts = {"bookshelf":2,"cupboard":1,"table":2,"chair":1,"fireplace":1,"desk":1,"torture table":1,"tomb":1,"stairway":1,"weapons rack":0}
+
 speciesToFr = { "orc":"Orc","goblin":"Goblin","fimir":"Fimir",
                 "skeleton":"Squelette","zombie":"Zombie","mummy":"Mommie",
                 "warrior":"Ancient Guerrier","demon":"Démon",

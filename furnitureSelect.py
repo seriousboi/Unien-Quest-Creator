@@ -7,7 +7,7 @@ from display import *
 def FSinitialize(variables):
     variables["furnitureSelected"] = "chair"
     variables["orientation"] = "north"
-
+    variables["furnitureCount"] = variables["currentMap"].countFurniture()
 
 def FSmainDisplay(window,variables):
     global mapLength,mapWidth,itemNames
@@ -30,6 +30,11 @@ def FSmainDisplay(window,variables):
     for itemName in furniture:
         button = variables["buttons"][itemName]
         displayButton(window,button.rectangle,2,4,button.inColor,button.outColor,itemName,25,(50,50,50))
+
+        XcopyText = button.rectangle.x + button.rectangle.w*1.1
+        YcopyText = button.rectangle.y + button.rectangle.h/2
+        itemAmount = variables["furnitureCount"][itemName]
+        text(window,str(itemAmount)+"/"+str(furnitureAmounts[itemName]),int(squareSize*(1/2)),(50,50,50),"midleft",XcopyText,YcopyText)
 
 
 def FSmainProcess(variables):
