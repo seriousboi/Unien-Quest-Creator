@@ -12,6 +12,9 @@ furnitureDims = {"bookshelf":(2,1),"cupboard":(2,1),"table":(2,1),"chair":(1,1),
 
 furnitureAmounts = {"bookshelf":2,"cupboard":1,"table":2,"chair":1,"fireplace":1,"desk":1,"torture table":1,"tomb":1,"stairway":1,"weapons rack":0}
 
+doorTypes = ["normal","invisible","steel","ornate"]
+doorColors = {"normal":(193,90,58),"invisible":(224, 252, 255),"steel":(128, 128, 128),"ornate":(255, 38, 0)}
+
 speciesToFr = { "orc":"Orc","goblin":"Goblin","fimir":"Fimir",
                 "skeleton":"Squelette","zombie":"Zombie","mummy":"Mommie",
                 "warrior":"Ancient Guerrier","demon":"Démon",

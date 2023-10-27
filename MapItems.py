@@ -73,16 +73,23 @@ class Informations:
 
 
 class Door:
-    def __init__(self,frontSquare,backSquare):
+    def __init__(self,frontSquare,backSquare,type="normal"):
         self.frontSquare = frontSquare
         self.backSquare = backSquare
+        self.type = type
+
+    def switchToNextType(self):
+        nextDoorType = {"normal":"invisible","invisible":"steel","steel":"ornate","ornate":"normal"}
+        self.type = nextDoorType[self.type]
 
     @classmethod
     def fromDict(cls,dict):
-        return cls(Square.fromDict(dict["frontSquare"]),Square.fromDict(dict["backSquare"]))
+        if "type" not in dict:
+            dict["type"] = "normal"
+        return cls(Square.fromDict(dict["frontSquare"]),Square.fromDict(dict["backSquare"]),dict["type"])
 
     def display(self,surface,shift,squareSize):
-        displayDoor(surface,shift,squareSize,self.frontSquare,self.backSquare)
+        displayDoor(surface,shift,squareSize,self.frontSquare,self.backSquare,self.type)
 
     def toJSON(self):
-        return {"frontSquare":self.frontSquare.toJSON(),"backSquare":self.backSquare.toJSON()}
+        return {"frontSquare":self.frontSquare.toJSON(),"backSquare":self.backSquare.toJSON(),"type":self.type}

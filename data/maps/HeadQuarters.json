@@ -8,7 +8,8 @@
       "backSquare": {
         "x": 3,
         "y": 9
-      }
+      },
+      "type": "normal"
     },
     {
       "frontSquare": {
@@ -18,7 +19,8 @@
       "backSquare": {
         "x": 13,
         "y": 7
-      }
+      },
+      "type": "normal"
     },
     {
       "frontSquare": {
@@ -28,7 +30,8 @@
       "backSquare": {
         "x": 6,
         "y": 9
-      }
+      },
+      "type": "normal"
     },
     {
       "frontSquare": {
@@ -38,7 +41,8 @@
       "backSquare": {
         "x": 22,
         "y": 10
-      }
+      },
+      "type": "normal"
     },
     {
       "frontSquare": {
@@ -48,7 +52,8 @@
       "backSquare": {
         "x": 14,
         "y": 15
-      }
+      },
+      "type": "normal"
     },
     {
       "frontSquare": {
@@ -58,7 +63,8 @@
       "backSquare": {
         "x": 18,
         "y": 15
-      }
+      },
+      "type": "normal"
     },
     {
       "frontSquare": {
@@ -68,7 +74,8 @@
       "backSquare": {
         "x": 22,
         "y": 14
-      }
+      },
+      "type": "normal"
     },
     {
       "frontSquare": {
@@ -78,7 +85,8 @@
       "backSquare": {
         "x": 17,
         "y": 2
-      }
+      },
+      "type": "normal"
     },
     {
       "frontSquare": {
@@ -88,7 +96,8 @@
       "backSquare": {
         "x": 14,
         "y": 2
-      }
+      },
+      "type": "normal"
     },
     {
       "frontSquare": {
@@ -98,7 +107,8 @@
       "backSquare": {
         "x": 19,
         "y": 9
-      }
+      },
+      "type": "normal"
     },
     {
       "frontSquare": {
@@ -108,7 +118,8 @@
       "backSquare": {
         "x": 19,
         "y": 1
-      }
+      },
+      "type": "normal"
     },
     {
       "frontSquare": {
@@ -118,7 +129,8 @@
       "backSquare": {
         "x": 19,
         "y": 5
-      }
+      },
+      "type": "normal"
     },
     {
       "frontSquare": {
@@ -128,7 +140,8 @@
       "backSquare": {
         "x": 22,
         "y": 9
-      }
+      },
+      "type": "normal"
     },
     {
       "frontSquare": {
@@ -138,7 +151,8 @@
       "backSquare": {
         "x": 22,
         "y": 1
-      }
+      },
+      "type": "normal"
     },
     {
       "frontSquare": {
@@ -148,7 +162,8 @@
       "backSquare": {
         "x": 12,
         "y": 2
-      }
+      },
+      "type": "normal"
     },
     {
       "frontSquare": {
@@ -158,7 +173,8 @@
       "backSquare": {
         "x": 19,
         "y": 10
-      }
+      },
+      "type": "normal"
     },
     {
       "frontSquare": {
@@ -168,7 +184,8 @@
       "backSquare": {
         "x": 5,
         "y": 2
-      }
+      },
+      "type": "normal"
     }
   ],
   "rocks": [

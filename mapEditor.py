@@ -124,7 +124,31 @@ def placeOrEditItem(variables,event):
             placeDoor(variables,x,y)
 
         elif variables["subState"] != "nothingSpecial":
-            if (x >= 0 and x <= mapLength*sqsz and
+            if (variables["subState"] == "editing" and
+                x > (1/4)*sqsz and x < (mapLength-1/4)*sqsz and
+                y > (1/4)*sqsz and y < (mapWidth-1/4)*sqsz and
+                y%sqsz <= (3/10)*(sqsz-1) or y%sqsz >= (7/10)*(sqsz-1)):
+                xSquare = int(x/sqsz)
+                ySquare = round(y/sqsz)
+                frontSquare = Square(xSquare,ySquare-1)
+                backSquare = Square(xSquare,ySquare)
+                door = variables["currentMap"].doorAt(frontSquare,backSquare)
+                if door != None:
+                    door.switchToNextType()
+
+            elif (variables["subState"] == "editing" and
+                x > (1/4)*sqsz and x < (mapLength-1/4)*sqsz and
+                y > (1/4)*sqsz and y < (mapWidth-1/4)*sqsz and
+                x%sqsz <= (3/10)*(sqsz-1) or x%sqsz >= (7/10)*(sqsz-1)):
+                xSquare = round(x/sqsz)
+                ySquare = int(y/sqsz)
+                frontSquare = Square(xSquare-1,ySquare)
+                backSquare = Square(xSquare,ySquare)
+                door = variables["currentMap"].doorAt(frontSquare,backSquare)
+                if door != None:
+                    door.switchToNextType()
+
+            elif (x >= 0 and x <= mapLength*sqsz and
                 y >= 0 and y <= mapWidth*sqsz):
                 xSquare = int(x/sqsz)
                 ySquare = int(y/sqsz)

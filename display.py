@@ -135,8 +135,10 @@ def displayRock(window,shift,squareSize,square):
 
 
 
-def displayDoor(window,shift,squareSize,frontSquare,backSquare):
+def displayDoor(window,shift,squareSize,frontSquare,backSquare,type="normal"):
+    global doorColors
     X,Y = shift
+    doorColor = doorColors[type]
 
     doorWidth = squareSize//5
     doorLenght = (squareSize*6)//5
@@ -144,12 +146,12 @@ def displayDoor(window,shift,squareSize,frontSquare,backSquare):
     if frontSquare.x == backSquare.x and (frontSquare.y-backSquare.y)**2 == 1:
         xDrawPos = int(X + (frontSquare.x+1/2)*squareSize - doorLenght/2)
         yDrawPos = int(Y + max(frontSquare.y,backSquare.y)*squareSize - doorWidth/2)
-        pygame.draw.rect(window,(193,90,58),(xDrawPos,yDrawPos,doorLenght,doorWidth),0,2)
+        pygame.draw.rect(window,doorColor,(xDrawPos,yDrawPos,doorLenght,doorWidth),0,2)
         pygame.draw.rect(window,(50,50,50),(xDrawPos,yDrawPos,doorLenght,doorWidth),2,2)
     elif frontSquare.y == backSquare.y and (frontSquare.x-backSquare.x)**2 == 1:
         xDrawPos = int(X + max(frontSquare.x,backSquare.x)*squareSize - doorWidth/2)
         yDrawPos = int(Y + (frontSquare.y+1/2)*squareSize - doorLenght/2)
-        pygame.draw.rect(window,(193,90,58),(xDrawPos,yDrawPos,doorWidth,doorLenght),0,2)
+        pygame.draw.rect(window,doorColor,(xDrawPos,yDrawPos,doorWidth,doorLenght),0,2)
         pygame.draw.rect(window,(50,50,50),(xDrawPos,yDrawPos,doorWidth,doorLenght),2,2)
     else:
         print("squares are not neighbors",frontSquare,backSquare)
