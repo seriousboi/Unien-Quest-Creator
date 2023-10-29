@@ -382,13 +382,16 @@ def getRange(entity,width,height,attackRange="normal"):
     for index in range(len(contour)):
         pygame.draw.line(rangeDrawing,(50,50,50),contour[index-1],contour[index],2)
 
-    xMiniStep = width//16
-    yMiniStep = height//16
+
     if attackRange == "long":
+        xMiniStep = width//16
+        yMiniStep = height//16
         point = (xShift+1*xStep+2*xMiniStep,3*yStep+1*yMiniStep)
         leftBase = (xShift+1*xStep+1*xMiniStep,3*yStep+3*yMiniStep)
         rightBase = (xShift+1*xStep+3*xMiniStep,3*yStep+3*yMiniStep)
     else:
+        xMiniStep = width//12
+        yMiniStep = height//12
         point = (1*xStep+2*xMiniStep,2*yStep+1*yMiniStep)
         leftBase = (1*xStep+1*xMiniStep,2*yStep+3*yMiniStep)
         rightBase = (1*xStep+3*xMiniStep,2*yStep+3*yMiniStep)

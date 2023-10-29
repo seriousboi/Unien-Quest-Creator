@@ -9,7 +9,7 @@
         "x": 3,
         "y": 9
       },
-      "type": "normal"
+      "type": "ornate"
     },
     {
       "frontSquare": {
@@ -75,7 +75,7 @@
         "x": 22,
         "y": 14
       },
-      "type": "normal"
+      "type": "steel"
     },
     {
       "frontSquare": {
@@ -186,6 +186,28 @@
         "y": 2
       },
       "type": "normal"
+    },
+    {
+      "frontSquare": {
+        "x": 19,
+        "y": 17
+      },
+      "backSquare": {
+        "x": 19,
+        "y": 18
+      },
+      "type": "invisible"
+    },
+    {
+      "frontSquare": {
+        "x": 11,
+        "y": 15
+      },
+      "backSquare": {
+        "x": 12,
+        "y": 15
+      },
+      "type": "invisible"
     }
   ],
   "rocks": [
@@ -233,14 +255,6 @@
     },
     {
       "square": {
-        "x": 17,
-        "y": 6
-      },
-      "name": "table",
-      "orientation": "east"
-    },
-    {
-      "square": {
         "x": 14,
         "y": 1
       },
@@ -265,14 +279,6 @@
     },
     {
       "square": {
-        "x": 9,
-        "y": 2
-      },
-      "name": "desk",
-      "orientation": "east"
-    },
-    {
-      "square": {
         "x": 6,
         "y": 6
       },
@@ -294,9 +300,38 @@
       },
       "name": "desk",
       "orientation": "north"
+    },
+    {
+      "square": {
+        "x": 9,
+        "y": 2
+      },
+      "name": "table",
+      "orientation": "east"
+    },
+    {
+      "square": {
+        "x": 17,
+        "y": 6
+      },
+      "name": "cupboard",
+      "orientation": "east"
     }
   ],
-  "traps": [],
+  "traps": [
+    {
+      "square": {
+        "x": 3,
+        "y": 6
+      }
+    },
+    {
+      "square": {
+        "x": 2,
+        "y": 5
+      }
+    }
+  ],
   "treasures": [
     {
       "square": {
@@ -609,6 +644,28 @@
         "y": 2
       },
       "infos": "Orc \u00e0 la peau bleue tr\u00e8s intelligent. Son entrainement lui donne une meilleur alonge qu'un guerrier normal."
+    },
+    {
+      "name": "Bimlin",
+      "side": "ally",
+      "species": "dwarf",
+      "strongAtkCost": 10,
+      "fastAtkCost": 10,
+      "counterAtkCost": 10,
+      "stamina": 30,
+      "health": 100,
+      "criticalHealth": 50,
+      "strength": 14,
+      "dexterity": 6,
+      "constitution": 28,
+      "weaponName": "Petit Marteau",
+      "weaponDamage": 16,
+      "range": "normal",
+      "square": {
+        "x": 9,
+        "y": 14
+      },
+      "infos": ""
     }
   ],
   "annotations": [
@@ -772,6 +829,13 @@
         "y": 1
       },
       "infos": "Il y a une biblioth\u00e8que qui contient des lettres de communications entre l'Albinos et Murgol, elles confirment la recherche des ossements d'un ancient. Il y a aussi 24 argent dans une bourse et d'anciens livres qui parlent des l\u00e9gendes des ancients et de r\u00e9surection."
+    },
+    {
+      "square": {
+        "x": 10,
+        "y": 15
+      },
+      "infos": ""
     }
   ],
   "aggregatedRooms": [

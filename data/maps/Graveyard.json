@@ -20,7 +20,7 @@
         "x": 2,
         "y": 14
       },
-      "type": "normal"
+      "type": "invisible"
     },
     {
       "frontSquare": {
@@ -163,7 +163,7 @@
         "x": 14,
         "y": 17
       },
-      "type": "normal"
+      "type": "steel"
     },
     {
       "frontSquare": {
@@ -207,7 +207,7 @@
         "x": 6,
         "y": 1
       },
-      "type": "normal"
+      "type": "invisible"
     },
     {
       "frontSquare": {
@@ -218,7 +218,7 @@
         "x": 19,
         "y": 10
       },
-      "type": "normal"
+      "type": "invisible"
     }
   ],
   "rocks": [
@@ -372,8 +372,8 @@
     },
     {
       "square": {
-        "x": 13,
-        "y": 13
+        "x": 12,
+        "y": 5
       }
     }
   ],

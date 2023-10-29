@@ -68,3 +68,5 @@ Il y a un bureau, la porte à l'est est invisible. L'orc est l'Albinos. Le tuer 
  
 [23]
 Il y a une bibliothèque qui contient des lettres de communications entre l'Albinos et Murgol, elles confirment la recherche des ossements d'un ancient. Il y a aussi 24 argent dans une bourse et d'anciens livres qui parlent des légendes des ancients et de résurection.
+ 
+[24]
