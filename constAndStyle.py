@@ -18,7 +18,8 @@ doorColors = {"normal":(193,90,58),"invisible":(224, 252, 255),"steel":(170, 170
 speciesToFr = { "orc":"Orc","goblin":"Goblin","fimir":"Fimir",
                 "skeleton":"Squelette","zombie":"Zombie","mummy":"Mommie",
                 "warrior":"Ancient Guerrier","demon":"Démon",
-                "human":"Humain","elve":"Elfe","dwarf":"Nain"}
+                "human":"Humain","elve":"Elfe","dwarf":"Nain",
+                "Unkown":"Inconnue"}
 
 skillStats = ["strength","dexterity","constitution",
              "intelligence","perception","charisma"]

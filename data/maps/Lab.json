@@ -1,0 +1,715 @@
+{
+  "doors": [
+    {
+      "frontSquare": {
+        "x": 16,
+        "y": 2
+      },
+      "backSquare": {
+        "x": 17,
+        "y": 2
+      },
+      "type": "normal"
+    },
+    {
+      "frontSquare": {
+        "x": 19,
+        "y": 4
+      },
+      "backSquare": {
+        "x": 19,
+        "y": 5
+      },
+      "type": "normal"
+    },
+    {
+      "frontSquare": {
+        "x": 23,
+        "y": 4
+      },
+      "backSquare": {
+        "x": 23,
+        "y": 5
+      },
+      "type": "normal"
+    },
+    {
+      "frontSquare": {
+        "x": 24,
+        "y": 3
+      },
+      "backSquare": {
+        "x": 25,
+        "y": 3
+      },
+      "type": "normal"
+    },
+    {
+      "frontSquare": {
+        "x": 17,
+        "y": 12
+      },
+      "backSquare": {
+        "x": 17,
+        "y": 13
+      },
+      "type": "normal"
+    },
+    {
+      "frontSquare": {
+        "x": 17,
+        "y": 16
+      },
+      "backSquare": {
+        "x": 18,
+        "y": 16
+      },
+      "type": "normal"
+    },
+    {
+      "frontSquare": {
+        "x": 20,
+        "y": 11
+      },
+      "backSquare": {
+        "x": 21,
+        "y": 11
+      },
+      "type": "normal"
+    },
+    {
+      "frontSquare": {
+        "x": 20,
+        "y": 16
+      },
+      "backSquare": {
+        "x": 21,
+        "y": 16
+      },
+      "type": "normal"
+    },
+    {
+      "frontSquare": {
+        "x": 23,
+        "y": 13
+      },
+      "backSquare": {
+        "x": 23,
+        "y": 14
+      },
+      "type": "normal"
+    },
+    {
+      "frontSquare": {
+        "x": 16,
+        "y": 17
+      },
+      "backSquare": {
+        "x": 16,
+        "y": 18
+      },
+      "type": "normal"
+    },
+    {
+      "frontSquare": {
+        "x": 25,
+        "y": 8
+      },
+      "backSquare": {
+        "x": 25,
+        "y": 9
+      },
+      "type": "steel"
+    },
+    {
+      "frontSquare": {
+        "x": 13,
+        "y": 15
+      },
+      "backSquare": {
+        "x": 14,
+        "y": 15
+      },
+      "type": "normal"
+    },
+    {
+      "frontSquare": {
+        "x": 4,
+        "y": 15
+      },
+      "backSquare": {
+        "x": 5,
+        "y": 15
+      },
+      "type": "normal"
+    },
+    {
+      "frontSquare": {
+        "x": 7,
+        "y": 17
+      },
+      "backSquare": {
+        "x": 7,
+        "y": 18
+      },
+      "type": "normal"
+    },
+    {
+      "frontSquare": {
+        "x": 4,
+        "y": 13
+      },
+      "backSquare": {
+        "x": 5,
+        "y": 13
+      },
+      "type": "normal"
+    },
+    {
+      "frontSquare": {
+        "x": 4,
+        "y": 6
+      },
+      "backSquare": {
+        "x": 5,
+        "y": 6
+      },
+      "type": "ornate"
+    },
+    {
+      "frontSquare": {
+        "x": 18,
+        "y": 0
+      },
+      "backSquare": {
+        "x": 18,
+        "y": 1
+      },
+      "type": "invisible"
+    },
+    {
+      "frontSquare": {
+        "x": 20,
+        "y": 2
+      },
+      "backSquare": {
+        "x": 21,
+        "y": 2
+      },
+      "type": "normal"
+    },
+    {
+      "frontSquare": {
+        "x": 0,
+        "y": 11
+      },
+      "backSquare": {
+        "x": 1,
+        "y": 11
+      },
+      "type": "invisible"
+    }
+  ],
+  "rocks": [
+    {
+      "square": {
+        "x": 17,
+        "y": 9
+      }
+    },
+    {
+      "square": {
+        "x": 20,
+        "y": 9
+      }
+    },
+    {
+      "square": {
+        "x": 25,
+        "y": 1
+      }
+    },
+    {
+      "square": {
+        "x": 24,
+        "y": 9
+      }
+    },
+    {
+      "square": {
+        "x": 14,
+        "y": 18
+      }
+    },
+    {
+      "square": {
+        "x": 12,
+        "y": 13
+      }
+    },
+    {
+      "square": {
+        "x": 13,
+        "y": 13
+      }
+    },
+    {
+      "square": {
+        "x": 5,
+        "y": 18
+      }
+    },
+    {
+      "square": {
+        "x": 18,
+        "y": 9
+      }
+    },
+    {
+      "square": {
+        "x": 19,
+        "y": 9
+      }
+    },
+    {
+      "square": {
+        "x": 9,
+        "y": 0
+      }
+    },
+    {
+      "square": {
+        "x": 14,
+        "y": 5
+      }
+    },
+    {
+      "square": {
+        "x": 11,
+        "y": 6
+      }
+    },
+    {
+      "square": {
+        "x": 9,
+        "y": 8
+      }
+    },
+    {
+      "square": {
+        "x": 0,
+        "y": 14
+      }
+    },
+    {
+      "square": {
+        "x": 0,
+        "y": 8
+      }
+    }
+  ],
+  "furniture": [
+    {
+      "square": {
+        "x": 1,
+        "y": 16
+      },
+      "name": "stairway",
+      "orientation": "north"
+    },
+    {
+      "square": {
+        "x": 8,
+        "y": 14
+      },
+      "name": "table",
+      "orientation": "east"
+    },
+    {
+      "square": {
+        "x": 18,
+        "y": 7
+      },
+      "name": "torture table",
+      "orientation": "north"
+    },
+    {
+      "square": {
+        "x": 19,
+        "y": 14
+      },
+      "name": "desk",
+      "orientation": "north"
+    },
+    {
+      "square": {
+        "x": 17,
+        "y": 10
+      },
+      "name": "bookshelf",
+      "orientation": "east"
+    },
+    {
+      "square": {
+        "x": 24,
+        "y": 10
+      },
+      "name": "cupboard",
+      "orientation": "east"
+    },
+    {
+      "square": {
+        "x": 24,
+        "y": 15
+      },
+      "name": "fireplace",
+      "orientation": "east"
+    },
+    {
+      "square": {
+        "x": 1,
+        "y": 6
+      },
+      "name": "chair",
+      "orientation": "east"
+    },
+    {
+      "square": {
+        "x": 14,
+        "y": 3
+      },
+      "name": "bookshelf",
+      "orientation": "east"
+    }
+  ],
+  "traps": [
+    {
+      "square": {
+        "x": 13,
+        "y": 2
+      }
+    },
+    {
+      "square": {
+        "x": 12,
+        "y": 2
+      }
+    },
+    {
+      "square": {
+        "x": 13,
+        "y": 4
+      }
+    }
+  ],
+  "treasures": [
+    {
+      "square": {
+        "x": 7,
+        "y": 5
+      }
+    },
+    {
+      "square": {
+        "x": 19,
+        "y": 17
+      }
+    },
+    {
+      "square": {
+        "x": 20,
+        "y": 3
+      }
+    },
+    {
+      "square": {
+        "x": 3,
+        "y": 4
+      }
+    }
+  ],
+  "entities": [
+    {
+      "name": "Jamara",
+      "side": "enemy",
+      "species": "Unkown",
+      "strongAtkCost": 10,
+      "fastAtkCost": 10,
+      "counterAtkCost": 10,
+      "stamina": 50,
+      "health": 45,
+      "criticalHealth": 40,
+      "strength": 18,
+      "dexterity": 3,
+      "constitution": 36,
+      "weaponName": "Mains nues",
+      "weaponDamage": 19,
+      "range": "short",
+      "square": {
+        "x": 2,
+        "y": 6
+      },
+      "infos": ""
+    },
+    {
+      "name": "Pretre de feu (1)",
+      "side": "enemy",
+      "species": "human",
+      "strongAtkCost": 10,
+      "fastAtkCost": 20,
+      "counterAtkCost": 10,
+      "stamina": 40,
+      "health": 100,
+      "criticalHealth": 50,
+      "strength": 15,
+      "dexterity": 10,
+      "constitution": 12,
+      "weaponName": "Sabre Sauvage",
+      "weaponDamage": 19,
+      "range": "normal",
+      "square": {
+        "x": 12,
+        "y": 9
+      },
+      "infos": ""
+    },
+    {
+      "name": "Pretre de feu (2)",
+      "side": "enemy",
+      "species": "human",
+      "strongAtkCost": 20,
+      "fastAtkCost": 10,
+      "counterAtkCost": 10,
+      "stamina": 30,
+      "health": 100,
+      "criticalHealth": 50,
+      "strength": 5,
+      "dexterity": 20,
+      "constitution": 8,
+      "weaponName": "Lance",
+      "weaponDamage": 17,
+      "range": "normal",
+      "square": {
+        "x": 13,
+        "y": 9
+      },
+      "infos": ""
+    },
+    {
+      "name": "Pretre de feu (3)",
+      "side": "enemy",
+      "species": "human",
+      "strongAtkCost": 15,
+      "fastAtkCost": 15,
+      "counterAtkCost": 10,
+      "stamina": 30,
+      "health": 100,
+      "criticalHealth": 50,
+      "strength": 15,
+      "dexterity": 15,
+      "constitution": 4,
+      "weaponName": "Longue hachette",
+      "weaponDamage": 18,
+      "range": "normal",
+      "square": {
+        "x": 14,
+        "y": 9
+      },
+      "infos": ""
+    },
+    {
+      "name": "Enfant de la citadelle",
+      "side": "enemy",
+      "species": "zombie",
+      "strongAtkCost": 15,
+      "fastAtkCost": 5,
+      "counterAtkCost": 15,
+      "stamina": 30,
+      "health": 40,
+      "criticalHealth": 35,
+      "strength": 16,
+      "dexterity": 6,
+      "constitution": 32,
+      "weaponName": "Dents",
+      "weaponDamage": 17,
+      "range": "normal",
+      "square": {
+        "x": 17,
+        "y": 4
+      },
+      "infos": ""
+    },
+    {
+      "name": "Enfant de la citadelle",
+      "side": "enemy",
+      "species": "zombie",
+      "strongAtkCost": 15,
+      "fastAtkCost": 5,
+      "counterAtkCost": 15,
+      "stamina": 30,
+      "health": 40,
+      "criticalHealth": 35,
+      "strength": 16,
+      "dexterity": 6,
+      "constitution": 32,
+      "weaponName": "Dents",
+      "weaponDamage": 17,
+      "range": "normal",
+      "square": {
+        "x": 17,
+        "y": 3
+      },
+      "infos": ""
+    }
+  ],
+  "annotations": [
+    {
+      "square": {
+        "x": 4,
+        "y": 16
+      },
+      "infos": ""
+    },
+    {
+      "square": {
+        "x": 6,
+        "y": 15
+      },
+      "infos": ""
+    },
+    {
+      "square": {
+        "x": 3,
+        "y": 11
+      },
+      "infos": ""
+    },
+    {
+      "square": {
+        "x": 12,
+        "y": 17
+      },
+      "infos": ""
+    },
+    {
+      "square": {
+        "x": 15,
+        "y": 15
+      },
+      "infos": ""
+    },
+    {
+      "square": {
+        "x": 16,
+        "y": 17
+      },
+      "infos": ""
+    },
+    {
+      "square": {
+        "x": 19,
+        "y": 15
+      },
+      "infos": ""
+    },
+    {
+      "square": {
+        "x": 22,
+        "y": 16
+      },
+      "infos": ""
+    },
+    {
+      "square": {
+        "x": 22,
+        "y": 12
+      },
+      "infos": ""
+    },
+    {
+      "square": {
+        "x": 19,
+        "y": 11
+      },
+      "infos": ""
+    },
+    {
+      "square": {
+        "x": 25,
+        "y": 9
+      },
+      "infos": ""
+    },
+    {
+      "square": {
+        "x": 23,
+        "y": 3
+      },
+      "infos": ""
+    },
+    {
+      "square": {
+        "x": 23,
+        "y": 7
+      },
+      "infos": ""
+    },
+    {
+      "square": {
+        "x": 19,
+        "y": 2
+      },
+      "infos": ""
+    },
+    {
+      "square": {
+        "x": 19,
+        "y": 6
+      },
+      "infos": ""
+    },
+    {
+      "square": {
+        "x": 15,
+        "y": 3
+      },
+      "infos": ""
+    },
+    {
+      "square": {
+        "x": 20,
+        "y": 17
+      },
+      "infos": ""
+    },
+    {
+      "square": {
+        "x": 7,
+        "y": 6
+      },
+      "infos": ""
+    },
+    {
+      "square": {
+        "x": 3,
+        "y": 6
+      },
+      "infos": ""
+    },
+    {
+      "square": {
+        "x": 13,
+        "y": 0
+      },
+      "infos": ""
+    },
+    {
+      "square": {
+        "x": 1,
+        "y": 11
+      },
+      "infos": ""
+    }
+  ],
+  "aggregatedRooms": []
+}

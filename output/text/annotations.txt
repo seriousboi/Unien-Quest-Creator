@@ -1,72 +1,63 @@
 
  
 [1]
-Entrée. On voit que l'endroit est habité à l'asbence de poussière et la présence de buches posées dans un coin.
+
  
 [2]
-Les couloirs sont bien éclairés.
+
  
 [3]
-Ce goblin est un garde qui fait ses rondes. Il se déplace.
+
  
 [4]
-Il y a une bibliothèque sur laquelle repose des papier tels que des emplois tu temps pour les tours de garde et l'organisation des repas. Si inspectée on y trouve un papier collé en dessous d'une étagère avec "251" écrit dessus.
+
  
 [5]
-Il y a des carte des souterrains de la citadelle avec plusieurs locations entourées. Certaines sont rayée avec une liste de trésors obtenus écrite à coté. Chaque lieu semble etre une forme de sépulture (cimetière, tombe, mausaulé, fosse).
+
  
 [6]
-Il y a une cheminée. Semble etre une cuisine. Il y flotte l'odeur d'un bon repas réçament préparé. Mais il y a une montagne de vaisselle salle qui prendrait plusieurs jours à laver.
+
  
 [7]
-Il y a plaque (en bois) à coté de la porte avec "contremaitre" écrit dessus.  Il y a aussi une note accrochée à la poignée "en pause déjeuné dans la salle commune" écrit grossièrement avec des fautes.
+
  
 [8]
-Il y a une table et une armoire. Il y des étagères avec divers objets utilitaires dessus. Si l'armoire est inspectée on y trouve une clé (pour la prison).
+
  
 [9]
-12 argents sont cachés dans une dalle creuse.
+
  
 [10]
-Il y a écrit "dortoire sur une plaque"
+
  
 [11]
-Les goblins dorment dans des lits.
+
  
 [12]
-Il y a écrit "latrines" à coté de la porte nord et "cellule" à coté de la porte sud.
+
  
 [13]
-Ce sont les toilettes du quartier général. Le goblin semble en avoir pour longtemps.
+
  
 [14]
-Il y a une table de torture. La porte est blindée et fermée. Il faut une clé pour l'ouvrir.
+
  
 [15]
-Draden est enchainé au mur. Il a été enfermé par son propre employeur car il en savait trop. Le principal objectif de son expédition au cimetière étais de trouver certains ossements spécifiques, les crystaux étaient secondaires. Cependant les os en questions n'étaient pas là. Draden à par la suite mené une autre expédition où les os ont été trouvés, c'est juste après ça qu'il a été enfermé.
+
  
 [16]
-L'orc est assis sur une chaise en train d'aiguiser une arme. Il y a des balais et des outils de ménage dans la pièce. Il y a aussi des armes rouillées entreposées.
+
  
 [17]
-Les firmirs gardent l'entrée de l'entrepot. Il sont capables de parler. Il n'obéissent qu'aux ordres de l'Albinos.  Ils laisseront partir les aventuriers sans alerter d'autres enemis car leur seuls ordres sont de garder l'entrepot.
+
  
 [18]
-Contient divers butins pillés tels que de l'or, des armes et des rouleaux ancients. Chaque aventurier doit en porter une partie pour valider l'objectif d'exploration.
+
  
 [19]
-Il y a une plaque avec "réfectoire" écrit dessus. Les voix des orcs peuvent etre entendues depuis le couloir.
+
  
 [20]
-Il y a une table sur laquelle il y a manger. L'orc du fond est le contremaitre. Ils discutent du fait que les expéditions se font toujours dans les cimitières alors que peu de trésors sont trouvés à chaque fois. L'autre orc dit l'Albinos doit chercher quelquechose de spécifique et que les trésors ne sont qu'une couverture.     Le sujet change, l'orc B  dit qu'il en revient pas que l'orc A soir devenu contremaitre. A dit "je suis un super contremaitre". B dit "est ce que tu as fermé la porte de ton bureau ou au moins pris les clés de la prison avec toi". A dit "euuu, non". B "comment ça non?". A "Non au deux questions". Ils rient.
+
  
 [21]
-Il y a marqué "chef" sur une plaque à coté de la porte. La porte est dorée et doit etre ouverte avec un code (251). Si les aventurier frappent à la porte l'Albinos ouvrira la porte (la porte s'ouvre de l'intérieur sans code).
- 
-[22]
-Il y a un bureau, la porte à l'est est invisible. L'orc est l'Albinos. Le tuer ou le capturer valide l'objectif d'élimination. Il ne révèlera pas son objectif à moins d'etre persudé, cependant il donnera certaines informations telles que: Il travail vers un objectif plus ambitieu que d'obtenir de l'or. Il trouvé ce qu'il voullait. L'objet en question à déjà été donné à celui qui acomplira son objectif.  Il essayera d'alerter d'autres enemis à un moment donné.
- 
-[23]
-Il y a une bibliothèque qui contient des lettres de communications entre l'Albinos et Murgol, elles confirment la recherche des ossements d'un ancient. Il y a aussi 24 argent dans une bourse et d'anciens livres qui parlent des légendes des ancients et de résurection.
- 
-[24]

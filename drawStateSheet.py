@@ -119,7 +119,7 @@ def getAttackBonuses(width,height,textSize,lineWidth = 2):
     for index in range(2):
         text(bonusesSurface,names[index],textSize,textColor,"center",(0.5+index)*Hstep,Vstep*1.5,descFontName)
         text(bonusesSurface,texts[index],smallTextSize,colors[index],"midtop",(0.5+index)*Hstep,Vstep*2.5,descFontName)
-    text(bonusesSurface,"- 50%",verySmallTextSize,textColor,"midbottom",(0.5+0)*Hstep,Vstep*2.5,descFontName)
+    text(bonusesSurface,"3/4",verySmallTextSize,textColor,"midbottom",(0.5+0)*Hstep,Vstep*2.5,descFontName)
 
     return bonusesSurface
 

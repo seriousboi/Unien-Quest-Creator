@@ -38,6 +38,7 @@ def getHeroSheet(sizeFactor = 6):
     yMargin += spaceSize
     yMargin += text(sheetSurface,"Espèce:",textSize,textColor,"topleft",xMargin,yMargin).h
     yMargin += spaceSize
+    leftYMargin = yMargin
 
     #stat table
     statTableX = width - spaceSize
@@ -55,13 +56,15 @@ def getHeroSheet(sizeFactor = 6):
     paste(sheetSurface,gaugesSurface,(width-spaceSize,yMargin),"topright")
 
     #body stats
+    #yMargin = leftYMargin + spaceSize*4
     yMargin += text(sheetSurface,"Vie:",textSize,textColor,"topleft",xMargin,yMargin).h
     yMargin += spaceSize
     yMargin += text(sheetSurface,"Endurance:",textSize,textColor,"topleft",xMargin,yMargin).h
     yMargin += spaceSize
     yMargin += text(sheetSurface,"Régénération:",textSize,textColor,"topleft",xMargin,yMargin).h
     yMargin += spaceSize
-    yMargin += text(sheetSurface,"Dégats d'arme:",textSize,textColor,"topleft",xMargin,yMargin).h
+    yMargin += text(sheetSurface,"Charge maximale:",textSize,textColor,"topleft",xMargin,yMargin).h
+
 
     #equipements
     equipementsRecHeight = (height//3)*1.2
