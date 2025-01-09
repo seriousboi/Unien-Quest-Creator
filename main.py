@@ -12,7 +12,7 @@ from generators import *
 
 def main():
     global mapLength,mapWidth
-    squareSize = 50
+    squareSize = 40
     shift = [0,0]
 
     window = pygame.display.set_mode((squareSize*(mapLength+8),squareSize*(mapWidth)))

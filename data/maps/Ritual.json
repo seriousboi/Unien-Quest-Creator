@@ -1,0 +1,104 @@
+{
+  "doors": [],
+  "rocks": [],
+  "furniture": [],
+  "traps": [],
+  "treasures": [],
+  "entities": [
+    {
+      "name": "Morg",
+      "side": "enemy",
+      "species": "orc",
+      "strongAtkCost": 10,
+      "fastAtkCost": 10,
+      "counterAtkCost": 10,
+      "stamina": 4,
+      "health": 100,
+      "criticalHealth": 50,
+      "strength": 6,
+      "dexterity": 6,
+      "constitution": 14,
+      "weaponName": "Septre",
+      "weaponDamage": 8,
+      "range": "normal",
+      "square": {
+        "x": 12,
+        "y": 9
+      },
+      "infos": ""
+    },
+    {
+      "name": "Sinikron",
+      "side": "enemy",
+      "species": "Ancient",
+      "strongAtkCost": 10,
+      "fastAtkCost": 10,
+      "counterAtkCost": 10,
+      "stamina": 100,
+      "health": 300,
+      "criticalHealth": 300,
+      "strength": 20,
+      "dexterity": 10,
+      "constitution": 40,
+      "weaponName": "Touch\u00e9 de la vie",
+      "weaponDamage": 0,
+      "range": "normal",
+      "square": {
+        "x": 14,
+        "y": 9
+      },
+      "infos": ""
+    }
+  ],
+  "annotations": [],
+  "aggregatedRooms": [
+    [
+      [
+        1,
+        4,
+        4,
+        5,
+        [
+          118,
+          118,
+          123
+        ]
+      ],
+      [
+        1,
+        1,
+        4,
+        3,
+        [
+          174,
+          120,
+          87
+        ]
+      ]
+    ],
+    [
+      [
+        1,
+        14,
+        4,
+        4,
+        [
+          160,
+          159,
+          191
+        ]
+      ],
+      [
+        1,
+        10,
+        4,
+        4,
+        [
+          225,
+          210,
+          127
+        ]
+      ]
+    ]
+  ]
+}
